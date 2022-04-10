@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
         
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, GetComponent<PlayerMotor>().CurrentDirection * transform.right, 10f);
 
+        if(hits.Length > 0) Camera.main.GetComponent<CameraController>().Shake(0.05f);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.CompareTag("Damageable"))
