@@ -1,6 +1,6 @@
 public class BaseStateFactory
 {
-    readonly BaseStateMachine m_context;
+    protected readonly BaseStateMachine m_context;
 
     public BaseStateFactory(BaseStateMachine context)
     {
