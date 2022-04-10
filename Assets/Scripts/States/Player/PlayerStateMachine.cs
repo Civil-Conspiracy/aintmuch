@@ -18,6 +18,7 @@ public class PlayerStateMachine : BaseStateMachine
     {
         base.Update();
         PlayAnimation();
+        FlipSprite();
     }
 
     public void PlayAnimation()
@@ -47,6 +48,20 @@ public class PlayerStateMachine : BaseStateMachine
                 return true;
             else
                 return false;
+        }
+    }
+    
+    private void FlipSprite()
+    {
+        if (GetComponent<PlayerMotor>().Direction > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            axe_animator.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (GetComponent<PlayerMotor>().Direction < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            axe_animator.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }

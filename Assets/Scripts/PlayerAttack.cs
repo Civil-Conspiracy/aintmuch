@@ -39,18 +39,17 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(swingTime);
         
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, GetComponent<PlayerMotor>().CurrentDirection * transform.right, 10f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, GetComponent<PlayerMotor>().CurrentDirection * transform.right, 1.15f);
 
-        if(hits.Length > 0) Camera.main.GetComponent<CameraController>().Shake(0.05f);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.CompareTag("Damageable"))
             {
+                Camera.main.GetComponent<CameraController>().Shake(0.05f);
                 hit.collider.gameObject.GetComponent<IDamageable>().Damage(damage);
             }
         }
 
         m_attacking = false;
     }
-
 }
