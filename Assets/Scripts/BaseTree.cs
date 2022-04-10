@@ -37,12 +37,13 @@ public class BaseTree : MonoBehaviour, IDamageable
     private void SpawnDeadTree()
     {
         Vector2 playerPos = m_DeadPoint.position - GameObject.FindGameObjectWithTag("Player").transform.position;
-        float playerDir = playerPos.normalized.y;
+        float playerDir = playerPos.normalized.x;
         float spawnRot;
-        if (playerDir < 0) spawnRot = -25f;
-        else if (playerDir > 0) spawnRot = 25f;
+        if (playerDir > 0) spawnRot = -12f;
+        else if (playerDir < 0) spawnRot = 12f;
         else spawnRot = -90f;
         Instantiate(go_deadTree, m_DeadPoint.position, Quaternion.Euler(0f, 0f, spawnRot));
         Debug.Log("Player Direction from Tree: " + playerDir);
+        Debug.Log("Player Position: " + playerPos);
     }
 }
