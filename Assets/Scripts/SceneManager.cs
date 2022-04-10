@@ -15,5 +15,6 @@ public enum Scenes
 {
     HUB,
     FOREST,
-    VILLAGE
+    VILLAGE,
+    HUBINSIDE
 }
