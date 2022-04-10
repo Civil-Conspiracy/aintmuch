@@ -11,6 +11,7 @@ public class PlayerMotor : MonoBehaviour
     float m_CurrentDirection;
 
     public float CurrentDirection { get { return m_CurrentDirection; } }
+    public float Direction { get { return m_MoveDirection; } }
 
     [SerializeField] float m_Speed;
     [SerializeField] float m_JumpPower;

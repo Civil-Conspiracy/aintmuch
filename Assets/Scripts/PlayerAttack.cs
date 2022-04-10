@@ -10,6 +10,11 @@ public class PlayerAttack : MonoBehaviour
     // TEMP DAMAGE
     private int damage = 2;
 
+    public bool Attacking
+    {
+        get { return m_attacking; }
+    }
+
     private void Start()
     {
         m_attacking = false;
