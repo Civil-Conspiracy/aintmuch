@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour, IDamageable
+public class BaseTree : MonoBehaviour, IDamageable
 {
     [SerializeField] int m_MaxHealth;
     [SerializeField] FillBar healthBar;
