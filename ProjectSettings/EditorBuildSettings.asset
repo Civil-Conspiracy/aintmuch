@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 5341d8191956b3247851520215e6858f
+  - enabled: 1
+    path: Assets/Scenes/HubInside.unity
+    guid: 83645ece5c2d3b44b982542fec35cf85
   m_configObjects: {}
