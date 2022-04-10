@@ -25,15 +25,9 @@ public class PlayerSwingState : PlayerBaseState
         }
     }
 
-    public override void EnterState()
-    {
+    public override void EnterState() { }
 
-    }
-
-    public override void ExitState()
-    {
-        
-    }
+    public override void ExitState() { }
 
     public override void UpdateState()
     {

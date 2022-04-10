@@ -39,7 +39,6 @@ public class PlayerMotor : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Debug.Log(rb.velocity);
     }
 
     // Method sets the current direction based on the movement keys pressed.
