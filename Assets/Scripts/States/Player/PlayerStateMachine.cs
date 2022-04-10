@@ -12,6 +12,7 @@ public class PlayerStateMachine : BaseStateMachine
         m_states = new PlayerStateFactory(this);
         m_currentState = m_states.Idle();
         m_currentState.EnterState();
+        Debug.Log(player_animator.GetCurrentAnimatorStateInfo(0).length);
     }
 
     private new void Update()

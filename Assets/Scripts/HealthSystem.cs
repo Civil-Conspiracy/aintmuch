@@ -29,6 +29,7 @@ public class HealthSystem
     {
         currentHealthPoints -= damage;
         OnHealthChanged(this, EventArgs.Empty);
+
         if (currentHealthPoints <= 0)
             OnDead(this, EventArgs.Empty);
     }
@@ -36,8 +37,10 @@ public class HealthSystem
     public void Heal(int healAmount)
     {
         currentHealthPoints += healAmount;
+
         if (currentHealthPoints > maxHealthPoints)
             currentHealthPoints = maxHealthPoints;
+
         OnHealthChanged(this, EventArgs.Empty);
     }
 }
