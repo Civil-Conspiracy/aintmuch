@@ -25,7 +25,7 @@ public class BaseTree : MonoBehaviour, IDamageable
 
     private void OnDeadTree(object sender, System.EventArgs e)
     {
-        SpawnDeadTree();
+        if(go_deadTree != null)SpawnDeadTree();
         Destroy(gameObject);
     }
 

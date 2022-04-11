@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
         Vector2 dir = new Vector2(GetComponent<PlayerMotor>().CurrentDirection, m_dirModifier);
         Debug.DrawRay(transform.position, dir, Color.red, 1.15f);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir * transform.right, 1.15f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, 1.15f);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.CompareTag("Damageable"))
