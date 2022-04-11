@@ -386,7 +386,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -408,7 +408,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c67a4fea6a6f92a498ea511f12a06d09, type: 3}
-  m_Color: {r: 0.779063, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.78940064, g: 1, b: 0.6745283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -431,7 +431,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029370904, y: -1.9059966}
+  m_Offset: {x: -0.029370904, y: -0.97364026}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -442,7 +442,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9412582, y: 3.4335732}
+  m_Size: {x: 0.9412582, y: 5.298286}
   m_EdgeRadius: 0
 --- !u!114 &311107115372682145
 MonoBehaviour:
@@ -459,4 +459,5 @@ MonoBehaviour:
   m_MaxHealth: 10
   healthBar: {fileID: 311107114596335478}
   go_deadTree: {fileID: 5102966522616450368, guid: b25ae37ae19a1ad4d8abf93c1ca46d1e, type: 3}
+  go_splitTree: {fileID: 0}
   m_DeadPoint: {fileID: 1542482153}
