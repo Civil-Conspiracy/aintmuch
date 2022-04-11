@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float swingTime;
+    static readonly float swingTime = 1.72f;
     private bool m_attacking;
     bool m_attackPressed;
     [SerializeField] float m_dirModifier;
@@ -41,9 +41,6 @@ public class PlayerAttack : MonoBehaviour
             yield break;
 
         m_attacking = true;
-        // Start the animation
-        // wait for the animation length
-        // send out a raycast for damage
         float timeToImpact = swingTime - 0.6f;
         yield return new WaitForSeconds(timeToImpact);
         DetectHit();
@@ -53,10 +50,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void DetectHit()
     {
+        Vector2 newPos = transform.position;
+        newPos.y -= 0.25f;
         Vector2 dir = new Vector2(GetComponent<PlayerMotor>().CurrentDirection, m_dirModifier);
-        Debug.DrawRay(transform.position, dir, Color.red, 1.15f);
+        Debug.DrawRay(newPos, dir, Color.red, 1.15f);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, 1.15f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(newPos, dir, 1.15f);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.CompareTag("Damageable"))

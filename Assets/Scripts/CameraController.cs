@@ -19,4 +19,8 @@ public class CameraController : MonoBehaviour
     {
         StartCoroutine(DoShake(intensity));
     }
+    public void StopShake()
+    {
+        StopCoroutine(DoShake(0));
+    }
 }

@@ -4,32 +4,11 @@ using UnityEngine;
 
 public class PlayerStateMachine : BaseStateMachine
 {
+    // Local Component and Object Fields
     [SerializeField] Animator player_animator;
     [SerializeField] Animator axe_animator;
 
-    private void Awake()
-    {
-        m_states = new PlayerStateFactory(this);
-        m_currentState = m_states.Idle();
-        m_currentState.EnterState();
-        Debug.Log(player_animator.GetCurrentAnimatorStateInfo(0).length);
-    }
-
-    private new void Update()
-    {
-        base.Update();
-        PlayAnimation();
-        FlipSprite();
-    }
-
-    public void PlayAnimation()
-    {
-        PlayerBaseState current_state = (PlayerBaseState)m_currentState;
-
-        player_animator.Play("goblinguy" + current_state.m_AnimationName);
-        axe_animator.Play("axe" + current_state.m_AnimationName);
-    }
-
+    // Switch State Arguement Properites
     public bool WalkStateArgs
     {
         get
@@ -40,7 +19,6 @@ public class PlayerStateMachine : BaseStateMachine
                 return false;
         }
     }
-
     public bool SwingStateArgs
     {
         get
@@ -51,18 +29,54 @@ public class PlayerStateMachine : BaseStateMachine
                 return false;
         }
     }
-    
+
+    // Local Variable fields
+    string m_stateAnimName = null;
+
+
+    // Initialize current states
+    private void Awake()
+    {
+        m_states = new PlayerStateFactory(this);
+        m_currentState = m_states.Idle();
+        m_currentState.EnterState();
+
+        Debug.Log(player_animator.GetCurrentAnimatorStateInfo(0).length);
+    }
+    // Update states and animations
+    private new void Update()
+    {
+        base.Update();
+        PlayAnimation();
+        FlipSprite();
+    }
+    // Update Methods
+    public void PlayAnimation()
+    {
+        PlayerBaseState current_state = (PlayerBaseState)m_currentState;
+        if(m_stateAnimName != current_state.m_AnimationName)
+        {
+            m_stateAnimName = current_state.m_AnimationName;
+            player_animator.Play("goblinguy" + current_state.m_AnimationName);
+            axe_animator.Play("axe" + current_state.m_AnimationName);
+        }
+    }  /*Plays player and axe animations based on the current state's animation name */
     private void FlipSprite()
     {
-        if (GetComponent<PlayerMotor>().Direction > 0)
+        SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
+        SpriteRenderer axeSprite = axe_animator.GetComponent<SpriteRenderer>();
+        float dir = GetComponent<PlayerMotor>().Direction;
+
+        if (dir > 0 && playerSprite.flipX == false)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
-            axe_animator.GetComponent<SpriteRenderer>().flipX = true;
+            playerSprite.flipX = true;
+            axeSprite.flipX = true;
         }
-        if (GetComponent<PlayerMotor>().Direction < 0)
+        if (dir < 0 && playerSprite.flipX == true)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
-            axe_animator.GetComponent<SpriteRenderer>().flipX = false;
+            playerSprite.flipX = false;
+            axeSprite.flipX = false;
         }
-    }
+    } /*Flips player and axe sprites if player's direction is less than 0 (-1); flips back if direction is greater than 0 (1)*/
+
 }
