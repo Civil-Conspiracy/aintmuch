@@ -193,7 +193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.66, y: -3.19}
+  m_AnchoredPosition: {x: 0.66, y: -0.67}
   m_SizeDelta: {x: 1078, y: 618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &311107114748940259
@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311107115372682141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.78, y: 0.962, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.66172, y: 0.66172, z: 0.66172}
   m_Children:
   - {fileID: 311107114748940254}
@@ -431,10 +431,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029370904, y: -0.97364026}
+  m_Offset: {x: -0.029370904, y: 1.1281784}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    border: {x: 2, y: 0.3125, z: 2.0625, w: 0.875}
+    pivot: {x: 0.50000006, y: 0.25220636}
     oldSize: {x: 5, y: 8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -442,7 +442,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9412582, y: 5.298286}
+  m_Size: {x: 0.9412582, y: 5.6428475}
   m_EdgeRadius: 0
 --- !u!114 &311107115372682145
 MonoBehaviour:
@@ -461,3 +461,5 @@ MonoBehaviour:
   go_deadTree: {fileID: 5102966522616450368, guid: b25ae37ae19a1ad4d8abf93c1ca46d1e, type: 3}
   go_splitTree: {fileID: 0}
   m_DeadPoint: {fileID: 1542482153}
+  outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
+  debug: 0

@@ -65,8 +65,78 @@ ScriptedImporter:
     npotScale: 0
     generateCubemap: 0
     mipmapFadeDistanceEnd: 3
-  animationSettings: []
+  animationSettings:
+  - animationName: DefaultFrame
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 0"
+    sprites:
+    - {instanceID: 0}
+    frameNumbers: 00000000
+  - animationName: Idle
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 1; To: 6"
+    sprites:
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    frameNumbers: 010000000200000003000000040000000500000006000000
+  - animationName: Limp
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 7; To: 12"
+    sprites:
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    frameNumbers: 0700000008000000090000000a0000000b0000000c000000
+  - animationName: Walk
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 13; To: 15"
+    sprites:
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    frameNumbers: 0d0000000e0000000f000000
+  - animationName: AxeSwing
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 16; To: 32"
+    sprites:
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    frameNumbers: 100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f00000020000000
   texture: {instanceID: 0}
-  spriteImportData: []
+  spriteImportData:
+  - name: axe
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 288
+      width: 64
+      height: 48
+    alignment: 0
+    pivot: {x: 0.5, y: 0.5}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: 7d10d57f0bf35094c8a29c03b873cb9f
   spriteRects: []
-  selectedImporter: 0
+  selectedImporter: 1

@@ -29,6 +29,10 @@ public class PlayerAttack : MonoBehaviour
     {
        if(m_attackPressed && !m_attacking) StartCoroutine(Attack());
     }
+    private void FixedUpdate()
+    {
+        SetGlow();
+    }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
@@ -51,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
     private void DetectHit()
     {
         Vector2 newPos = transform.position;
-        newPos.y -= 0.25f;
+        newPos.y -= 0.5f;
         Vector2 dir = new Vector2(GetComponent<PlayerMotor>().CurrentDirection, m_dirModifier);
         Debug.DrawRay(newPos, dir, Color.red, 1.15f);
 
@@ -62,6 +66,22 @@ public class PlayerAttack : MonoBehaviour
             {
                 Camera.main.GetComponent<CameraController>().Shake(0.05f);
                 hit.collider.gameObject.GetComponent<IDamageable>().Damage(damage);
+            }
+        }
+    }
+
+    private void SetGlow()
+    {
+        Vector2 newPos = transform.position;
+        newPos.y -= 0.5f;
+        Vector2 dir = new Vector2(GetComponent<PlayerMotor>().CurrentDirection, m_dirModifier);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(newPos, dir, 1.15f);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.GetComponent<BaseTree>() != null)
+            {
+               hit.collider.gameObject.GetComponent<BaseTree>().SetGlow();
             }
         }
     }

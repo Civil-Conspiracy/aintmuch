@@ -9,6 +9,9 @@ public class BaseTree : MonoBehaviour, IDamageable
     [SerializeField] GameObject go_deadTree;
     [SerializeField] GameObject go_splitTree;
     [SerializeField] Transform m_DeadPoint;
+    [SerializeField] Material outlineMat;
+    Material defaultMat;
+    [SerializeField]bool debug = false;
 
     HealthSystem healthSystem;    
 
@@ -19,9 +22,44 @@ public class BaseTree : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        defaultMat = GetComponent<SpriteRenderer>().material;
         healthSystem = new HealthSystem(m_MaxHealth);
         healthSystem.OnHealthChanged += UpdateHealthBar;
         healthSystem.OnDead += OnDeadTree;
+    }
+
+    private void Update()
+    {
+        if(outlineMat != null)
+        {
+            if(GetComponent<SpriteRenderer>().material != defaultMat) RemoveGlowIfPlayerLeavesRange();
+        }
+    }
+
+    private void RemoveGlowIfPlayerLeavesRange()
+    {
+        float rotZ = transform.rotation.z;
+        float playerDist = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+        if(rotZ == 0)
+        {
+            if(playerDist > 1.18)
+            {
+                GetComponent<SpriteRenderer>().material = defaultMat;
+                Debug.Log(playerDist);
+            }
+        }
+        else if (playerDist > 2.5)
+        {
+            GetComponent<SpriteRenderer>().material = defaultMat;
+            Debug.Log(playerDist);
+        }
+
+    }
+
+    public void SetGlow()
+    {
+        SpriteRenderer thisRend = GetComponent<SpriteRenderer>();
+        if (thisRend.material != outlineMat) thisRend.material = outlineMat;
     }
 
     private void OnDeadTree(object sender, System.EventArgs e)

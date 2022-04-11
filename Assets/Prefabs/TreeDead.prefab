@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5102966522616450368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.78, y: 0.962, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.66172, y: 0.66172, z: 0.66172}
   m_Children:
   - {fileID: 5102966523368315139}
@@ -104,6 +104,8 @@ MonoBehaviour:
   go_deadTree: {fileID: 0}
   go_splitTree: {fileID: 5314212948991874702, guid: f5949ece41b58074ba2356a725f408fd, type: 3}
   m_DeadPoint: {fileID: 4661947530986935347}
+  outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
+  debug: 0
 --- !u!50 &6365316412739640507
 Rigidbody2D:
   serializedVersion: 4
@@ -138,8 +140,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07083272, y: -1.3330489}
-  m_Size: {x: 1.0157408, y: 4.645824}
+  m_Offset: {x: -0.07083272, y: -0.15806203}
+  m_Size: {x: 1.0157408, y: 4.9069414}
   m_Direction: 0
 --- !u!1 &5102966523368315138
 GameObject:
@@ -177,7 +179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.6}
   m_SizeDelta: {x: 1078, y: 618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5102966523368315198

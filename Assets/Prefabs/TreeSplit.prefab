@@ -163,7 +163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.66, y: -3.19}
+  m_AnchoredPosition: {x: 0.66, y: -1.75}
   m_SizeDelta: {x: 1078, y: 618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5314212948265566960
@@ -330,7 +330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5314212948991874702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.77, y: 2.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.66172, y: 0.66172, z: 0.66172}
   m_Children:
   - {fileID: 5314212948265566925}
@@ -406,6 +406,8 @@ MonoBehaviour:
   go_deadTree: {fileID: 0}
   go_splitTree: {fileID: 0}
   m_DeadPoint: {fileID: 5615609132639053306}
+  outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
+  debug: 0
 --- !u!70 &-7902218959674820845
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -419,8 +421,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18852335, y: -1.3587898}
-  m_Size: {x: 0.5046049, y: 4.6471553}
+  m_Offset: {x: 0.021812372, y: -0.13629569}
+  m_Size: {x: 0.5090234, y: 4.615615}
   m_Direction: 0
 --- !u!50 &-8426364707676986151
 Rigidbody2D:
@@ -467,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5615609132639053307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.121, y: -1.005, z: 0}
+  m_LocalPosition: {x: -0.121, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5314212948991874736}
