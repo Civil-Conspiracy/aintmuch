@@ -55,6 +55,7 @@ public class PlayerAttack : MonoBehaviour
         if (m_attacking || !m_attackPressed || m_RequireNewPress)
             yield break;
 
+
         m_attacking = true;
         m_RequireNewPress = true;
         m_attackDone = false;
