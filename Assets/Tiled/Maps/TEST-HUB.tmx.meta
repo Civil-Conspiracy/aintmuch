@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62380b0544fdf2d47855778674da5a13
+guid: 49f60d06962a3f142b2340f383c08e06
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -10,16 +10,24 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
   missingFiles: []
   errors: []
-  warnings: []
+  warnings:
+  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/tilesheet-Forest01.tsx'
+    (32)
+  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/tilesheet-Hills01.tsx'
+    (32)
+  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/trees.tsx'
+    (32)
+  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/FORESTSHEET.tsx'
+    (32)
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
   importerVersion: 24
-  pixelsPerUnit: 32
+  pixelsPerUnit: 100
   edgesPerEllipse: 32
   numberOfObjectsImported: 2
   tilesAsObjects: 0
-  sortingMode: 1
+  sortingMode: 0
   isIsometric: 0
   customImporterClassName: 
   internalTilesets: []

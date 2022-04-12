@@ -67,10 +67,13 @@ public class PlayerAttack : MonoBehaviour
         m_attacking = true;
 
         m_RequireNewPress = true;
-        float timeToImpact = swingTime - 0.6f;
+        float timeToImpact = swingTime - 0.9f;
         yield return new WaitForSeconds(timeToImpact);
+        GetComponent<PlayerMotor>().DirectionLocked = true;
         DetectHit();
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<PlayerMotor>().DirectionLocked = false;
+        yield return new WaitForSeconds(0.5f);
         m_attacking = false;
     }
 
