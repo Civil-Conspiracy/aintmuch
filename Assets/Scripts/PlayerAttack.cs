@@ -60,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
         Debug.DrawRay(newPos, dir, Color.red, 1.15f);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(newPos, dir, 1.15f);
+
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.CompareTag("Damageable"))
