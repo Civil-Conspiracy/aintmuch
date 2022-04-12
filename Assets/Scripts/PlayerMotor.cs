@@ -13,6 +13,7 @@ public class PlayerMotor : MonoBehaviour
 
     bool grounded;
 
+    public float MoveDirection { get { return m_MoveDirection; } }
     public float CurrentDirection { get { return m_CurrentDirection; } }
     public float Direction { get { return m_MoveDirection; } }
 
@@ -20,8 +21,12 @@ public class PlayerMotor : MonoBehaviour
     public float JumpPower { get { return m_JumpPower; } }
     public float BaseSpeed { get { return m_BaseSpeed; } }
 
+    public bool DirectionLocked { get { return m_DirLock; } set { m_DirLock = value;  } }
+
     [SerializeField] float m_JumpPower;
-    [SerializeField] float m_BaseSpeed;
+    [SerializeField] float m_BaseSpeed = 5f;
+
+    private bool m_DirLock = false;
 
 
     private void Awake()
@@ -72,7 +77,7 @@ public class PlayerMotor : MonoBehaviour
     private void GetMove()
     {
         m_MoveDirection = PlayerManager.Instance.Input.Player.Move.ReadValue<float>();
-        if (m_MoveDirection != 0)
+        if (m_MoveDirection != 0 && !m_DirLock)
             m_CurrentDirection = m_MoveDirection;
     }
 
