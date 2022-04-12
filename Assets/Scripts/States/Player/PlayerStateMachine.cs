@@ -63,20 +63,12 @@ public class PlayerStateMachine : BaseStateMachine
     }  /*Plays player and axe animations based on the current state's animation name */
     private void FlipSprite()
     {
-        SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
-        SpriteRenderer axeSprite = axe_animator.GetComponent<SpriteRenderer>();
-        float dir = GetComponent<PlayerMotor>().Direction;
+        if (GetComponent<PlayerMotor>().CurrentDirection == 1 && transform.rotation != Quaternion.Euler(0, 180f, 0))
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
+        else if (GetComponent<PlayerMotor>().CurrentDirection == -1 && transform.rotation != Quaternion.Euler(0, 0, 0))
+            transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (dir > 0 && playerSprite.flipX == false)
-        {
-            playerSprite.flipX = true;
-            axeSprite.flipX = true;
-        }
-        if (dir < 0 && playerSprite.flipX == true)
-        {
-            playerSprite.flipX = false;
-            axeSprite.flipX = false;
-        }
+
     } /*Flips player and axe sprites if player's direction is less than 0 (-1); flips back if direction is greater than 0 (1)*/
 
 }

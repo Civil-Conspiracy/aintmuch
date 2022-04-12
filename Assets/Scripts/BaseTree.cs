@@ -11,7 +11,6 @@ public class BaseTree : MonoBehaviour, IDamageable
     [SerializeField] Transform m_DeadPoint;
     [SerializeField] Material outlineMat;
     Material defaultMat;
-    [SerializeField]bool debug = false;
 
     HealthSystem healthSystem;    
 
@@ -30,42 +29,28 @@ public class BaseTree : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(outlineMat != null)
-        {
-            if(GetComponent<SpriteRenderer>().material != defaultMat) RemoveGlowIfPlayerLeavesRange();
-        }
-    }
-
-    private void RemoveGlowIfPlayerLeavesRange()
-    {
-        float rotZ = transform.rotation.z;
-        float playerDist = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
-        if(rotZ == 0)
-        {
-            if(playerDist > 1.18)
-            {
-                GetComponent<SpriteRenderer>().material = defaultMat;
-                Debug.Log(playerDist);
-            }
-        }
-        else if (playerDist > 2.5)
-        {
-            GetComponent<SpriteRenderer>().material = defaultMat;
-            Debug.Log(playerDist);
-        }
-
     }
 
     public void SetGlow()
     {
         SpriteRenderer thisRend = GetComponent<SpriteRenderer>();
-        if (thisRend.material != outlineMat) thisRend.material = outlineMat;
+        if (thisRend.material != outlineMat)
+            thisRend.material = outlineMat;
+    }
+
+    public void RemoveGlow()
+    {
+        SpriteRenderer thisRend = GetComponent<SpriteRenderer>();
+        if (thisRend.material != defaultMat)
+            thisRend.material = defaultMat;
     }
 
     private void OnDeadTree(object sender, System.EventArgs e)
     {
-        if(go_deadTree != null)SpawnDeadTree();
-        else if(go_splitTree != null)SpawnSplitTree();
+        if(go_deadTree != null)
+            SpawnDeadTree();
+        else if(go_splitTree != null)
+            SpawnSplitTree();
         Destroy(gameObject);
     }
 
@@ -77,32 +62,42 @@ public class BaseTree : MonoBehaviour, IDamageable
     private void SpawnDeadTree()
     {
         Vector2 playerPos = m_DeadPoint.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+
         float playerDir = playerPos.normalized.x;
         float spawnRot;
-        if (playerDir > 0) spawnRot = -12f;
-        else if (playerDir < 0) spawnRot = 12f;
-        else spawnRot = -90f;
+
+        if (playerDir > 0)
+            spawnRot = -12f;
+        else if (playerDir < 0)
+            spawnRot = 12f;
+        else
+            spawnRot = -90f;
+
         Instantiate(go_deadTree, m_DeadPoint.position, Quaternion.Euler(0f, 0f, spawnRot));
-        Debug.Log("Player Direction from Tree: " + playerDir);
-        Debug.Log("Player Position: " + playerPos);
     }
+
     private void SpawnSplitTree()
     {
         Vector2 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        float playerDir = transform.position.normalized.x - playerPos.normalized.x;
-        float spawnRot1 = 5f;
-        float spawnRot2 = -5f;
+
+        //float playerDir = transform.position.normalized.x - playerPos.normalized.x;
+        float spawnRot = 5f;
+
         Vector2 spawnPoint1 = m_DeadPoint.position;
         Vector2 spawnPoint2 = m_DeadPoint.position;
+
         spawnPoint1.x -= 0.5f;
         spawnPoint2.x += 0.5f;
+
         spawnPoint1.y = playerPos.y + 3f;
         spawnPoint2.y = playerPos.y + 3f;
 
-        GameObject split1 = Instantiate(go_splitTree, spawnPoint1, Quaternion.Euler(0f, 0f, spawnRot1));
-        GameObject split2 = Instantiate(go_splitTree, spawnPoint2, Quaternion.Euler(0f, 0f, spawnRot2));
+        GameObject split1 = Instantiate(go_splitTree, spawnPoint1, Quaternion.Euler(0f, 0f, spawnRot));
+        Instantiate(go_splitTree, spawnPoint2, Quaternion.Euler(0f, 0f, -spawnRot));
+
         split1.GetComponent<SpriteRenderer>().flipX = true;
-        Debug.Log("Player Direction from Tree: " + playerDir);
-        Debug.Log("Player Position: " + playerPos);
+
+        //Debug.Log("Player Direction from Tree: " + playerDir);
+        //Debug.Log("Player Position: " + playerPos);
     }
 }
