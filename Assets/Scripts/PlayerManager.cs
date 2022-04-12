@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
     PlayerInputControls input;
 
     #region Singleton
@@ -40,7 +39,6 @@ public class PlayerManager : MonoBehaviour
         input = new PlayerInputControls();
         input.Enable();
     }
-
 
     private void OnDisable()
     {

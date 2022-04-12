@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private Camera m_LastCamera;
+
     private IEnumerator DoShake(float intensity)
     {
         Vector3 startPos = transform.position;
@@ -22,5 +24,14 @@ public class CameraController : MonoBehaviour
     public void StopShake()
     {
         StopCoroutine(DoShake(0));
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            c.enabled = false;
+        }
+        GetComponent<Camera>().enabled = true;
     }
 }

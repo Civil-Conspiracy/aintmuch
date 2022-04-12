@@ -27,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-       if(m_attackPressed && !m_attacking) );
     }
 
     private void Attack_changed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
