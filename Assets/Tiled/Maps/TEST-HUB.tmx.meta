@@ -9,21 +9,19 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
   missingFiles: []
-  errors: []
-  warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/tilesheet-Forest01.tsx'
-    (32)
-  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/tilesheet-Hills01.tsx'
-    (32)
-  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/trees.tsx'
-    (32)
-  - Pixels Per Unit mismatch between map (100) and tileset '../Tilesheets/FORESTSHEET.tsx'
-    (32)
+  errors:
+  - "Custom importer 'PlatformCustomImporter' threw an exception. Message = 'Transform
+    child out of bounds', Stack:\n  at (wrapper managed-to-native) UnityEngine.Transform.GetChild(UnityEngine.Transform,int)\r\n 
+    at PlatformCustomImporter.TmxAssetImported (SuperTiled2Unity.Editor.TmxAssetImportedArgs
+    args) [0x00021] in D:\\dev\\aintmuch\\Assets\\Scripts\\TiledImporters\\PlatformCustomImporter.cs:16
+    \r\n  at SuperTiled2Unity.Editor.TmxAssetImporter.RunCustomImporterType (System.Type
+    type) [0x00048] in D:\\dev\\aintmuch\\Assets\\SuperTiled2Unity\\Scripts\\Editor\\Importers\\TmxAssetImporter.cs:477 "
+  warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
   importerVersion: 24
-  pixelsPerUnit: 100
+  pixelsPerUnit: 32
   edgesPerEllipse: 32
   numberOfObjectsImported: 2
   tilesAsObjects: 0
