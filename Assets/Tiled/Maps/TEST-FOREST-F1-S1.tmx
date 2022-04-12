@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="2">
- <tileset firstgid="1" source="../Tiled/Tilesheets/tilesheet-Forest01.tsx"/>
- <tileset firstgid="177" source="../Tiled/Tilesheets/tilesheet-Hills01.tsx"/>
- <tileset firstgid="241" source="../Tiled/Tilesheets/trees.tsx"/>
- <tileset firstgid="245" source="../Tiled/Tilesheets/FORESTSHEET.tsx"/>
+ <tileset firstgid="1" source="../Tilesheets/tilesheet-Forest01.tsx"/>
+ <tileset firstgid="177" source="../Tilesheets/tilesheet-Hills01.tsx"/>
+ <tileset firstgid="241" source="../Tilesheets/trees.tsx"/>
+ <tileset firstgid="245" source="../Tilesheets/FORESTSHEET.tsx"/>
  <layer id="7" name="Background" width="36" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Background"/>
