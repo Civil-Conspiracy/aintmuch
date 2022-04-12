@@ -407,7 +407,6 @@ MonoBehaviour:
   go_splitTree: {fileID: 0}
   m_DeadPoint: {fileID: 5615609132639053306}
   outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
-  debug: 0
 --- !u!70 &-7902218959674820845
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -469,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5615609132639053307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.121, y: -0.4, z: 0}
+  m_LocalPosition: {x: -0.121, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5314212948991874736}

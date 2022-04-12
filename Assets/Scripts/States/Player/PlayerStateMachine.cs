@@ -7,13 +7,14 @@ public class PlayerStateMachine : BaseStateMachine
     // Local Component and Object Fields
     [SerializeField] Animator player_animator;
     [SerializeField] Animator axe_animator;
+    PlayerMotor m_motor;
 
     // Switch State Arguement Properites
     public bool WalkStateArgs
     {
         get
         {
-            if (GetComponent<PlayerMotor>().Direction != 0)
+            if (m_motor.Direction != 0)
                 return true;
             else
                 return false;
@@ -24,11 +25,14 @@ public class PlayerStateMachine : BaseStateMachine
         get
         {
             if (GetComponent<PlayerAttack>().Attacking)
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
     }
+
+    // Public Component and Object Properites
+    public PlayerMotor Motor { get { return m_motor; } }
 
     // Local Variable fields
     string m_stateAnimName = null;
@@ -37,6 +41,7 @@ public class PlayerStateMachine : BaseStateMachine
     // Initialize current states
     private void Awake()
     {
+        m_motor = GetComponent<PlayerMotor>();
         m_states = new PlayerStateFactory(this);
         m_currentState = m_states.Idle();
         m_currentState.EnterState();
@@ -63,9 +68,9 @@ public class PlayerStateMachine : BaseStateMachine
     }  /*Plays player and axe animations based on the current state's animation name */
     private void FlipSprite()
     {
-        if (GetComponent<PlayerMotor>().CurrentDirection == 1 && transform.rotation != Quaternion.Euler(0, 180f, 0))
+        if (m_motor.CurrentDirection == 1 && transform.rotation != Quaternion.Euler(0, 180f, 0))
             transform.rotation = Quaternion.Euler(0, 180f, 0);
-        else if (GetComponent<PlayerMotor>().CurrentDirection == -1 && transform.rotation != Quaternion.Euler(0, 0, 0))
+        else if (m_motor.CurrentDirection == -1 && transform.rotation != Quaternion.Euler(0, 0, 0))
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
 

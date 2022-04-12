@@ -9,11 +9,15 @@ public class PlayerMotor : MonoBehaviour
 
     float m_MoveDirection;
     float m_CurrentDirection;
+    float m_CurrentSpeed;
 
     public float CurrentDirection { get { return m_CurrentDirection; } }
     public float Direction { get { return m_MoveDirection; } }
+    public float BaseSpeed { get { return m_BaseSpeed; } }
+    public float CurrentSpeed { get { return m_CurrentSpeed; } set { m_CurrentSpeed = value; } }
+    public float JumpPower { get { return m_JumpPower; } set { m_JumpPower = value;  } }
 
-    [SerializeField] float m_Speed;
+    [SerializeField] float m_BaseSpeed = 5f;
     [SerializeField] float m_JumpPower;
 
     private void Awake()
@@ -52,7 +56,7 @@ public class PlayerMotor : MonoBehaviour
     // Method that sets the velocity of the player if an input key is pressed.
     private void Move()
     {
-        rb.velocity = new Vector2(m_MoveDirection * m_Speed, rb.velocity.y);
+        rb.velocity = new Vector2(m_MoveDirection * m_CurrentSpeed, rb.velocity.y);
     }
 
     // Method that performs a jump by manipulating the players velocity.

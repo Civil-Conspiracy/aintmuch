@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerWalkState : PlayerBaseState
 {
+    readonly PlayerStateMachine p_ctx;
+    readonly PlayerStateFactory p_factory;
     public PlayerWalkState(PlayerStateMachine context, PlayerStateFactory factory) : base(context, factory) 
     {
         m_AnimationName = "_Walk";
+        p_ctx = (PlayerStateMachine)m_ctx;
+        p_factory = (PlayerStateFactory)m_factory;
     }
 
     public override void CheckSwitchStates()
     {
-        PlayerStateMachine p_ctx = (PlayerStateMachine)m_ctx;
-        PlayerStateFactory p_factory = (PlayerStateFactory)m_factory;
 
         if (!p_ctx.WalkStateArgs)
             SwitchState(p_factory.Idle());
@@ -22,7 +24,7 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void EnterState()
     {
-        
+        p_ctx.Motor.CurrentSpeed = p_ctx.Motor.BaseSpeed;
     }
 
     public override void ExitState()

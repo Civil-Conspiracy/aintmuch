@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerSwingState : PlayerBaseState
 {
+    readonly PlayerStateMachine p_ctx;
+    readonly PlayerStateFactory p_factory;
     public PlayerSwingState(PlayerStateMachine context, PlayerStateFactory factory) : base(context, factory) 
     {
         m_AnimationName = "_AxeSwing";
+        p_ctx = (PlayerStateMachine)m_ctx;
+        p_factory = (PlayerStateFactory)m_factory;
     }
 
     public override void CheckSwitchStates()
     {
-        PlayerStateMachine p_ctx = (PlayerStateMachine)m_ctx;
-        PlayerStateFactory p_factory = (PlayerStateFactory)m_factory;
 
         if (!p_ctx.GetComponent<PlayerAttack>().Attacking)
         {
@@ -25,7 +27,10 @@ public class PlayerSwingState : PlayerBaseState
         }
     }
 
-    public override void EnterState() { }
+    public override void EnterState()
+    {
+        p_ctx.Motor.CurrentSpeed = 0;
+    }
 
     public override void ExitState() { }
 
