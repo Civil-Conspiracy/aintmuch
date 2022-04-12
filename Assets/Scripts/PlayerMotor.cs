@@ -11,14 +11,18 @@ public class PlayerMotor : MonoBehaviour
     float m_CurrentDirection;
     float m_CurrentSpeed;
 
+    bool grounded;
+
     public float CurrentDirection { get { return m_CurrentDirection; } }
     public float Direction { get { return m_MoveDirection; } }
-    public float BaseSpeed { get { return m_BaseSpeed; } }
-    public float CurrentSpeed { get { return m_CurrentSpeed; } set { m_CurrentSpeed = value; } }
-    public float JumpPower { get { return m_JumpPower; } set { m_JumpPower = value;  } }
 
-    [SerializeField] float m_BaseSpeed = 5f;
+    public float CurrentSpeed { get { return m_CurrentSpeed; } set { m_CurrentSpeed = value; } }
+    public float JumpPower { get { return m_JumpPower; } }
+    public float BaseSpeed { get { return m_BaseSpeed; } }
+
     [SerializeField] float m_JumpPower;
+    [SerializeField] float m_BaseSpeed;
+
 
     private void Awake()
     {
@@ -38,11 +42,30 @@ public class PlayerMotor : MonoBehaviour
     private void Update()
     {
         GetMove();
+        CheckGrounded();
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void CheckGrounded()
+    {
+        if (rb.velocity.y != 0)
+            PlayerAir();
+        else
+            PlayerLand();
+    }
+
+    private void PlayerLand()
+    {
+        grounded = true;
+    }
+
+    private void PlayerAir()
+    {
+        grounded = false;
     }
 
     // Method sets the current direction based on the movement keys pressed.
@@ -62,6 +85,7 @@ public class PlayerMotor : MonoBehaviour
     // Method that performs a jump by manipulating the players velocity.
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, m_JumpPower);
+        if (grounded)
+            rb.velocity = new Vector2(rb.velocity.x, m_JumpPower);
     }
 }
