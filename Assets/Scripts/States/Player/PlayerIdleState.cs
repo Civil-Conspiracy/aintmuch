@@ -15,11 +15,13 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-
         if (p_ctx.WalkStateArgs)
             SwitchState(p_factory.Walk());
         if (p_ctx.SwingStateArgs)
+        {
             SwitchState(p_factory.Swing());
+        }
+            
     }
 
     public override void EnterState()

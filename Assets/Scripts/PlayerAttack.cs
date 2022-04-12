@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public bool Attacking
     {
         get { return m_attacking; }
+        set { m_attacking = value; }
     }
     public bool AttackPressed
     {
@@ -24,10 +25,19 @@ public class PlayerAttack : MonoBehaviour
     public bool AttackFinished
     {
         get { return m_attackDone; }
+        set { m_attackDone = value; }
     }
     public bool RequireNewPress
     {
         get { return m_RequireNewPress; }
+    }
+
+    private Coroutine c;
+
+    public Coroutine C
+    {
+        get { return c; }
+        set { c = value; }
     }
 
     private void Start()
@@ -39,6 +49,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (m_attackPressed && !m_attacking && GetComponent<PlayerMotor>().Direction == 0)
+            C = StartCoroutine(Attack());
     }
 
     private void Attack_changed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -48,19 +60,18 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        if (m_attacking || !m_attackPressed || m_RequireNewPress)
+
+        if (m_attacking || !m_attackPressed)
             yield break;
 
         m_attacking = true;
+
         m_RequireNewPress = true;
-        m_attackDone = false;
         float timeToImpact = swingTime - 0.6f;
         yield return new WaitForSeconds(timeToImpact);
         DetectHit();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.6f);
         m_attacking = false;
-        yield return new WaitForSeconds(0.3f);
-        m_attackDone = true;
     }
 
     private void DetectHit()

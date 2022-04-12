@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Camera m_CurrentCamera;
+    [HideInInspector] public Camera m_CurrentCamera;
+
     PlayerInputControls input;
 
     #region Singleton

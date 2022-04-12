@@ -11,7 +11,12 @@ public class PlayerMotor : MonoBehaviour
     float m_CurrentDirection;
     float m_CurrentSpeed;
 
-    bool grounded;
+    public bool grounded;
+
+    public bool Grounded
+    {
+        set { grounded = value; }
+    }
 
     public float MoveDirection { get { return m_MoveDirection; } }
     public float CurrentDirection { get { return m_CurrentDirection; } }
@@ -47,7 +52,6 @@ public class PlayerMotor : MonoBehaviour
     private void Update()
     {
         GetMove();
-        CheckGrounded();
     }
 
     private void FixedUpdate()
@@ -55,29 +59,11 @@ public class PlayerMotor : MonoBehaviour
         Move();
     }
 
-    private void CheckGrounded()
-    {
-        if (rb.velocity.y != 0)
-            PlayerAir();
-        else
-            PlayerLand();
-    }
-
-    private void PlayerLand()
-    {
-        grounded = true;
-    }
-
-    private void PlayerAir()
-    {
-        grounded = false;
-    }
-
     // Method sets the current direction based on the movement keys pressed.
     private void GetMove()
     {
         m_MoveDirection = PlayerManager.Instance.Input.Player.Move.ReadValue<float>();
-        if (m_MoveDirection != 0 && !m_DirLock)
+        if (m_MoveDirection != 0)
             m_CurrentDirection = m_MoveDirection;
     }
 

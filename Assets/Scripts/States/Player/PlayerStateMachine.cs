@@ -25,7 +25,7 @@ public class PlayerStateMachine : BaseStateMachine
     {
         get
         {
-            if (!m_attack.Attacking && m_attack.AttackPressed && !m_attack.RequireNewPress)
+            if (m_attack.Attacking)
                 return true;
             else
                 return false;
@@ -56,6 +56,7 @@ public class PlayerStateMachine : BaseStateMachine
         base.Update();
         PlayAnimation();
         FlipSprite();
+        Debug.Log(m_currentState.ToString());
     }
     // Update Methods
     public void PlayAnimation()
@@ -68,18 +69,7 @@ public class PlayerStateMachine : BaseStateMachine
             axe_animator.Play("axe" + current_state.m_AnimationName);
         }
     }  /*Plays player and axe animations based on the current state's animation name */
-    public void PlayAnimation(bool forceUpdate)
-    {
-        PlayerBaseState current_state = (PlayerBaseState)m_currentState;
-        if (forceUpdate)
-        {
-            player_animator.Play("goblinguy_DefaultFrame");
-            axe_animator.Play("axe_DefaultFrame");
-
-            player_animator.Play("goblinguy" + current_state.m_AnimationName);
-            axe_animator.Play("axe" + current_state.m_AnimationName);
-        }
-    }
+    
     private void FlipSprite()
     {
         if (m_motor.CurrentDirection == 1 && transform.rotation != Quaternion.Euler(0, 180f, 0))
