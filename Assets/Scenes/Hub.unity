@@ -1686,7 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a0f31f409075c4f8abc6750fdaf7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 7457180543354479866, guid: 3ce75abe78a7283438f2297b3f80cd28, type: 3}
+  m_Rooms: []
+  m_StaticRoom: {fileID: 0}
 --- !u!4 &1579510369
 Transform:
   m_ObjectHideFlags: 0

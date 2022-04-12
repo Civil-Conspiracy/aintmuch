@@ -56,7 +56,6 @@ public class PlayerStateMachine : BaseStateMachine
         base.Update();
         PlayAnimation();
         FlipSprite();
-        Debug.Log(m_currentState.ToString());
     }
     // Update Methods
     public void PlayAnimation()
