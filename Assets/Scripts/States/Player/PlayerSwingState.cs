@@ -15,7 +15,7 @@ public class PlayerSwingState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if (p_ctx.WalkStateArgs)
+        if (p_ctx.WalkStateArgs && !p_ctx.GetComponent<PlayerMotor>().DirectionLocked)
             SwitchState(p_factory.Walk());
         if (!p_ctx.GetComponent<PlayerAttack>().Attacking)
         {
@@ -32,6 +32,7 @@ public class PlayerSwingState : PlayerBaseState
     {
         p_ctx.GetComponent<PlayerAttack>().Attacking = false;
         p_ctx.StopCoroutine(p_ctx.GetComponent<PlayerAttack>().C);
+        p_ctx.GetComponent<PlayerMotor>().DirectionLocked = false;
     }
 
     public override void UpdateState()

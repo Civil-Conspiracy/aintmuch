@@ -63,7 +63,7 @@ public class PlayerMotor : MonoBehaviour
     private void GetMove()
     {
         m_MoveDirection = PlayerManager.Instance.Input.Player.Move.ReadValue<float>();
-        if (m_MoveDirection != 0)
+        if (m_MoveDirection != 0 && !DirectionLocked)
             m_CurrentDirection = m_MoveDirection;
     }
 

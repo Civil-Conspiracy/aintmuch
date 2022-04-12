@@ -15,22 +15,31 @@ public class GroundCheck : MonoBehaviour
     {
         if (collision.transform.parent != null)
         {
-            if (collision.transform.parent.CompareTag("Ground"))
+            if (collision.transform.parent.CompareTag("Ground") || collision.transform.parent.CompareTag("Platform"))
             {
                 motor.Grounded = true;
             }
         }
-        
+        if (collision.gameObject.CompareTag("Damageable") && transform.position.y > collision.transform.position.y)
+        {
+            motor.Grounded = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.parent != null)
+        if (collision.transform.parent != null && (collision.transform.parent.CompareTag("Ground") || collision.transform.parent.CompareTag("Platform")))
         {
-            if (collision.transform.parent.CompareTag("Ground"))
+            motor.Grounded = false;
+        }
+        else if (collision.gameObject.CompareTag("Damageable"))
+        {
+            if (transform.position.y >= collision.transform.position.y)
             {
                 motor.Grounded = false;
             }
+            else 
+                motor.Grounded = true;
         }
     }
 }
