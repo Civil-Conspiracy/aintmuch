@@ -16,23 +16,33 @@ public class PlayerSwingState : PlayerBaseState
     public override void CheckSwitchStates()
     {
 
-        if (!p_ctx.GetComponent<PlayerAttack>().Attacking)
+        if (p_ctx.GetComponent<PlayerAttack>().AttackFinished)
         {
-            if (p_ctx.WalkStateArgs)
-            {
-                SwitchState(p_factory.Walk());
-            }
-            if (!p_ctx.WalkStateArgs)
-                SwitchState(p_factory.Idle());
+            SwitchState(p_factory.Idle());
+        }
+        if (p_ctx.SwingStateArgs)
+        {
+            SwitchState(p_factory.Swing());
+        }
+        else if (p_ctx.WalkStateArgs)
+        {
+            SwitchState(p_factory.Walk());
         }
     }
 
     public override void EnterState()
     {
         p_ctx.Motor.CurrentSpeed = 0;
+        p_ctx.Motor.DirectionLocked = true;
+        p_ctx.PlayAnimation(true);
+        p_ctx.StartCoroutine(p_ctx.GetComponent<PlayerAttack>().Attack());
     }
 
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        p_ctx.Motor.DirectionLocked = false;
+        p_ctx.StopCoroutine(p_ctx.GetComponent<PlayerAttack>().Attack());
+    }
 
     public override void UpdateState()
     {

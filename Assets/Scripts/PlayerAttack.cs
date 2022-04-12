@@ -8,6 +8,8 @@ public class PlayerAttack : MonoBehaviour
     static readonly float swingTime = 1.72f;
     private bool m_attacking;
     bool m_attackPressed;
+    bool m_RequireNewPress;
+    bool m_attackDone;
     [SerializeField] float m_dirModifier;
 
     // TEMP DAMAGE
@@ -17,7 +19,18 @@ public class PlayerAttack : MonoBehaviour
     {
         get { return m_attacking; }
     }
-
+    public bool AttackPressed
+    {
+        get { return m_attackPressed; }
+    }
+    public bool AttackFinished
+    {
+        get { return m_attackDone; }
+    }
+    public bool RequireNewPress
+    {
+        get { return m_RequireNewPress; }
+    }
     private void Start()
     {
         m_attacking = false;
@@ -27,25 +40,31 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-       if(m_attackPressed && !m_attacking) );
+
     }
 
     private void Attack_changed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         m_attackPressed = obj.ReadValueAsButton();
+        if(m_attackPressed)
+           m_RequireNewPress = false;
     }
 
-    private IEnumerator Attack()
+    public IEnumerator Attack()
     {
-        if (m_attacking)
+        if (m_attacking || !m_attackPressed || m_RequireNewPress)
             yield break;
 
         m_attacking = true;
+        m_RequireNewPress = true;
+        m_attackDone = false;
         float timeToImpact = swingTime - 0.6f;
         yield return new WaitForSeconds(timeToImpact);
         DetectHit();
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
         m_attacking = false;
+        yield return new WaitForSeconds(0.3f);
+        m_attackDone = true;
     }
 
     private void DetectHit()
