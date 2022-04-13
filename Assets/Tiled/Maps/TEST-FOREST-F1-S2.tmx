@@ -90,9 +90,9 @@
  </layer>
  <layer id="1" name="Floor" width="36" height="20">
   <properties>
+   <property name="unity:Layer" value="Ground"/>
    <property name="unity:SortingLayer" value="Environment"/>
    <property name="unity:SortingOrder" type="int" value="-10"/>
-   <property name="unity:Tag" value="Ground"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -119,6 +119,7 @@
  </layer>
  <layer id="14" name="Platforms" width="36" height="20">
   <properties>
+   <property name="unity:Layer" value="Ground"/>
    <property name="unity:SortingLayer" value="Environment"/>
    <property name="unity:SortingOrder" type="int" value="-10"/>
    <property name="unity:Tag" value="Platform"/>
