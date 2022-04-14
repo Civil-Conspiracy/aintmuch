@@ -48,4 +48,4 @@ MonoBehaviour:
   swingEndTime: 0.67
   swingBufferTime: 0.01
   doKeepRunMomentum: 0
-  doTurnOnWallJump: 0
+  doTurnOnWallJump: 1
