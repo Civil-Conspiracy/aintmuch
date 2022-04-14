@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5102966522616450428}
   - component: {fileID: 6365316412739640507}
   - component: {fileID: 2011810885396565395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeDead
   m_TagString: Damageable
   m_Icon: {fileID: 0}
@@ -105,7 +105,6 @@ MonoBehaviour:
   go_splitTree: {fileID: 5314212948991874702, guid: f5949ece41b58074ba2356a725f408fd, type: 3}
   m_DeadPoint: {fileID: 4661947530986935347}
   outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
-  debug: 0
 --- !u!50 &6365316412739640507
 Rigidbody2D:
   serializedVersion: 4
