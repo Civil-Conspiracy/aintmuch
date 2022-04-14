@@ -69,9 +69,17 @@ public class PlayerAxeSwingState : PlayerInActionState
                 player.DetectHit(data.damage);
                 attacking = false;
             }
+            else if (InputManager.instance.MoveInput.x != 0)
+            {
+                if (InputManager.instance.MoveInput.x < 0)
+                    player.CheckDirectionToFace(false);
+                if (InputManager.instance.MoveInput.x > 0)
+                    player.CheckDirectionToFace(true);
+            }
             player.Drag(data.dragAmount);
             player.Slide();
         }
+
     }
 
     public bool CanSwing()
