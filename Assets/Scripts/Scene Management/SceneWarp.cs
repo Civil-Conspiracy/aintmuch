@@ -7,11 +7,11 @@ public class SceneWarp : MonoBehaviour, IInteractable
     [SerializeField] Scenes m_ToScene;
     [SerializeField] bool m_RequireActionKey;
 
-    public void Interact()
+    public void Interact(GameObject playerContext)
     {
         if (m_RequireActionKey)
         {
-            Game.Instance.SceneManager.ChangeScene((int)m_ToScene);
+            Game.Instance.SceneManager.ChangeScene((int)m_ToScene, playerContext);
         }
     }
 
@@ -21,7 +21,7 @@ public class SceneWarp : MonoBehaviour, IInteractable
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Game.Instance.SceneManager.ChangeScene((int)m_ToScene);
+                Game.Instance.SceneManager.ChangeScene((int)m_ToScene, collision.gameObject);
             }
         }
     }
