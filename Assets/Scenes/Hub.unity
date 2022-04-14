@@ -1686,8 +1686,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a0f31f409075c4f8abc6750fdaf7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Rooms: []
-  m_StaticRoom: {fileID: 0}
+  m_Rooms:
+  - {fileID: 3257873982489809394, guid: a72f6f89fd540e84f8079c7566ff9e2b, type: 3}
+  - {fileID: 4416092799787378067, guid: aa91f3b8c63887043938fa77fb2e7eb7, type: 3}
+  - {fileID: 7457180543354479866, guid: 3ce75abe78a7283438f2297b3f80cd28, type: 3}
+  - {fileID: 4416092799787378067, guid: aa91f3b8c63887043938fa77fb2e7eb7, type: 3}
+  - {fileID: 3257873982489809394, guid: a72f6f89fd540e84f8079c7566ff9e2b, type: 3}
+  - {fileID: 4416092799787378067, guid: aa91f3b8c63887043938fa77fb2e7eb7, type: 3}
+  m_StaticRoom: {fileID: 7457180543354479866, guid: 3ce75abe78a7283438f2297b3f80cd28, type: 3}
 --- !u!4 &1579510369
 Transform:
   m_ObjectHideFlags: 0

@@ -10,13 +10,19 @@ public class DungeonGenerator : MonoBehaviour
     GameObject[] m_randomizedRooms;
 
     readonly float y_increase = 11f;
-    int m_lastSpawnedRoomIndex = 1;
+    int m_lastSpawnedRoomIndex = 0;
 
     private void Awake()
     {
         DungeonInit();
+
         SpawnRoom(m_StaticRoom);
-        SpawnNextRoom();
+
+        // Temp
+        for (int i = 0; i < m_randomizedRooms.Length; i++)
+        {
+            SpawnNextRoom();
+        }
     }
 
     private void DungeonInit()
@@ -27,16 +33,17 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnNextRoom()
     {
-        SpawnRoom(m_lastSpawnedRoomIndex++);
+        SpawnRoom(m_lastSpawnedRoomIndex);
+        m_lastSpawnedRoomIndex++;
     }
 
     private GameObject SpawnRoom(GameObject room)
     {
-        return Instantiate(room, gameObject.transform);
+        return Instantiate(room, transform.position, Quaternion.identity, gameObject.transform);
     }
 
     private GameObject SpawnRoom(int roomIndex)
     {
-        return Instantiate(m_randomizedRooms[roomIndex], new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + (m_lastSpawnedRoomIndex * y_increase)), Quaternion.identity, gameObject.transform);
+        return Instantiate(m_randomizedRooms[roomIndex], new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + ((m_lastSpawnedRoomIndex + 1) * y_increase)), Quaternion.identity, gameObject.transform);
     }
 }
