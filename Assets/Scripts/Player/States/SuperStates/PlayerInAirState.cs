@@ -21,16 +21,21 @@ public class PlayerInAirState : PlayerState
         base.LogicUpdate();
 
         if (player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        {
             player.StateMachine.ChangeState(player.DashState);
-
+        }
         else if (player.LastOnGroundTime > 0)
+        {
             player.StateMachine.ChangeState(player.IdleState);
-
+        }
         else if (player.LastPressedJumpTime > 0 && player.LastOnWallTime > 0)
+        {
             player.StateMachine.ChangeState(player.WallJumpState);
-
+        }
         else if ((player.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x < 0) || (player.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x > 0))
+        {
             player.StateMachine.ChangeState(player.WallSlideState);
+        }
         else if (player.IsAxeSwingPressed && player.AxeSwingState.SwingWasCanceled && player.AxeSwingState.CanSwingFromCancel())
         {
             player.StateMachine.ChangeState(player.AxeSwingState);
