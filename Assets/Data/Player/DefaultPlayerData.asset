@@ -15,8 +15,8 @@ MonoBehaviour:
   gravityScale: 1.1
   fallGravityMult: 1.35
   quickFallGravityMult: 2.2
-  axeSwingGravity: 0.7
-  wallSlideGravity: 0.8
+  axeSwingGravity: 0.8
+  wallSlideGravity: 0.65
   dragAmount: 0.22
   frictionAmount: 0.55
   jumpGraceTime: 0.1
