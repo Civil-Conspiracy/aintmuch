@@ -54,6 +54,7 @@ public class PlayerStateMachine : MonoBehaviour
     #region LAYERS AND TAGS
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _wallLayer;
     #endregion
 
     private void Awake()
@@ -105,12 +106,12 @@ public class PlayerStateMachine : MonoBehaviour
         if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer))
             LastOnGroundTime = data.jumpGraceTime;
         //Right Wall Check
-        if ((Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
-            || (Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight))
+        if ((Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, _wallLayer) && IsFacingRight)
+            || (Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, _wallLayer) && !IsFacingRight))
             LastOnWallRightTime =  data.jumpGraceTime;   
         //Left Wall Check
-        if ((Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
-            || (Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight))
+        if ((Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, _wallLayer) && !IsFacingRight)
+            || (Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, _wallLayer) && IsFacingRight))
             LastOnWallLeftTime =  data.jumpGraceTime;
 
         LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
@@ -270,13 +271,13 @@ public class PlayerStateMachine : MonoBehaviour
     public void DetectHit(int damage)
     {
         Vector2 newPos = transform.position;
-        newPos.y -= 0.5f;
+        newPos.y -= 0.25f;
 
         Vector2 dir = new Vector2((IsFacingRight) ? 1 : -1, -0.25f);
 
         Debug.DrawRay(newPos, dir, Color.red, 1.15f);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(newPos, dir, 1.15f);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(newPos, dir, 0.65f);
 
         foreach (RaycastHit2D hit in hits)
         {

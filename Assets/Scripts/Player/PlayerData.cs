@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
     public float gravityScale; // overrides rb.gravityScale
     public float fallGravityMult;
     public float quickFallGravityMult;
+    public float axeSwingGravity;
 
     [Header("Drag")]
     public float dragAmount; // drag in air

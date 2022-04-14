@@ -15,6 +15,7 @@ MonoBehaviour:
   gravityScale: 1.1
   fallGravityMult: 1.35
   quickFallGravityMult: 2.2
+  axeSwingGravity: 0.7
   dragAmount: 0.22
   frictionAmount: 0.55
   jumpGraceTime: 0.1
@@ -35,7 +36,7 @@ MonoBehaviour:
   slideAccel: 0.8
   slidePower: 0.95
   dashAmount: 1
-  dashSpeed: 17
+  dashSpeed: 12
   dashAttackTime: 0.15
   dashAttackDragAmount: 0.22
   dashEndTime: 0.1
@@ -43,8 +44,8 @@ MonoBehaviour:
   dashEndRunLerp: 0.3
   dashBufferTime: 0.05
   damage: 2
-  swingAttackTime: 1.1
-  swingEndTime: 0.62
+  swingAttackTime: 1.05
+  swingEndTime: 0.67
   swingBufferTime: 0.01
   doKeepRunMomentum: 0
-  doTurnOnWallJump: 1
+  doTurnOnWallJump: 0

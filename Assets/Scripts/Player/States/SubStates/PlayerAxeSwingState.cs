@@ -12,29 +12,34 @@ public class PlayerAxeSwingState : PlayerInActionState
     public override void Enter()
     {
         base.Enter();
+
         attacking = true;
         SwingWasCanceled = false;
+        player.SetGravityScale(data.axeSwingGravity);
 
     }
 
     public override void Exit()
     {
         base.Exit();
+
         attacking = false;
+        player.SetGravityScale(data.gravityScale);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (Time.time - startTime > data.swingAttackTime + data.swingEndTime)// swingTime over transition to another state
+        if (!attacking && player.LastPressedJumpTime > 0)
         {
-            if (player.LastOnGroundTime > 0)
-                player.StateMachine.ChangeState(player.IdleState);
-            else
-                player.StateMachine.ChangeState(player.InAirState);
+            player.StateMachine.ChangeState(player.JumpState);
         }
-        if (!attacking && InputManager.instance.MoveInput.x != 0)
+        else if (!attacking && player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        {
+                player.StateMachine.ChangeState(player.DashState);
+        }
+        else if (!attacking && InputManager.instance.MoveInput.x != 0)
         {
             CancelAttack();
             player.StateMachine.ChangeState(player.RunState);
@@ -43,6 +48,13 @@ public class PlayerAxeSwingState : PlayerInActionState
         {
             CancelAttack();
             player.StateMachine.ChangeState(player.IdleState);
+        }
+        else if (Time.time - startTime > data.swingAttackTime + data.swingEndTime)// swingTime over transition to another state
+        {
+            if (player.LastOnGroundTime > 0)
+                player.StateMachine.ChangeState(player.IdleState);
+            else
+                player.StateMachine.ChangeState(player.InAirState);
         }
             
     }
@@ -58,6 +70,7 @@ public class PlayerAxeSwingState : PlayerInActionState
                 player.DetectHit(data.damage);
                 attacking = false;
             }
+            player.Drag(data.frictionAmount);
         }
     }
 
@@ -74,5 +87,6 @@ public class PlayerAxeSwingState : PlayerInActionState
     {
         attacking = false;
         SwingWasCanceled = true;
+        player.SetGravityScale(data.gravityScale);
     }
 }

@@ -29,7 +29,7 @@ public class PlayerInAirState : PlayerState
         else if (player.LastPressedJumpTime > 0 && player.LastOnWallTime > 0)
             player.StateMachine.ChangeState(player.WallJumpState);
 
-        else if ((player.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x > 0) || (player.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x < 0))
+        else if ((player.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x < 0) || (player.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x > 0))
             player.StateMachine.ChangeState(player.WallSlideState);
         else if (player.IsAxeSwingPressed && player.AxeSwingState.SwingWasCanceled && player.AxeSwingState.CanSwingFromCancel())
         {

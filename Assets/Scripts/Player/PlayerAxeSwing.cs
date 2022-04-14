@@ -13,6 +13,6 @@ public class PlayerAxeSwing : MonoBehaviour
         player = GetComponent<PlayerStateMachine>();
     }
 
-    // call this in attack state
+    // moved the attack method to PlayerStateMachine.  you can re-retrieve it whenever, I just didn't feel like adding references when I was testing.
 
 }
