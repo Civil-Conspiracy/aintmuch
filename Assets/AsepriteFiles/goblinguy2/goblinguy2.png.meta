@@ -1,0 +1,762 @@
+fileFormatVersion: 2
+guid: ce691a041d0f0194994e1ca9d78041e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7332491545472566215
+    second: goblinguy200
+  - first:
+      213: 463782634407214180
+    second: goblinguy201
+  - first:
+      213: -362613714477269827
+    second: goblinguy202
+  - first:
+      213: -3289788207619586675
+    second: goblinguy203
+  - first:
+      213: 8694436987998832258
+    second: goblinguy204
+  - first:
+      213: -5009136436609190655
+    second: goblinguy205
+  - first:
+      213: -4076594506162221371
+    second: goblinguy206
+  - first:
+      213: 6862925022524399822
+    second: goblinguy207
+  - first:
+      213: -406344119418165079
+    second: goblinguy208
+  - first:
+      213: -9083142272791698290
+    second: goblinguy209
+  - first:
+      213: 7461231491457800501
+    second: goblinguy210
+  - first:
+      213: 7217920609419669795
+    second: goblinguy211
+  - first:
+      213: 6808698453225700987
+    second: goblinguy212
+  - first:
+      213: 4217509692785008917
+    second: goblinguy213
+  - first:
+      213: -7127655985393970088
+    second: goblinguy214
+  - first:
+      213: -3650672415050956268
+    second: goblinguy215
+  - first:
+      213: -1321193775936861495
+    second: goblinguy216
+  - first:
+      213: -4686583195611483350
+    second: goblinguy217
+  - first:
+      213: -5291814516435887163
+    second: goblinguy218
+  - first:
+      213: -2510091828275492872
+    second: goblinguy219
+  - first:
+      213: 7410866496315486839
+    second: goblinguy220
+  - first:
+      213: -3078991604994326322
+    second: goblinguy221
+  - first:
+      213: -4130263122619855899
+    second: goblinguy222
+  - first:
+      213: 4204817657321968943
+    second: goblinguy223
+  - first:
+      213: -8691620039479722155
+    second: goblinguy224
+  - first:
+      213: -2617382856360661850
+    second: goblinguy225
+  - first:
+      213: -2761189366297556268
+    second: goblinguy226
+  - first:
+      213: -8406405969381848121
+    second: goblinguy227
+  - first:
+      213: 5149633271189109800
+    second: goblinguy228
+  - first:
+      213: -6132198671009616734
+    second: goblinguy229
+  - first:
+      213: -7214389363782448599
+    second: goblinguy230
+  - first:
+      213: -4292562723056426121
+    second: goblinguy231
+  - first:
+      213: 8604085800276142040
+    second: goblinguy232
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: goblinguy200
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 251
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93c7d81e9c1cd3a90800000000000000
+      internalID: -7332491545472566215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy201
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 251
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c36d849dfaf6600800000000000000
+      internalID: 463782634407214180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy202
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 251
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbcb5e57fbcb7faf0800000000000000
+      internalID: -362613714477269827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy203
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 251
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85c0922e035852d0800000000000000
+      internalID: -3289788207619586675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy204
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 251
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28600bf1068d8a870800000000000000
+      internalID: 8694436987998832258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy205
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 201
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105717053f8fb7ab0800000000000000
+      internalID: -5009136436609190655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy206
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 201
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce44e635e60d67c0800000000000000
+      internalID: -4076594506162221371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy207
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 201
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec0e4b752f10e3f50800000000000000
+      internalID: 6862925022524399822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy208
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 201
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a8e2812d206c5af0800000000000000
+      internalID: -406344119418165079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy209
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 201
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e84aae93a3232f180800000000000000
+      internalID: -9083142272791698290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy210
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 151
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 539dc4b928e9b8760800000000000000
+      internalID: 7461231491457800501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy211
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 151
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3213e655d843b2460800000000000000
+      internalID: 7217920609419669795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy212
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 151
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ef44f4b2b5d7e50800000000000000
+      internalID: 6808698453225700987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy213
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 151
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 511a73368ba978a30800000000000000
+      internalID: 4217509692785008917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy214
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 151
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854d76d25aa751d90800000000000000
+      internalID: -7127655985393970088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy215
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4120295d7c4365dc0800000000000000
+      internalID: -3650672415050956268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy216
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca83d1c24d2aade0800000000000000
+      internalID: -1321193775936861495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy217
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2333470a69e5feb0800000000000000
+      internalID: -4686583195611483350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy218
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb559a0cb2bf86b0800000000000000
+      internalID: -5291814516435887163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy219
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7470ef7cc5a2dd0800000000000000
+      internalID: -2510091828275492872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy220
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7727abe50dfa8d660800000000000000
+      internalID: 7410866496315486839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy221
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec047edc2793545d0800000000000000
+      internalID: -3078991604994326322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy222
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eb0953b29b5ea6c0800000000000000
+      internalID: -4130263122619855899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy223
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2557f991638a5a30800000000000000
+      internalID: 4204817657321968943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy224
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ff420df99216780800000000000000
+      internalID: -8691620039479722155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy225
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6acec6dd8203dabd0800000000000000
+      internalID: -2617382856360661850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinguy226
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da8f3896e84ea9d0800000000000000
+      internalID: -2761189366297556268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

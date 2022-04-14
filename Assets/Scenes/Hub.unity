@@ -1694,17 +1694,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1447440978430915904, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
-      propertyPath: _wallCheckSize.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 5448854961787109851, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448854961787109852, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
-      propertyPath: m_waitTime
-      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 5448854961787109855, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_RootOrder
@@ -1712,11 +1704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448854961787109855, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.46
+      value: 7.33
       objectReference: {fileID: 0}
     - target: {fileID: 5448854961787109855, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 5448854961787109855, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1750,10 +1742,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5448854961787109854, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
-    - {fileID: 5448854961787109853, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
-    - {fileID: 5448854961787109827, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
 --- !u!1001 &6328993471764461704
 PrefabInstance:

@@ -307,20 +307,20 @@ public class PlayerStateMachine : MonoBehaviour
         switch (CurrentState)
         {
             case "PlayerRunState":
-                PlayerAnimator.Play("goblinguy_Walk");
-                AxeAnimator.Play("axe_Walk");
+                PlayerAnimator.Play("playerSprite_Walk");
+                AxeAnimator.Play("axeSprite_Walk");
                 break;
             case "PlayerIdleState":
-                PlayerAnimator.Play("goblinguy_Idle");
-                AxeAnimator.Play("axe_Idle");
+                PlayerAnimator.Play("playerSprite_Idle");
+                AxeAnimator.Play("axeSprite_Idle");
                 break;
             case "PlayerAxeSwingState":
-                PlayerAnimator.Play("goblinguy_AxeSwing");
-                AxeAnimator.Play("axe_AxeSwing");
+                PlayerAnimator.Play("playerSprite_AxeSwing");
+                AxeAnimator.Play("axeSprite_AxeSwing");
                 break;
             default:
-                PlayerAnimator.Play("goblinguy_Idle");
-                AxeAnimator.Play("axe_Idle");
+                PlayerAnimator.Play("playerSprite_Idle");
+                AxeAnimator.Play("axeSprite_Idle");
                 break;
         }
     }
