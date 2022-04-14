@@ -26,7 +26,8 @@ public class Game : MonoBehaviour
     }
     #endregion
 
-    SceneManager m_sceneManager = new SceneManager();
+    SceneManager m_sceneManager;
+    //public GameObject player;
 
     public SceneManager SceneManager
     {
@@ -36,6 +37,7 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        m_sceneManager = GetComponent<SceneManager>();
         DontDestroyOnLoad(gameObject);
     }
 }

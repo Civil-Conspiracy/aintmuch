@@ -19,13 +19,15 @@ public class PlayerInteract : MonoBehaviour
     private void Interact()
     {
         LayerMask mask = LayerMask.GetMask("Interactables");
+
         Vector2 dir = Vector2.zero;
         dir.x = (player.IsFacingRight) ? 1 : -1;
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 1.3f, mask);
 
         if (hit.collider.gameObject.GetComponent<IInteractable>() != null)
         {
-            hit.collider.gameObject.GetComponent<IInteractable>().Interact();
+            hit.collider.gameObject.GetComponent<IInteractable>().Interact(gameObject);
         }
     }
 }
