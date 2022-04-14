@@ -9,11 +9,13 @@ public class PlayerWallSlideState : PlayerOnWallState
     public override void Enter()
     {
         base.Enter();
+        player.SetGravityScale(data.wallSlideGravity);
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.SetGravityScale(data.gravityScale);
     }
 
     public override void LogicUpdate()
@@ -21,13 +23,20 @@ public class PlayerWallSlideState : PlayerOnWallState
         base.LogicUpdate();
 
         if (player.LastPressedJumpTime > 0)
+        {
             player.StateMachine.ChangeState(player.WallJumpState);
+        }
         else if ((player.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x >= 0) || (player.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x <= 0))
+        {
             player.StateMachine.ChangeState(player.InAirState);
+        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        player.Drag(data.dragAmount);
+        player.Slide();
     }
 }

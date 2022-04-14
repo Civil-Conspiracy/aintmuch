@@ -11,6 +11,7 @@ public class PlayerData : ScriptableObject
     public float fallGravityMult;
     public float quickFallGravityMult;
     public float axeSwingGravity;
+    public float wallSlideGravity;
 
     [Header("Drag")]
     public float dragAmount; // drag in air

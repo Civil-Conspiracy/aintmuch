@@ -20,7 +20,9 @@ public class PlayerIdleState : PlayerGroundedState
         base.LogicUpdate();
 
         if (InputManager.instance.MoveInput.x != 0)
+        {
             stateMachine.ChangeState(player.RunState);
+        }
         else if (player.IsAxeSwingPressed && player.AxeSwingState.SwingWasCanceled && player.AxeSwingState.CanSwingFromCancel())
         {
             player.StateMachine.ChangeState(player.AxeSwingState);

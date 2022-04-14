@@ -16,7 +16,6 @@ public class PlayerAxeSwingState : PlayerInActionState
         attacking = true;
         SwingWasCanceled = false;
         player.SetGravityScale(data.axeSwingGravity);
-
     }
 
     public override void Exit()
@@ -70,7 +69,8 @@ public class PlayerAxeSwingState : PlayerInActionState
                 player.DetectHit(data.damage);
                 attacking = false;
             }
-            player.Drag(data.frictionAmount);
+            player.Drag(data.dragAmount);
+            player.Slide();
         }
     }
 
