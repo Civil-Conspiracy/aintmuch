@@ -40,6 +40,7 @@ public class PlayerData : ScriptableObject
     [Range(0, 0.5f)] public float jumpBufferTime; //time after pressing the jump button where if the requirements are met a jump will be automatically performed
 
     [Header("Wall Jump")]
+    public int wallJumpAmount;
     public Vector2 wallJumpForce;
     [Space(5)]
     [Range(0f, 1f)] public float wallJumpRunLerp; //slows the affect of player movement while wall jumping

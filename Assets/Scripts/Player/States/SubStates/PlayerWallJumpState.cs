@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerWallJumpState : PlayerInActionState
 {
     private int jumpDir;
+    int jumpsLeft;
     public PlayerWallJumpState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data) { }
 
     public override void Enter()
     {
         base.Enter();
 
+        jumpsLeft--;
         jumpDir = player.LastOnWallRightTime > 0 ? -1 : 1;
         player.WallJump(jumpDir);
     }
@@ -28,7 +30,7 @@ public class PlayerWallJumpState : PlayerInActionState
             player.StateMachine.ChangeState(player.DashState);
         else if (player.LastOnGroundTime > 0)
             player.StateMachine.ChangeState(player.IdleState);
-        else if (player.LastPressedJumpTime > 0 && ((player.LastOnWallRightTime > 0 && jumpDir == 1) || (player.LastOnWallLeftTime > 0 && jumpDir == -1)))
+        else if (player.LastPressedJumpTime > 0 && CanWallJump() && ((player.LastOnWallRightTime > 0 && jumpDir == 1)  || (player.LastOnWallLeftTime > 0 && jumpDir == -1)))
             player.StateMachine.ChangeState(player.WallJumpState);
     }
 
@@ -38,6 +40,19 @@ public class PlayerWallJumpState : PlayerInActionState
 
         player.Drag(data.dragAmount);
         player.Run(data.wallJumpRunLerp);
+    }
+
+    public bool CanWallJump()
+    {
+        if (jumpsLeft > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public void ResetWallJumpCount()
+    {
+        jumpsLeft = data.wallJumpAmount;
     }
 
     public bool CanJumpCut()

@@ -14,6 +14,7 @@ public class PlayerGroundedState : PlayerState
         base.Enter();
 
         player.DashState.ResetDashes();
+        player.WallJumpState.ResetWallJumpCount();
     }
 
     public override void Exit()

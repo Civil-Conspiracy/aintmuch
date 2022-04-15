@@ -22,7 +22,7 @@ public class PlayerWallSlideState : PlayerOnWallState
     {
         base.LogicUpdate();
 
-        if (player.LastPressedJumpTime > 0)
+        if (player.LastPressedJumpTime > 0 && player.WallJumpState.CanWallJump())
         {
             player.StateMachine.ChangeState(player.WallJumpState);
         }

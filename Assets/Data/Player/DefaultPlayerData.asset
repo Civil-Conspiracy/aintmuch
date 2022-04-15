@@ -31,6 +31,7 @@ MonoBehaviour:
   jumpForce: 12
   jumpCutMultiplier: 0.5
   jumpBufferTime: 0.08
+  wallJumpAmount: 3
   wallJumpForce: {x: 9, y: 12}
   wallJumpRunLerp: 0.3
   wallJumpTime: 0.35
@@ -45,8 +46,8 @@ MonoBehaviour:
   dashEndRunLerp: 0.3
   dashBufferTime: 0.05
   damage: 2
-  swingAttackTime: 1.05
-  swingEndTime: 0.67
+  swingAttackTime: 0.95
+  swingEndTime: 0.51
   swingBufferTime: 0.01
   doKeepRunMomentum: 0
   doTurnOnWallJump: 1

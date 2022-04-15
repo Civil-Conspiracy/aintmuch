@@ -14,6 +14,8 @@ public class PlayerDashState : PlayerInActionState
     {
         base.Enter();
 
+        player.WallJumpState.ResetWallJumpCount();
+
         dashesLeft--;
 
         dir = Vector2.zero;
