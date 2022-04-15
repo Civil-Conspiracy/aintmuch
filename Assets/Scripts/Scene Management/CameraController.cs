@@ -28,10 +28,13 @@ public class CameraController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        foreach (Camera c in Camera.allCameras)
+        if (collision.CompareTag("Player"))
         {
-            c.enabled = false;
+            foreach (Camera c in Camera.allCameras)
+            {
+                c.enabled = false;
+            }
+            GetComponent<Camera>().enabled = true;
         }
-        GetComponent<Camera>().enabled = true;
     }
 }

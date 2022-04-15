@@ -28,7 +28,7 @@ public class PlayerInAirState : PlayerState
         {
             player.StateMachine.ChangeState(player.IdleState);
         }
-        else if (player.LastPressedJumpTime > 0 && player.LastOnWallTime > 0)
+        else if (player.LastPressedJumpTime > 0 && player.LastOnWallTime > 0 && player.WallJumpState.CanWallJump())
         {
             player.StateMachine.ChangeState(player.WallJumpState);
         }

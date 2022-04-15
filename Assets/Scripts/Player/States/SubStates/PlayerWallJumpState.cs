@@ -32,6 +32,8 @@ public class PlayerWallJumpState : PlayerInActionState
             player.StateMachine.ChangeState(player.IdleState);
         else if (player.LastPressedJumpTime > 0 && CanWallJump() && ((player.LastOnWallRightTime > 0 && jumpDir == 1)  || (player.LastOnWallLeftTime > 0 && jumpDir == -1)))
             player.StateMachine.ChangeState(player.WallJumpState);
+        else 
+            player.StateMachine.ChangeState(player.InAirState);
     }
 
     public override void PhysicsUpdate()
