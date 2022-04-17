@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityScenes = UnityEngine.SceneManagement;
 
 public class SceneWarp : MonoBehaviour, IInteractable
 {
@@ -11,7 +12,10 @@ public class SceneWarp : MonoBehaviour, IInteractable
     {
         if (m_RequireActionKey)
         {
-            Game.Instance.SceneManager.ChangeScene((int)m_ToScene, playerContext);
+            StartCoroutine(Game.Instance.SceneManager.LoadingScreenCoroutine((int)m_ToScene, () =>
+            {
+                WarpPlayer(playerContext);
+            }));
         }
     }
 
@@ -21,7 +25,22 @@ public class SceneWarp : MonoBehaviour, IInteractable
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Game.Instance.SceneManager.ChangeScene((int)m_ToScene, collision.gameObject);
+                StartCoroutine(Game.Instance.SceneManager.LoadingScreenCoroutine((int)m_ToScene, () =>
+                {
+                    WarpPlayer(collision.gameObject);
+                }));
+            }
+        }
+    }
+
+    private void WarpPlayer(GameObject player)
+    {
+        GameObject[] roots = UnityScenes.SceneManager.GetSceneByBuildIndex((int)m_ToScene).GetRootGameObjects();
+        foreach (GameObject go in roots)
+        {
+            if (go.GetComponent<WarpPoint>() != null)
+            {
+                go.GetComponent<WarpPoint>().SpawnPlayerOnPoint(player);
             }
         }
     }
