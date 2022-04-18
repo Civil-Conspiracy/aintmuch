@@ -34,8 +34,9 @@ public class PlayerAxeSwingState : PlayerInActionState
         {
             player.StateMachine.ChangeState(player.JumpState);
         }
-        else if (!attacking && player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        else if (attacking && player.LastPressedDashTime > 0 && player.DashState.CanDash())
         {
+                CancelAttack();
                 player.StateMachine.ChangeState(player.DashState);
         }
         else if (!attacking && InputManager.instance.MoveInput.x != 0)

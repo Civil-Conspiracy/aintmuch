@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 519d9978d9352384b82243edca7bbcc2
+guid: e96d971f339a7b445a671c912ac0b1b6
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -83,6 +83,30 @@ TextureImporter:
   - first:
       213: 195315065230602154
     second: playerSprite26
+  - first:
+      213: 1066836122055114897
+    second: playerSprite27
+  - first:
+      213: 2233549816464969699
+    second: playerSprite28
+  - first:
+      213: 647693885386581284
+    second: playerSprite29
+  - first:
+      213: -468373428314975140
+    second: playerSprite30
+  - first:
+      213: -323428130120898782
+    second: playerSprite31
+  - first:
+      213: 3916198398990363159
+    second: playerSprite32
+  - first:
+      213: -6585765339777316843
+    second: playerSprite33
+  - first:
+      213: 2299752691860442703
+    second: playerSprite34
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -164,7 +188,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -185,7 +209,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -206,7 +230,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -227,7 +251,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -248,7 +272,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -268,8 +292,8 @@ TextureImporter:
       name: playerSprite05
       rect:
         serializedVersion: 2
-        x: 1
-        y: 201
+        x: 331
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -289,8 +313,8 @@ TextureImporter:
       name: playerSprite06
       rect:
         serializedVersion: 2
-        x: 67
-        y: 201
+        x: 1
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -310,8 +334,8 @@ TextureImporter:
       name: playerSprite07
       rect:
         serializedVersion: 2
-        x: 133
-        y: 201
+        x: 67
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -331,8 +355,8 @@ TextureImporter:
       name: playerSprite08
       rect:
         serializedVersion: 2
-        x: 199
-        y: 201
+        x: 133
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -352,8 +376,8 @@ TextureImporter:
       name: playerSprite09
       rect:
         serializedVersion: 2
-        x: 265
-        y: 201
+        x: 199
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -373,8 +397,8 @@ TextureImporter:
       name: playerSprite10
       rect:
         serializedVersion: 2
-        x: 1
-        y: 151
+        x: 265
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -394,8 +418,8 @@ TextureImporter:
       name: playerSprite11
       rect:
         serializedVersion: 2
-        x: 67
-        y: 151
+        x: 331
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -415,8 +439,8 @@ TextureImporter:
       name: playerSprite12
       rect:
         serializedVersion: 2
-        x: 133
-        y: 151
+        x: 1
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -436,8 +460,8 @@ TextureImporter:
       name: playerSprite13
       rect:
         serializedVersion: 2
-        x: 199
-        y: 151
+        x: 67
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -457,8 +481,8 @@ TextureImporter:
       name: playerSprite14
       rect:
         serializedVersion: 2
-        x: 265
-        y: 151
+        x: 133
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -478,8 +502,8 @@ TextureImporter:
       name: playerSprite15
       rect:
         serializedVersion: 2
-        x: 1
-        y: 101
+        x: 199
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -499,8 +523,8 @@ TextureImporter:
       name: playerSprite16
       rect:
         serializedVersion: 2
-        x: 67
-        y: 101
+        x: 265
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -520,8 +544,8 @@ TextureImporter:
       name: playerSprite17
       rect:
         serializedVersion: 2
-        x: 133
-        y: 101
+        x: 331
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -541,8 +565,8 @@ TextureImporter:
       name: playerSprite18
       rect:
         serializedVersion: 2
-        x: 199
-        y: 101
+        x: 1
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -562,8 +586,8 @@ TextureImporter:
       name: playerSprite19
       rect:
         serializedVersion: 2
-        x: 265
-        y: 101
+        x: 67
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -583,8 +607,8 @@ TextureImporter:
       name: playerSprite20
       rect:
         serializedVersion: 2
-        x: 1
-        y: 51
+        x: 133
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -604,8 +628,8 @@ TextureImporter:
       name: playerSprite21
       rect:
         serializedVersion: 2
-        x: 67
-        y: 51
+        x: 199
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -625,8 +649,8 @@ TextureImporter:
       name: playerSprite22
       rect:
         serializedVersion: 2
-        x: 133
-        y: 51
+        x: 265
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -646,8 +670,8 @@ TextureImporter:
       name: playerSprite23
       rect:
         serializedVersion: 2
-        x: 199
-        y: 51
+        x: 331
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -667,8 +691,8 @@ TextureImporter:
       name: playerSprite24
       rect:
         serializedVersion: 2
-        x: 265
-        y: 51
+        x: 1
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -688,8 +712,8 @@ TextureImporter:
       name: playerSprite25
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
+        x: 67
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -709,8 +733,8 @@ TextureImporter:
       name: playerSprite26
       rect:
         serializedVersion: 2
-        x: 67
-        y: 1
+        x: 133
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -722,6 +746,174 @@ TextureImporter:
       bones: []
       spriteID: aaf2a5a5406e5b200800000000000000
       internalID: 195315065230602154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite27
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19086a8fcc92ece00800000000000000
+      internalID: 1066836122055114897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite28
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef888669b92ffe10800000000000000
+      internalID: 2233549816464969699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite29
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 425e8a938221df800800000000000000
+      internalID: 647693885386581284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c54dd0739d00089f0800000000000000
+      internalID: -468373428314975140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite31
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22766c944d3f28bf0800000000000000
+      internalID: -323428130120898782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite32
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a26c9e1b1295630800000000000000
+      internalID: 3916198398990363159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite33
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5184e7cf059aa94a0800000000000000
+      internalID: -6585765339777316843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerSprite34
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e079d73ec5aef10800000000000000
+      internalID: 2299752691860442703
       vertices: []
       indices: 
       edges: []

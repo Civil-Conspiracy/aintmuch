@@ -307,8 +307,8 @@ public class PlayerStateMachine : MonoBehaviour
         switch (CurrentState)
         {
             case "PlayerRunState":
-                PlayerAnimator.Play("playerSprite_Walk");
-                AxeAnimator.Play("axeSprite_Walk");
+                PlayerAnimator.Play("playerSprite_Run");
+                AxeAnimator.Play("axeSprite_Run");
                 break;
             case "PlayerIdleState":
                 PlayerAnimator.Play("playerSprite_Idle");
