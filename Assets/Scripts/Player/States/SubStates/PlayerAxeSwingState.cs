@@ -44,7 +44,7 @@ public class PlayerAxeSwingState : PlayerInActionState
             CancelAttack();
             player.StateMachine.ChangeState(player.RunState);
         }
-        else if (!attacking && player.IsAxeSwingPressed)
+        else if (!attacking && player.IsAxeSwingPressed && player.LastOnGroundTime > 0)
         {
             CancelAttack();
             player.StateMachine.ChangeState(player.IdleState);

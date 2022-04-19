@@ -11,6 +11,10 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private Item DEBUGITEM;
     [SerializeField] private GameObject go_defaultItem;
 
+    //messing with sounds lol
+    public AudioSource audioSource;
+    [SerializeField] AudioClip chopAudio;
+
     #region STATE MACHINE
     public StateMachine StateMachine { get; private set; }
         public PlayerIdleState IdleState { get; private set; }
@@ -302,6 +306,7 @@ public class PlayerStateMachine : MonoBehaviour
             if (hit.collider.CompareTag("Damageable"))
             {
                 Camera.main.GetComponent<CameraController>().Shake(0.05f);
+                audioSource.Play();
                 hit.collider.gameObject.GetComponent<IDamageable>().Damage(damage);
             }
         }
@@ -363,6 +368,7 @@ public class PlayerStateMachine : MonoBehaviour
                 PlayerAnimator.Play("playerSprite_AxeSwing");
                 AxeAnimator.Play("axeSprite_AxeSwing");
                 TrailRenderer.enabled = false;
+                audioSource.clip = chopAudio;
                 break;
             default:
                 PlayerAnimator.Play("playerSprite_Idle");

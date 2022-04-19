@@ -5,10 +5,16 @@ using UnityEngine;
 public class TempScriptRespawnPlayer : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private GameObject _player;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player"))
-            collision.transform.position = _spawnPoint.position;
+        if (_player != null)
+        {
+            if (_player.transform.position.y <= -20f)
+            {
+                _player.transform.position = _spawnPoint.position;
+            }
+        }
     }
 }

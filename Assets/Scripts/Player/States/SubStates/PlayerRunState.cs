@@ -28,5 +28,6 @@ public class PlayerRunState : PlayerGroundedState
         base.PhysicsUpdate();
 
         player.Run(1);
+
     }
 }
