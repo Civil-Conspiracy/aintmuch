@@ -17,6 +17,8 @@ public class InputManager : MonoBehaviour
     public Action<InputArgs> OnInteract;
     public Action<InputArgs> OnAxeSwing;
 
+    public Action<InputArgs> OnDebugB;
+
     public Vector2 MoveInput { get; private set; }
 
     private void Awake()
@@ -48,6 +50,7 @@ public class InputManager : MonoBehaviour
         controls.Player.AxeSwing.performed += ctx => OnAxeSwing(new InputArgs { context = ctx });
         controls.Player.AxeSwing.canceled += ctx => OnAxeSwing(new InputArgs { context = ctx });
 
+        controls.Debug.DebugB.performed += ctx => OnDebugB(new InputArgs { context = ctx });
     }
 
     // Event Args

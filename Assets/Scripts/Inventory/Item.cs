@@ -5,4 +5,5 @@ public class Item : ScriptableObject
 {
     public string ItemName;
     public Sprite ItemIcon;
+    public int MaxStackSize;
 }

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1315045539506839373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.715, y: -0.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 5932251428451631100}
   m_Father: {fileID: 0}
@@ -119,6 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea31f2de50ff6ec4cb9abc73d36e2349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _playerInv: {fileID: 0}
 --- !u!61 &5930306289360464232
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +158,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5932251428451631100}
-  - component: {fileID: 1739559297693753191}
   - component: {fileID: 4244375081194324569}
   - component: {fileID: 2970418880023467740}
   m_Layer: 0
@@ -183,14 +186,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1739559297693753191
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7638859274752006181}
-  m_CullTransparentMesh: 1
 --- !u!23 &4244375081194324569
 MeshRenderer:
   m_ObjectHideFlags: 0

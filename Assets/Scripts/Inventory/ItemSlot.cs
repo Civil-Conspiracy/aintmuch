@@ -16,7 +16,10 @@ public class ItemSlot : MonoBehaviour
         {
            _item = value;
             if (_item == null)
+            {
                 ItemIcon.enabled = false;
+                CurrentStackCount = 0;
+            }
             else
             {
                 ItemIcon.sprite = _item.ItemIcon;
@@ -39,7 +42,6 @@ public class ItemSlot : MonoBehaviour
             }
         }
     }
-
 
     private void OnValidate()
     {

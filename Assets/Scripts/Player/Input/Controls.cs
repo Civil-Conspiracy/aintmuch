@@ -214,6 +214,34 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""ea25907f-7d57-4643-bbc3-eebb17d0843d"",
+            ""actions"": [
+                {
+                    ""name"": ""DebugB"",
+                    ""type"": ""Button"",
+                    ""id"": ""0adc1d95-194e-4b8e-9b67-6420c784b563"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1703cea3-5dc5-48ec-abd6-eea884757460"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -244,6 +272,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_AxeSwing = m_Player.FindAction("AxeSwing", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_DebugB = m_Debug.FindAction("DebugB", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -380,6 +411,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_DebugB;
+    public struct DebugActions
+    {
+        private @Controls m_Wrapper;
+        public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @DebugB => m_Wrapper.m_Debug_DebugB;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @DebugB.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
+                @DebugB.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
+                @DebugB.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @DebugB.started += instance.OnDebugB;
+                @DebugB.performed += instance.OnDebugB;
+                @DebugB.canceled += instance.OnDebugB;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_KBMSchemeIndex = -1;
     public InputControlScheme KBMScheme
     {
@@ -398,5 +462,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnAxeSwing(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnDebugB(InputAction.CallbackContext context);
     }
 }

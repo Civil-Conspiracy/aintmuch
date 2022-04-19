@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerInventoryManager : MonoBehaviour
 {
+    public static PlayerInventoryManager instance;
     [SerializeField] Item offhandItem;
     [SerializeField] Transform offhandParent;
     [SerializeField] ItemSlot offhandSlot;
@@ -12,7 +13,21 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] List<Item> bagItems;
     [SerializeField] Transform bagParent;
     [SerializeField] List<ItemSlot> bagSlots;
+    [SerializeField] int maxBagSlots = 5;
 
+    private void Awake()
+    {
+        #region Singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            return;
+        }
+        #endregion
+    }
 
     private void OnValidate()
     {
@@ -33,9 +48,10 @@ public class PlayerInventoryManager : MonoBehaviour
         if (bagParent != null)
         {
             bagSlots = bagParent.GetComponentsInChildren<ItemSlot>().ToList();
-            if(bagItems.Count > bagSlots.Count)
+            if(bagItems.Count > bagSlots.Count && bagSlots.Count < maxBagSlots)
             {
                 //instantiate a new bag slot until there are as many slots as items
+                
             }
         }
     }
@@ -51,22 +67,63 @@ public class PlayerInventoryManager : MonoBehaviour
             bagSlots[i].Item = null;
         }
         if (offhandItem != null)
+        {
             offhandSlot.Item = offhandItem;
+        }
     }
 
-    //public bool AddItemCheck(Item item)
-    //{
-    //    //check if item can stack in offhand
-    //    //check if item can stack in bag
-    //
-    //    //if offhand is empty, and item can't stack in bag
-    //        //add item to offhandItems and destroy item.gameobject
-    //    //else, if bag isn't full, and item can't stack in offhand
-    //        //add item to bagItems and destroy item.gameobject
-    //    //else, if offhand is full and item can't stack in bag
-    //        //if item can stack, existing item's currentstack++ and destroy item.gameobject
-    //    //else, if bag is full
-    //        //if item can stack, existing item's currentstack++ and destroy item.gameobject
-    //}
+    public void AddItem(Item item, FloorItem floorItem)
+    {
+        ItemSlot bagSlotToStack = Contains(bagSlots, item);
+        bool canStackOffhand = AddToOffhandItemCheck(item);
 
+        //if item can stack in offhand
+        if (canStackOffhand && offhandSlot.CurrentStackCount < offhandItem.MaxStackSize)
+        {
+            offhandSlot.CurrentStackCount++;
+            Destroy(floorItem.gameObject);
+        }
+        //if item can stack in bag
+        else if (bagSlotToStack != null && bagSlotToStack.CurrentStackCount < item.MaxStackSize)
+        {
+            bagSlotToStack.CurrentStackCount++;
+            Destroy(floorItem.gameObject);
+        }
+        //if offhand is empty, and item can't stack in bag
+        else if (offhandItem == null)
+        {
+            offhandItem = item;
+            offhandSlot.CurrentStackCount = 1;
+            Destroy(floorItem.gameObject);
+        }
+        //if bag isn't full, and item can't stack in offhand
+        else if (bagItems.Count < maxBagSlots)
+        {
+            bagItems.Add(item);
+            ItemSlot bagSlotToAdd = bagSlots[bagItems.Count - 1];
+            bagSlotToAdd.CurrentStackCount = 1;
+            Destroy(floorItem.gameObject);
+        }
+        else
+            Debug.Log("couldn't add item to inventory.");
+
+        RefreshHUD();
+    }
+    private bool AddToOffhandItemCheck(Item item)
+    {
+        if (offhandItem == item)
+            return true;
+        else
+            return false;
+    }
+    public ItemSlot Contains(List<ItemSlot> list, Item item)
+    {
+        foreach(ItemSlot slot in list)
+        {
+            if (slot.Item == item && slot.CurrentStackCount < item.MaxStackSize)
+                return slot;
+        }
+
+        return null;
+    }
 }

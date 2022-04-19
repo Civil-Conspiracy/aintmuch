@@ -7,6 +7,10 @@ public class PlayerStateMachine : MonoBehaviour
 {
     [SerializeField] private PlayerData data;
 
+    //debug
+    [SerializeField] private Item DEBUGITEM;
+    [SerializeField] private GameObject go_defaultItem;
+
     #region STATE MACHINE
     public StateMachine StateMachine { get; private set; }
         public PlayerIdleState IdleState { get; private set; }
@@ -86,6 +90,8 @@ public class PlayerStateMachine : MonoBehaviour
         InputManager.instance.OnDash += args => OnDash(args);
         InputManager.instance.OnAxeSwing += args => OnAxeSwing(args);
 
+        InputManager.instance.OnDebugB += args => OnDebugB(args);
+
         StateMachine.Initialize(this, IdleState);
 
         SetGravityScale(data.gravityScale);
@@ -144,6 +150,16 @@ public class PlayerStateMachine : MonoBehaviour
     public void OnAxeSwing(InputManager.InputArgs args)
     {
         IsAxeSwingPressed = args.context.ReadValueAsButton();
+    }
+
+    public void OnDebugB(InputManager.InputArgs args)
+    {
+        bool isPressed = args.context.ReadValueAsButton();
+        if (isPressed)
+        {
+            GameObject lootDrop = Instantiate(go_defaultItem, transform.position, Quaternion.identity);
+            lootDrop.GetComponent<FloorItem>().SetInfo(DEBUGITEM);
+        }
     }
     #endregion
 

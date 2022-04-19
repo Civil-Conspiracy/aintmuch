@@ -80,7 +80,6 @@ public class PlayerDashState : PlayerInActionState
                 player.RB.AddForce((1 - data.dashUpEndMult) * .7f * player.RB.velocity.y * Vector2.down, ForceMode2D.Impulse);
         }
     }
-    //public bool CanDash { get { if (dashesLeft > 0) return true; else return false; } }
 
     public bool CanDash()
     {
