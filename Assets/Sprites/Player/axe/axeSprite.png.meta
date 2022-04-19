@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00501a7c7846f294196a29480877cfad
+guid: 2caafdba74f74804dbf62f02ba782d36
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -107,6 +107,39 @@ TextureImporter:
   - first:
       213: 1271052492955185224
     second: axeSprite34
+  - first:
+      213: -6911356126187657305
+    second: axeSprite35
+  - first:
+      213: 136859467158872890
+    second: axeSprite36
+  - first:
+      213: 4180055760809374502
+    second: axeSprite37
+  - first:
+      213: 8576914767050923521
+    second: axeSprite38
+  - first:
+      213: -4875516294615500315
+    second: axeSprite39
+  - first:
+      213: 7097943761082035741
+    second: axeSprite40
+  - first:
+      213: 3053898500963085028
+    second: axeSprite41
+  - first:
+      213: 5763386931128841626
+    second: axeSprite42
+  - first:
+      213: 675103105164410182
+    second: axeSprite43
+  - first:
+      213: -5661581945588860001
+    second: axeSprite44
+  - first:
+      213: -5364034363844882971
+    second: axeSprite45
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -188,7 +221,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -209,7 +242,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -230,7 +263,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -251,7 +284,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -272,7 +305,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -293,7 +326,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 301
+        y: 351
         width: 64
         height: 48
       alignment: 0
@@ -314,7 +347,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -335,7 +368,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -356,7 +389,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -377,7 +410,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -398,7 +431,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -419,7 +452,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 251
+        y: 301
         width: 64
         height: 48
       alignment: 0
@@ -440,7 +473,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -461,7 +494,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -482,7 +515,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -503,7 +536,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -524,7 +557,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -545,7 +578,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 201
+        y: 251
         width: 64
         height: 48
       alignment: 0
@@ -566,7 +599,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -587,7 +620,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -608,7 +641,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -629,7 +662,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -650,7 +683,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -671,7 +704,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 151
+        y: 201
         width: 64
         height: 48
       alignment: 0
@@ -692,7 +725,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -713,7 +746,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -734,7 +767,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -755,7 +788,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -776,7 +809,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -797,7 +830,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 101
+        y: 151
         width: 64
         height: 48
       alignment: 0
@@ -818,7 +851,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 51
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -839,7 +872,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 51
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -860,7 +893,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 51
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -881,7 +914,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 51
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -902,7 +935,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 265
-        y: 51
+        y: 101
         width: 64
         height: 48
       alignment: 0
@@ -914,6 +947,237 @@ TextureImporter:
       bones: []
       spriteID: 840f77d028fa3a110800000000000000
       internalID: 1271052492955185224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite35
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 101
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a76d5e983ee510a0800000000000000
+      internalID: -6911356126187657305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite36
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a336724d5f836e100800000000000000
+      internalID: 136859467158872890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite37
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6233e5c419a820a30800000000000000
+      internalID: 4180055760809374502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite38
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e5fd6c982570770800000000000000
+      internalID: 8576914767050923521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite39
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e970daf2cfa65cb0800000000000000
+      internalID: -4875516294615500315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite40
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1eaef28e36f08260800000000000000
+      internalID: 7097943761082035741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite41
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 51
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eaa002a180a16a20800000000000000
+      internalID: 3053898500963085028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite42
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95301dc0e9abff40800000000000000
+      internalID: 5763386931128841626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite43
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d761282b27e5900800000000000000
+      internalID: 675103105164410182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite44
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b396287350e61b0800000000000000
+      internalID: -5661581945588860001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: axeSprite45
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ed890c7a2f1f85b0800000000000000
+      internalID: -5364034363844882971
       vertices: []
       indices: 
       edges: []

@@ -25,6 +25,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public Animator AxeAnimator { get; private set; }
+    public TrailRenderer TrailRenderer { get; private set; }
     #endregion
 
     #region STATE PARAMETERS
@@ -75,6 +76,7 @@ public class PlayerStateMachine : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         PlayerAnimator = GetComponent<Animator>();
         AxeAnimator = transform.Find("Axe").GetComponent<Animator>();
+        TrailRenderer = GetComponent<TrailRenderer>();
     }
 
     private void Start()
@@ -271,7 +273,7 @@ public class PlayerStateMachine : MonoBehaviour
     public void DetectHit(int damage)
     {
         Vector2 newPos = transform.position;
-        newPos.y -= 0.25f;
+        newPos.y -= 0.17f;
 
         Vector2 dir = new Vector2((IsFacingRight) ? 1 : -1, -0.25f);
 
@@ -309,18 +311,47 @@ public class PlayerStateMachine : MonoBehaviour
             case "PlayerRunState":
                 PlayerAnimator.Play("playerSprite_Run");
                 AxeAnimator.Play("axeSprite_Run");
+                TrailRenderer.enabled = false;
                 break;
             case "PlayerIdleState":
                 PlayerAnimator.Play("playerSprite_Idle");
                 AxeAnimator.Play("axeSprite_Idle");
+                TrailRenderer.enabled = false;
+                break;
+            case "PlayerJumpState":
+                PlayerAnimator.Play("playerSprite_Jump");
+                AxeAnimator.Play("axeSprite_Jump");
+                TrailRenderer.enabled = false;
+                break;
+            case "PlayerInAirState":
+                PlayerAnimator.Play("playerSprite_InAir");
+                AxeAnimator.Play("axeSprite_InAir");
+                TrailRenderer.enabled = false;
+                break;
+            case "PlayerWallJumpState":
+                PlayerAnimator.Play("playerSprite_InAir");
+                AxeAnimator.Play("axeSprite_InAir");
+                TrailRenderer.enabled = false;
+                break;
+            case "PlayerDashState":
+                PlayerAnimator.Play("playerSprite_InAir");
+                AxeAnimator.Play("axeSprite_InAir");
+                TrailRenderer.enabled = true;
+                break;
+            case "PlayerWallSlideState":
+                PlayerAnimator.Play("playerSprite_OnWall");
+                AxeAnimator.Play("axeSprite_OnWall");
+                TrailRenderer.enabled = false;
                 break;
             case "PlayerAxeSwingState":
                 PlayerAnimator.Play("playerSprite_AxeSwing");
                 AxeAnimator.Play("axeSprite_AxeSwing");
+                TrailRenderer.enabled = false;
                 break;
             default:
                 PlayerAnimator.Play("playerSprite_Idle");
                 AxeAnimator.Play("axeSprite_Idle");
+                TrailRenderer.enabled = false;
                 break;
         }
     }
