@@ -33,10 +33,20 @@ public class SceneManager : MonoBehaviour
 
         loadingAction();
 
+        GameObject[] roots = UnityScenes.SceneManager.GetActiveScene().GetRootGameObjects();
+
+        foreach(GameObject root in roots)
+        {
+            if (root.GetComponent<LoadingScreen>() != null)
+            {
+                LoadingScreen ls = root.GetComponent<LoadingScreen>();
+                ls.PlayLoadingBar();
+                yield return new WaitForSeconds(ls.StateInfo.length * ls.StateInfo.speed);
+            }
+        }
+
         CloseLoadingAndOriginal(original);
     }
-
-
 }
 
 public enum Scenes

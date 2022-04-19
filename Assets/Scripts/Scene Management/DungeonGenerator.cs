@@ -9,14 +9,14 @@ public class DungeonGenerator : MonoBehaviour
 
     GameObject[] m_randomizedRooms;
 
-    readonly float y_increase = 11f;
+    readonly float y_increase = 9.8f;
     int m_lastSpawnedRoomIndex = 0;
 
     private void Awake()
     {
         DungeonInit();
 
-        SpawnRoom(m_StaticRoom);
+        //SpawnRoom(m_StaticRoom);
 
         // Temp
         for (int i = 0; i < m_randomizedRooms.Length; i++)
