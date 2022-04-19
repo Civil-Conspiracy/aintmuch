@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Player/Player Data")]
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Player/Player Data")]
 public class PlayerData : ScriptableObject
 {
     //PHYSICS

@@ -5,11 +5,14 @@ using UnityEngine;
 public class BaseTree : MonoBehaviour, IDamageable
 {
     [SerializeField] int m_MaxHealth;
-    [SerializeField] FillBar healthBar;
+
     [SerializeField] GameObject go_deadTree;
     [SerializeField] GameObject go_splitTree;
+    [SerializeField] GameObject go_defaultItem;
+    [SerializeField] Item[] m_lootTable;
     [SerializeField] Transform m_DeadPoint;
-    [SerializeField] Material outlineMat;
+    [SerializeField] FillBar m_healthBar;
+    [SerializeField] Material m_outlineMat;
     Material defaultMat;
 
     HealthSystem healthSystem;    
@@ -34,8 +37,8 @@ public class BaseTree : MonoBehaviour, IDamageable
     public void SetGlow()
     {
         SpriteRenderer thisRend = GetComponent<SpriteRenderer>();
-        if (thisRend.material != outlineMat)
-            thisRend.material = outlineMat;
+        if (thisRend.material != m_outlineMat)
+            thisRend.material = m_outlineMat;
     }
 
     public void RemoveGlow()
@@ -51,12 +54,14 @@ public class BaseTree : MonoBehaviour, IDamageable
             SpawnDeadTree();
         else if(go_splitTree != null)
             SpawnSplitTree();
+
+        if(go_defaultItem != null && m_lootTable != null)SpawnLootTable(1);
         Destroy(gameObject);
     }
 
     private void UpdateHealthBar(object sender, System.EventArgs e)
     {
-        healthBar.SetBarAtPercent(healthSystem.GetCurrentHealthPercentage());
+        m_healthBar.SetBarAtPercent(healthSystem.GetCurrentHealthPercentage());
     }
 
     private void SpawnDeadTree()
@@ -79,10 +84,7 @@ public class BaseTree : MonoBehaviour, IDamageable
     private void SpawnSplitTree()
     {
         Vector2 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-        //float playerDir = transform.position.normalized.x - playerPos.normalized.x;
         float spawnRot = 5f;
-
         Vector2 spawnPoint1 = m_DeadPoint.position;
         Vector2 spawnPoint2 = m_DeadPoint.position;
 
@@ -96,8 +98,19 @@ public class BaseTree : MonoBehaviour, IDamageable
         Instantiate(go_splitTree, spawnPoint2, Quaternion.Euler(0f, 0f, -spawnRot));
 
         split1.GetComponent<SpriteRenderer>().flipX = true;
+    }
 
-        //Debug.Log("Player Direction from Tree: " + playerDir);
-        //Debug.Log("Player Position: " + playerPos);
+    private void SpawnLootTable(int amount)
+    {
+        Vector2 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector2 spawnPoint = m_DeadPoint.position;
+
+        spawnPoint.y = playerPos.y + 1.5f;
+
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject lootDrop = Instantiate(go_defaultItem, spawnPoint, Quaternion.identity);
+            lootDrop.GetComponent<FloorItem>().SetInfo(m_lootTable[i]);
+        }
     }
 }

@@ -402,11 +402,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 6
-  healthBar: {fileID: 5314212948146647653}
   go_deadTree: {fileID: 0}
   go_splitTree: {fileID: 0}
+  go_defaultItem: {fileID: 1315045539506839373, guid: ff482a31c8d9d5b4abc085190ba6f290, type: 3}
+  m_lootTable:
+  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
   m_DeadPoint: {fileID: 5615609132639053306}
-  outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
+  m_healthBar: {fileID: 5314212948146647653}
+  m_outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
 --- !u!70 &-7902218959674820845
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

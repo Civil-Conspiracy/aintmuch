@@ -100,11 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 8
-  healthBar: {fileID: 5102966524058888619}
   go_deadTree: {fileID: 0}
   go_splitTree: {fileID: 5314212948991874702, guid: f5949ece41b58074ba2356a725f408fd, type: 3}
+  go_defaultItem: {fileID: 0}
+  m_lootTable: []
   m_DeadPoint: {fileID: 4661947530986935347}
-  outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
+  m_healthBar: {fileID: 5102966524058888619}
+  m_outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}
 --- !u!50 &6365316412739640507
 Rigidbody2D:
   serializedVersion: 4

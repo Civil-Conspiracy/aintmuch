@@ -329,8 +329,8 @@ public class PlayerStateMachine : MonoBehaviour
                 TrailRenderer.enabled = false;
                 break;
             case "PlayerWallJumpState":
-                PlayerAnimator.Play("playerSprite_InAir");
-                AxeAnimator.Play("axeSprite_InAir");
+                PlayerAnimator.Play("playerSprite_Jump");
+                AxeAnimator.Play("axeSprite_Jump");
                 TrailRenderer.enabled = false;
                 break;
             case "PlayerDashState":
