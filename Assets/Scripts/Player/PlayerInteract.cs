@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Interact_performed(InputManager.InputArgs args)
     {
+        Debug.Log("wow");
         Interact();
     }
 
