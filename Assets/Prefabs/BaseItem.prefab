@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3127788876016403941}
   - component: {fileID: 7752956646456649410}
   - component: {fileID: 5930306289360464232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BaseItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,6 @@ MonoBehaviour:
   _playerMask:
     serializedVersion: 2
     m_Bits: 8
-  _playerInv: {fileID: 0}
 --- !u!61 &5930306289360464232
 BoxCollider2D:
   m_ObjectHideFlags: 0

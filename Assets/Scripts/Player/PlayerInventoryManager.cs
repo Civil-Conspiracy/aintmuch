@@ -21,12 +21,16 @@ public class PlayerInventoryManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
+            Destroy(gameObject);
             return;
         }
         #endregion
+
+        GetHUD();
     }
 
     private void OnValidate()
