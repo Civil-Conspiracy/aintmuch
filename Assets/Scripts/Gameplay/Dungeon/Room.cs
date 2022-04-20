@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private RoomPattern enter_pattern;
-    [SerializeField] private RoomPattern exit_pattern;
-    [SerializeField] private GameObject map;
+    [SerializeField] private RoomPattern m_enter_pattern;
+    [SerializeField] private RoomPattern m_exit_pattern;
+    [SerializeField] private GameObject m_map;
+
+    public RoomPattern Enter
+    {
+        get => m_enter_pattern;
+    }
+
+    public RoomPattern Exit
+    {
+        get => m_exit_pattern;
+    }
 
     private void Awake()
     {
-        Instantiate(map, transform);
+        Instantiate(m_map, transform);
     }
 }
 
