@@ -176,10 +176,10 @@ MonoBehaviour:
   chopAudio: {fileID: 8300000, guid: b5316d887b03bb14eb2ee057bef53749, type: 3}
   CurrentState: 
   _groundCheckPoint: {fileID: 1722629920}
-  _groundCheckSize: {x: 0.15, y: 0.01}
+  _groundCheckSize: {x: 0.01, y: 0.01}
   _rightWallCheckPoint: {fileID: 3366927469138315073}
   _leftWallCheckPoint: {fileID: 5448360449698862896}
-  _wallCheckSize: {x: 0.1, y: 0.6}
+  _wallCheckSize: {x: 0.1, y: 0.1}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256

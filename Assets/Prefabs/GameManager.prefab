@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentScene: {fileID: 0}
+  _hud: {fileID: 3410110798342446244, guid: 3f5d90e117d349942b2e0deacca0690b, type: 3}
 --- !u!114 &2895833550526176588
 MonoBehaviour:
   m_ObjectHideFlags: 0
