@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
-    private Camera m_LastCamera;
-
     private IEnumerator DoShake(float intensity)
     {
         Vector3 startPos = transform.position;
@@ -33,8 +31,12 @@ public class CameraController : MonoBehaviour
             foreach (Camera c in Camera.allCameras)
             {
                 c.enabled = false;
+                c.transform.Find("Foreground Lighting").GetComponent<Light2D>().enabled = false;
+                c.transform.Find("Background Lighting").GetComponent<Light2D>().enabled = false;
             }
             GetComponent<Camera>().enabled = true;
+            transform.Find("Foreground Lighting").GetComponent<Light2D>().enabled = true;
+            transform.Find("Background Lighting").GetComponent<Light2D>().enabled = true;
         }
     }
 }
