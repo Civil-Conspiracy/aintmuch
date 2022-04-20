@@ -115,7 +115,8 @@ public class PlayerStateMachine : MonoBehaviour
         LastPressedDashTime -= Time.deltaTime;
 
         //Ground Check
-        if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer))
+        if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)
+            || (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _wallLayer)))
             LastOnGroundTime = data.jumpGraceTime;
         //Right Wall Check
         if ((Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, _wallLayer) && IsFacingRight)

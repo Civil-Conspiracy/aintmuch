@@ -7,6 +7,7 @@ using UnityScenes = UnityEngine.SceneManagement;
 public class SceneManager : MonoBehaviour
 {
     public SceneWrapper CurrentScene;
+    [SerializeField] GameObject _hud;
 
     private void OpenLoadingAndTarget(int targetIndex)
     {
@@ -23,6 +24,8 @@ public class SceneManager : MonoBehaviour
     public IEnumerator LoadingScreenCoroutine(int targetScene, Action loadingAction)
     {
         int original = UnityScenes.SceneManager.GetActiveScene().buildIndex;
+
+        _hud.SetActive(false);
 
         OpenLoadingAndTarget(targetScene);
 
@@ -45,6 +48,7 @@ public class SceneManager : MonoBehaviour
             }
         }
 
+        _hud.SetActive(true);
         CloseLoadingAndOriginal(original);
     }
 }
