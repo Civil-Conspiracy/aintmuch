@@ -9,6 +9,14 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] Text StackCountText;
     private int _currentStackCount;
     private Item _item;
+
+    public ItemSlot()
+    {
+        CurrentStackCount = 0;
+        ItemIcon = null;
+        _item = null;
+    }
+
     public Item Item
     {
         get { return _item; }

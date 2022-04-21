@@ -95,6 +95,7 @@ public class PlayerStateMachine : MonoBehaviour
         InputManager.instance.OnAxeSwing += args => OnAxeSwing(args);
 
         InputManager.instance.OnDebugB += args => OnDebugB(args);
+        InputManager.instance.OnDebugC += args => OnDebugC(args);
 
         StateMachine.Initialize(this, IdleState);
 
@@ -164,6 +165,21 @@ public class PlayerStateMachine : MonoBehaviour
         {
             GameObject lootDrop = Instantiate(go_defaultItem, transform.position, Quaternion.identity);
             lootDrop.GetComponent<FloorItem>().SetInfo(DEBUGITEM);
+        }
+    }
+    public void OnDebugC(InputManager.InputArgs args)
+    {
+        bool isPressed = args.context.ReadValueAsButton();
+        Vector2 spawnPos = transform.position;
+        if (IsFacingRight)
+            spawnPos.x += 3f;
+        else
+            spawnPos.x -= 3f;
+        if(isPressed && PlayerInventoryManager.instance.RemoveItem(DEBUGITEM, 1))
+        {
+            PlayerInventoryManager.instance.RemoveItem(DEBUGITEM, 1);
+            GameObject lootDrop = Instantiate(go_defaultItem, spawnPos, Quaternion.identity);
+            lootDrop.GetComponent <FloorItem>().SetInfo(DEBUGITEM);
         }
     }
     #endregion

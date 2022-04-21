@@ -337,6 +337,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugC"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8dcc9ed-fa04-495c-a2a2-21417a0db8da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -359,6 +368,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""DebugB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78983a12-b028-4198-bd75-01150e267acc"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""DebugC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -407,6 +427,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_DebugB = m_Debug.FindAction("DebugB", throwIfNotFound: true);
+        m_Debug_DebugC = m_Debug.FindAction("DebugC", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -548,11 +569,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Debug;
     private IDebugActions m_DebugActionsCallbackInterface;
     private readonly InputAction m_Debug_DebugB;
+    private readonly InputAction m_Debug_DebugC;
     public struct DebugActions
     {
         private @Controls m_Wrapper;
         public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @DebugB => m_Wrapper.m_Debug_DebugB;
+        public InputAction @DebugC => m_Wrapper.m_Debug_DebugC;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -565,6 +588,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @DebugB.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
                 @DebugB.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
                 @DebugB.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
+                @DebugC.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
+                @DebugC.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
+                @DebugC.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,6 +598,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @DebugB.started += instance.OnDebugB;
                 @DebugB.performed += instance.OnDebugB;
                 @DebugB.canceled += instance.OnDebugB;
+                @DebugC.started += instance.OnDebugC;
+                @DebugC.performed += instance.OnDebugC;
+                @DebugC.canceled += instance.OnDebugC;
             }
         }
     }
@@ -607,5 +636,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface IDebugActions
     {
         void OnDebugB(InputAction.CallbackContext context);
+        void OnDebugC(InputAction.CallbackContext context);
     }
 }

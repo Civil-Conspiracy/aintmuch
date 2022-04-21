@@ -315,6 +315,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugC",
+                    "type": "Button",
+                    "id": "f8dcc9ed-fa04-495c-a2a2-21417a0db8da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -337,6 +346,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "DebugB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78983a12-b028-4198-bd75-01150e267acc",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "DebugC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

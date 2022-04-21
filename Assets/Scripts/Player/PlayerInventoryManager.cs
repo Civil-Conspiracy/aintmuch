@@ -113,6 +113,37 @@ public class PlayerInventoryManager : MonoBehaviour
 
         RefreshHUD();
     }
+
+    public bool RemoveItem(Item item, int quantity)
+    {
+        ItemSlot temp = Contains(bagSlots, item);
+        if (temp != null)
+        {
+            if (temp.CurrentStackCount > 1)
+                temp.CurrentStackCount -= quantity;
+            else
+            {
+
+                ItemSlot slotToRemove;
+                foreach (ItemSlot slot in bagSlots)
+                {
+                    if (slot.Item.ItemName == item.ItemName)
+                    {
+                        slotToRemove = slot;
+                        slotToRemove.Item = null;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+        RefreshHUD();
+        return true;
+    }
     private bool AddToOffhandItemCheck(Item item)
     {
         if (offhandItem == item)
