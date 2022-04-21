@@ -110,7 +110,7 @@ public class BaseTree : MonoBehaviour, IDamageable
         for (int i = 0; i < amount; i++)
         {
             GameObject lootDrop = Instantiate(go_defaultItem, spawnPoint, Quaternion.identity);
-            lootDrop.GetComponent<FloorItem>().SetInfo(m_lootTable[i]);
+            lootDrop.GetComponent<FloorItem>().SetInfo(m_lootTable[i], 1);
         }
     }
 }

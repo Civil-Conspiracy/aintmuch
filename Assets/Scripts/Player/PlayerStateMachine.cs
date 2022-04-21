@@ -7,11 +7,11 @@ public class PlayerStateMachine : MonoBehaviour
 {
     [SerializeField] private PlayerData data;
 
-    //debug
+    [Header("Inventory Debug")]
     [SerializeField] private Item DEBUGITEM;
     [SerializeField] private GameObject go_defaultItem;
 
-    //messing with sounds lol
+    [Header("Audio Testing")]
     public AudioSource audioSource;
     [SerializeField] AudioClip chopAudio;
 
@@ -164,7 +164,7 @@ public class PlayerStateMachine : MonoBehaviour
         if (isPressed)
         {
             GameObject lootDrop = Instantiate(go_defaultItem, transform.position, Quaternion.identity);
-            lootDrop.GetComponent<FloorItem>().SetInfo(DEBUGITEM);
+            lootDrop.GetComponent<FloorItem>().SetInfo(Instantiate(DEBUGITEM), 1);
         }
     }
     public void OnDebugC(InputManager.InputArgs args)
@@ -175,11 +175,14 @@ public class PlayerStateMachine : MonoBehaviour
             spawnPos.x += 3f;
         else
             spawnPos.x -= 3f;
-        if(isPressed && PlayerInventoryManager.instance.RemoveItem(DEBUGITEM, 1))
+        if (isPressed)
         {
-            PlayerInventoryManager.instance.RemoveItem(DEBUGITEM, 1);
-            GameObject lootDrop = Instantiate(go_defaultItem, spawnPos, Quaternion.identity);
-            lootDrop.GetComponent <FloorItem>().SetInfo(DEBUGITEM);
+            bool removed = PlayerInventoryManager.instance.RemoveItemFromOffhand(1);
+            if (removed)
+            {
+                GameObject lootDrop = Instantiate(go_defaultItem, spawnPos, Quaternion.identity);
+                lootDrop.GetComponent<FloorItem>().SetInfo(Instantiate(DEBUGITEM), 1);
+            }
         }
     }
     #endregion

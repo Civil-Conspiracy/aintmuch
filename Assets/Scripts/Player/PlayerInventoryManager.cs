@@ -13,7 +13,6 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] List<Item> bagItems;
     [SerializeField] Transform bagParent;
     [SerializeField] List<ItemSlot> bagSlots;
-    [SerializeField] int maxBagSlots = 5;
 
     private void Awake()
     {
@@ -33,6 +32,33 @@ public class PlayerInventoryManager : MonoBehaviour
         GetHUD();
     }
 
+    private void Update()
+    {
+        if (offhandItem == null && bagItems.Count > 0)
+        {
+            ScrollForward();
+        }
+    }
+
+    private void Start()
+    {
+        InputManager.instance.OnScrollForward += args => OnScrollForward(args);
+        InputManager.instance.OnScrollBackward += args => OnScrollBackward(args);
+    }
+
+    public void OnScrollForward(InputManager.InputArgs args)
+    {
+        bool pressed = args.context.ReadValueAsButton();
+        if (pressed)
+            ScrollForward();
+    }    
+    public void OnScrollBackward(InputManager.InputArgs args)
+    {
+        bool pressed = args.context.ReadValueAsButton();
+        if (pressed)
+            ScrollBackward();
+    }
+
     private void OnValidate()
     {
         GetHUD();
@@ -40,6 +66,7 @@ public class PlayerInventoryManager : MonoBehaviour
         RefreshHUD();
     }
 
+    #region HUD DISPLAY
     private void GetHUD()
     {
         //offhand slot
@@ -52,11 +79,6 @@ public class PlayerInventoryManager : MonoBehaviour
         if (bagParent != null)
         {
             bagSlots = bagParent.GetComponentsInChildren<ItemSlot>().ToList();
-            if(bagItems.Count > bagSlots.Count && bagSlots.Count < maxBagSlots)
-            {
-                //instantiate a new bag slot until there are as many slots as items
-                
-            }
         }
     }
     private void RefreshHUD()
@@ -70,42 +92,44 @@ public class PlayerInventoryManager : MonoBehaviour
         {
             bagSlots[i].Item = null;
         }
-        if (offhandItem != null)
-        {
             offhandSlot.Item = offhandItem;
-        }
     }
+    #endregion
 
+    #region ADD ITEMS
     public void AddItem(Item item, FloorItem floorItem)
     {
-        ItemSlot bagSlotToStack = Contains(bagSlots, item);
+        if (IsFull())
+            return;
+        Item bagItemToStack = Contains(bagItems, item);
         bool canStackOffhand = AddToOffhandItemCheck(item);
 
         //if item can stack in offhand
-        if (canStackOffhand && offhandSlot.CurrentStackCount < offhandItem.MaxStackSize)
+        if (canStackOffhand && offhandItem.CurrentStackSize + item.CurrentStackSize <= offhandItem.MaxStackSize)
         {
-            offhandSlot.CurrentStackCount++;
+            //if entire stack can be picked up
+            offhandItem.CurrentStackSize += item.CurrentStackSize;
             Destroy(floorItem.gameObject);
         }
         //if item can stack in bag
-        else if (bagSlotToStack != null && bagSlotToStack.CurrentStackCount < item.MaxStackSize)
+        else if (bagItemToStack != null && bagItemToStack.CurrentStackSize + item.CurrentStackSize <= bagItemToStack.MaxStackSize)
         {
-            bagSlotToStack.CurrentStackCount++;
+            //if entire stack can be picked up
+            bagItemToStack.CurrentStackSize += item.CurrentStackSize;
             Destroy(floorItem.gameObject);
         }
-        //if offhand is empty, and item can't stack in bag
+        //if offhand isn't full, and item can't stack in bag
         else if (offhandItem == null)
         {
-            offhandItem = item;
-            offhandSlot.CurrentStackCount = 1;
+            //if entire stack can be picked up
+            offhandItem = Instantiate(item);
             Destroy(floorItem.gameObject);
         }
         //if bag isn't full, and item can't stack in offhand
-        else if (bagItems.Count < maxBagSlots)
+        else if (bagItems.Count < bagSlots.Count)
         {
-            bagItems.Add(item);
-            ItemSlot bagSlotToAdd = bagSlots[bagItems.Count - 1];
-            bagSlotToAdd.CurrentStackCount = 1;
+            //if entire stack can be picked up
+            bagItems.Add(Instantiate(item));
             Destroy(floorItem.gameObject);
         }
         else
@@ -114,26 +138,29 @@ public class PlayerInventoryManager : MonoBehaviour
         RefreshHUD();
     }
 
-    public bool RemoveItem(Item item, int quantity)
+    private bool AddToOffhandItemCheck(Item item)
     {
-        ItemSlot temp = Contains(bagSlots, item);
-        if (temp != null)
+        if(offhandItem != null)
         {
-            if (temp.CurrentStackCount > 1)
-                temp.CurrentStackCount -= quantity;
+            if (offhandItem.ItemName == item.ItemName)
+                return true;
+        }
+
+        return false;
+    }
+    #endregion
+
+    #region REMOVE ITEMS
+    public bool RemoveItemFromOffhand(int quantity)
+    {
+        int newQuantity = Mathf.Min(quantity, offhandItem.MaxStackSize);
+        if (offhandItem != null)
+        {
+            if (offhandItem.CurrentStackSize > 1)
+                offhandItem.CurrentStackSize -= newQuantity;
             else
             {
-
-                ItemSlot slotToRemove;
-                foreach (ItemSlot slot in bagSlots)
-                {
-                    if (slot.Item.ItemName == item.ItemName)
-                    {
-                        slotToRemove = slot;
-                        slotToRemove.Item = null;
-                        break;
-                    }
-                }
+                offhandItem = null;
             }
         }
         else
@@ -144,21 +171,108 @@ public class PlayerInventoryManager : MonoBehaviour
         RefreshHUD();
         return true;
     }
-    private bool AddToOffhandItemCheck(Item item)
+
+    //this works, just no reason to use it from what I can see (so far).  but I made it so I'm leaving it here.
+    public bool RemoveItemFromBag(Item item, int quantity)
     {
-        if (offhandItem == item)
-            return true;
-        else
-            return false;
-    }
-    public ItemSlot Contains(List<ItemSlot> list, Item item)
-    {
-        foreach(ItemSlot slot in list)
+        int newQuantity = Mathf.Min(quantity, item.MaxStackSize);
+        Item slotToRemove = Contains(bagItems, item, true);
+        if (slotToRemove != null)
         {
-            if (slot.Item == item && slot.CurrentStackCount < item.MaxStackSize)
+            if (slotToRemove.CurrentStackSize > 1)
+                slotToRemove.CurrentStackSize -= newQuantity;
+            else
+            {
+                int itemToRemove = bagItems.LastIndexOf(slotToRemove);
+                bagItems.RemoveAt(itemToRemove);
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+        RefreshHUD();
+        return true;
+    }
+    #endregion
+
+    #region SCROLL ITEMS
+    public void ScrollForward()
+    {
+        Item toSwapFromBag = bagItems[0];
+        Item toSwapFromOffhand = offhandItem;
+        // if there is an item to swap from the bag, and an item to swap from the offhand
+        if (toSwapFromBag != null && toSwapFromOffhand != null)
+        {
+            offhandItem = toSwapFromBag;
+            bagItems.RemoveAt(0);
+            bagItems.Add(toSwapFromOffhand);
+
+        }
+        // if there is an item to swap from the bag, but the offhand is empty
+        else if (toSwapFromBag != null && toSwapFromOffhand == null)
+        {
+            offhandItem = toSwapFromBag;
+            bagItems.RemoveAt(0);
+        }
+
+        RefreshHUD();
+    }
+
+    public void ScrollBackward()
+    {
+        Item toSwapFromBag = bagItems[bagItems.Count - 1];
+        Item toSwapFromOffhand = offhandItem;
+        // if there is an item to swap from the bag, and an item to swap from the offhand
+        if (toSwapFromBag != null && toSwapFromOffhand != null)
+        {
+            offhandItem = toSwapFromBag;
+            bagItems.RemoveAt(bagItems.Count - 1);
+            bagItems.Insert(0, toSwapFromOffhand);
+
+        }
+        // if there is an item to swap from the bag, but the offhand is empty
+        else if (toSwapFromBag != null && toSwapFromOffhand == null)
+        {
+            offhandItem = toSwapFromBag;
+            bagItems.RemoveAt(bagItems.Count - 1);
+        }
+
+        RefreshHUD();
+    }
+
+    public Item Contains(List<Item> list, Item item)
+    {
+        foreach(Item slot in list)
+        {
+            if (slot.ItemName == item.ItemName && slot.CurrentStackSize < item.MaxStackSize)
                 return slot;
         }
 
         return null;
     }
+
+    public Item Contains(List<Item> list, Item item, bool toRemove)
+    {
+        foreach (Item slot in list)
+        {
+            if (slot.ItemName == item.ItemName && slot == bagItems[bagItems.LastIndexOf(item)])
+                return slot;
+        }
+
+        return null;
+    }
+    #endregion
+
+    public bool IsFull()
+    {
+        foreach (Item slot in bagItems)
+        {
+            if (slot.CurrentStackSize < slot.MaxStackSize)
+                return false;
+        }
+        return bagItems.Count >= bagSlots.Count && offhandItem != null;
+    }
+
 }

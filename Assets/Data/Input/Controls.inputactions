@@ -304,6 +304,54 @@
             ]
         },
         {
+            "name": "HUD",
+            "id": "18bf30de-fdff-4b39-a6d2-648e12489928",
+            "actions": [
+                {
+                    "name": "Scroll Forward",
+                    "type": "Button",
+                    "id": "290dff09-fafd-4747-a6c4-c47f7c97a402",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Backward",
+                    "type": "Button",
+                    "id": "c67d57ee-e0bb-4a2a-aea9-a6ef5e6f8c98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7424563d-01e5-495f-a465-e7cc7a277791",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Scroll Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "281fa0a6-c872-4002-a111-70215e90ef2e",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Scroll Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Debug",
             "id": "ea25907f-7d57-4643-bbc3-eebb17d0843d",
             "actions": [

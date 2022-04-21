@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField] Image ItemIcon;
-    [SerializeField] Text StackCountText;
+    [SerializeField] TextMeshProUGUI StackCountText;
     private int _currentStackCount;
-    private Item _item;
-
-    public ItemSlot()
-    {
-        CurrentStackCount = 0;
-        ItemIcon = null;
-        _item = null;
-    }
+    private int _slotID;
+    [SerializeField]private Item _item;
 
     public Item Item
     {
@@ -32,6 +27,7 @@ public class ItemSlot : MonoBehaviour
             {
                 ItemIcon.sprite = _item.ItemIcon;
                 ItemIcon.enabled = true;
+                CurrentStackCount = _item.CurrentStackSize;
             }
         }
     }
@@ -51,6 +47,16 @@ public class ItemSlot : MonoBehaviour
         }
     }
 
+    public int SlotID
+    {
+        get { return _slotID; }
+
+        set
+        {
+            _slotID = value;
+        }
+    }
+
     private void OnValidate()
     {
         if (ItemIcon == null)
@@ -59,7 +65,7 @@ public class ItemSlot : MonoBehaviour
         }
         if (StackCountText == null)
         {
-            StackCountText = GetComponentInChildren<Text>();
+            StackCountText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 }
