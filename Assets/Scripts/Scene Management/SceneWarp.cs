@@ -41,6 +41,7 @@ public class SceneWarp : MonoBehaviour, IInteractable
             if (go.GetComponent<WarpPoint>() != null)
             {
                 go.GetComponent<WarpPoint>().SpawnPlayerOnPoint(player);
+                Debug.Log("Player warped to: " + player.transform.position);
             }
         }
     }

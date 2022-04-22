@@ -7,6 +7,6 @@ public class WarpPoint : MonoBehaviour
 {
     public void SpawnPlayerOnPoint(GameObject player)
     {
-        player.GetComponent<Rigidbody2D>().MovePosition(transform.position);
+        player.transform.position = gameObject.transform.position;
     }
 }

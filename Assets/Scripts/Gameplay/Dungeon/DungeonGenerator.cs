@@ -22,12 +22,12 @@ public class DungeonGenerator : MonoBehaviour
 
     private void DungeonInit()
     {
-        m_CurrentFloorOrder = GenerateFloor();
-        foreach (var g in m_CurrentFloorOrder)
-            Debug.Log(g.name);
+        m_CurrentFloorOrder = GenerateFloorOrder();
+
+        SpawnFloor();
     }
 
-    private GameObject[] GenerateFloor()
+    private GameObject[] GenerateFloorOrder()
     {
         GameObject[] floor = new GameObject[m_CurrentFloorOrder.Length];
 
@@ -65,6 +65,20 @@ public class DungeonGenerator : MonoBehaviour
     {
         var r = rooms.ToArray();
         return r.Length == 0 ? null : r[Random.Range(0, r.Length)];
+    }
+
+    private void SpawnNextRoom()
+    {
+        SpawnRoom(m_lastSpawnedRoomIndex);
+        m_lastSpawnedRoomIndex++;
+    }
+
+    private void SpawnFloor()
+    {
+        for (int i = 0; i < m_CurrentFloorOrder.Length; i++)
+        {
+            SpawnNextRoom();
+        }
     }
 
     private GameObject SpawnRoom(int roomIndex)
