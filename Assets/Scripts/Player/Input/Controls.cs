@@ -326,6 +326,54 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""HUD"",
+            ""id"": ""18bf30de-fdff-4b39-a6d2-648e12489928"",
+            ""actions"": [
+                {
+                    ""name"": ""Scroll Forward"",
+                    ""type"": ""Button"",
+                    ""id"": ""290dff09-fafd-4747-a6c4-c47f7c97a402"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll Backward"",
+                    ""type"": ""Button"",
+                    ""id"": ""c67d57ee-e0bb-4a2a-aea9-a6ef5e6f8c98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7424563d-01e5-495f-a465-e7cc7a277791"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Scroll Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""281fa0a6-c872-4002-a111-70215e90ef2e"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Scroll Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Debug"",
             ""id"": ""ea25907f-7d57-4643-bbc3-eebb17d0843d"",
             ""actions"": [
@@ -333,6 +381,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": ""DebugB"",
                     ""type"": ""Button"",
                     ""id"": ""0adc1d95-194e-4b8e-9b67-6420c784b563"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugC"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8dcc9ed-fa04-495c-a2a2-21417a0db8da"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -359,6 +416,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""DebugB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78983a12-b028-4198-bd75-01150e267acc"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""DebugC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -404,9 +472,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_AxeSwing = m_Player.FindAction("AxeSwing", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        // HUD
+        m_HUD = asset.FindActionMap("HUD", throwIfNotFound: true);
+        m_HUD_ScrollForward = m_HUD.FindAction("Scroll Forward", throwIfNotFound: true);
+        m_HUD_ScrollBackward = m_HUD.FindAction("Scroll Backward", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_DebugB = m_Debug.FindAction("DebugB", throwIfNotFound: true);
+        m_Debug_DebugC = m_Debug.FindAction("DebugC", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -544,15 +617,58 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
 
+    // HUD
+    private readonly InputActionMap m_HUD;
+    private IHUDActions m_HUDActionsCallbackInterface;
+    private readonly InputAction m_HUD_ScrollForward;
+    private readonly InputAction m_HUD_ScrollBackward;
+    public struct HUDActions
+    {
+        private @Controls m_Wrapper;
+        public HUDActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ScrollForward => m_Wrapper.m_HUD_ScrollForward;
+        public InputAction @ScrollBackward => m_Wrapper.m_HUD_ScrollBackward;
+        public InputActionMap Get() { return m_Wrapper.m_HUD; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HUDActions set) { return set.Get(); }
+        public void SetCallbacks(IHUDActions instance)
+        {
+            if (m_Wrapper.m_HUDActionsCallbackInterface != null)
+            {
+                @ScrollForward.started -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollForward;
+                @ScrollForward.performed -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollForward;
+                @ScrollForward.canceled -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollForward;
+                @ScrollBackward.started -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollBackward;
+                @ScrollBackward.performed -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollBackward;
+                @ScrollBackward.canceled -= m_Wrapper.m_HUDActionsCallbackInterface.OnScrollBackward;
+            }
+            m_Wrapper.m_HUDActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ScrollForward.started += instance.OnScrollForward;
+                @ScrollForward.performed += instance.OnScrollForward;
+                @ScrollForward.canceled += instance.OnScrollForward;
+                @ScrollBackward.started += instance.OnScrollBackward;
+                @ScrollBackward.performed += instance.OnScrollBackward;
+                @ScrollBackward.canceled += instance.OnScrollBackward;
+            }
+        }
+    }
+    public HUDActions @HUD => new HUDActions(this);
+
     // Debug
     private readonly InputActionMap m_Debug;
     private IDebugActions m_DebugActionsCallbackInterface;
     private readonly InputAction m_Debug_DebugB;
+    private readonly InputAction m_Debug_DebugC;
     public struct DebugActions
     {
         private @Controls m_Wrapper;
         public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @DebugB => m_Wrapper.m_Debug_DebugB;
+        public InputAction @DebugC => m_Wrapper.m_Debug_DebugC;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -565,6 +681,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @DebugB.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
                 @DebugB.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
                 @DebugB.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugB;
+                @DebugC.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
+                @DebugC.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
+                @DebugC.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugC;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,6 +691,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @DebugB.started += instance.OnDebugB;
                 @DebugB.performed += instance.OnDebugB;
                 @DebugB.canceled += instance.OnDebugB;
+                @DebugC.started += instance.OnDebugC;
+                @DebugC.performed += instance.OnDebugC;
+                @DebugC.canceled += instance.OnDebugC;
             }
         }
     }
@@ -604,8 +726,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAxeSwing(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
+    public interface IHUDActions
+    {
+        void OnScrollForward(InputAction.CallbackContext context);
+        void OnScrollBackward(InputAction.CallbackContext context);
+    }
     public interface IDebugActions
     {
         void OnDebugB(InputAction.CallbackContext context);
+        void OnDebugC(InputAction.CallbackContext context);
     }
 }

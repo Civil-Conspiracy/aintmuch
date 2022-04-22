@@ -17,7 +17,11 @@ public class InputManager : MonoBehaviour
     public Action<InputArgs> OnInteract;
     public Action<InputArgs> OnAxeSwing;
 
+    public Action<InputArgs> OnScrollForward;
+    public Action<InputArgs> OnScrollBackward;
+
     public Action<InputArgs> OnDebugB;
+    public Action<InputArgs> OnDebugC;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -50,7 +54,11 @@ public class InputManager : MonoBehaviour
         controls.Player.AxeSwing.performed += ctx => OnAxeSwing(new InputArgs { context = ctx });
         controls.Player.AxeSwing.canceled += ctx => OnAxeSwing(new InputArgs { context = ctx });
 
+        controls.HUD.ScrollForward.performed += ctx => OnScrollForward(new InputArgs { context = ctx });
+        controls.HUD.ScrollBackward.performed += ctx => OnScrollForward(new InputArgs { context = ctx });
+
         controls.Debug.DebugB.performed += ctx => OnDebugB(new InputArgs { context = ctx });
+        controls.Debug.DebugC.performed += ctx => OnDebugC(new InputArgs { context = ctx });
     }
 
     // Event Args
