@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class BaseTree : MonoBehaviour, IDamageable
 {
-    [SerializeField] int m_MaxHealth;
-
+    [Header("Tree object.  Spawns one on death.")]
     [SerializeField] GameObject go_deadTree;
+    [Header("Tree object.  Spawns two on death.")]
     [SerializeField] GameObject go_splitTree;
+    [Header("BaseItem object.")]
     [SerializeField] GameObject go_defaultItem;
+    [Space(5)]
+    [Header("Properties")]
+    [SerializeField] int m_MaxHealth;
     [SerializeField] Item[] m_lootTable;
+    [SerializeField] Color m_Color;
     [SerializeField] Transform m_DeadPoint;
     [SerializeField] FillBar m_healthBar;
     [SerializeField] Material m_outlineMat;
@@ -30,8 +35,11 @@ public class BaseTree : MonoBehaviour, IDamageable
         healthSystem.OnDead += OnDeadTree;
     }
 
-    private void Update()
+    private void OnValidate()
     {
+        SpriteRenderer thisRend = GetComponent<SpriteRenderer>();
+        if (thisRend.color != m_Color)
+            thisRend.color = m_Color;
     }
 
     public void SetGlow()
@@ -55,7 +63,9 @@ public class BaseTree : MonoBehaviour, IDamageable
         else if(go_splitTree != null)
             SpawnSplitTree();
 
-        if(go_defaultItem != null && m_lootTable != null)SpawnLootTable(1);
+        if(go_defaultItem != null && m_lootTable != null)
+            SpawnLootTable(m_lootTable);
+
         Destroy(gameObject);
     }
 
@@ -100,17 +110,30 @@ public class BaseTree : MonoBehaviour, IDamageable
         split1.GetComponent<SpriteRenderer>().flipX = true;
     }
 
-    private void SpawnLootTable(int amount)
+    private void SpawnLootTable(Item[] items)
     {
         Vector2 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        Vector2 spawnPoint = m_DeadPoint.position;
+        Vector2 spawnPos = m_DeadPoint.position;
 
-        spawnPoint.y = playerPos.y + 1.5f;
+        float treeLength = GetComponent<CapsuleCollider2D>().size.y - -0.25f;
+        float spacing = (treeLength / items.Length);
+        spawnPos.x += treeLength / 2;
+        spawnPos.y = playerPos.y + 1.5f;
 
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < items.Length; i++)
         {
-            GameObject lootDrop = Instantiate(go_defaultItem, spawnPoint, Quaternion.identity);
-            lootDrop.GetComponent<FloorItem>().SetInfo(m_lootTable[i], 1);
+            if(items[i] != null)
+            {
+                spawnPos.x -= spacing;
+                SpawnItem(items[i], spawnPos);
+            }
         }
+    }
+
+    private void SpawnItem(Item item, Vector2 spawnPos)
+    {
+        Debug.Log("Spawning " + item.ItemName);
+        GameObject lootDrop = Instantiate(go_defaultItem, spawnPos, Quaternion.identity);
+        lootDrop.GetComponent<FloorItem>().SetInfo(item, 1);
     }
 }

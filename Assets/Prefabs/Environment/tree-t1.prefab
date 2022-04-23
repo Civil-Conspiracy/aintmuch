@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 311107115372682145}
   - component: {fileID: 1091147097169993826}
   m_Layer: 9
-  m_Name: Tree
+  m_Name: tree-t1
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c67a4fea6a6f92a498ea511f12a06d09, type: 3}
-  m_Color: {r: 0.78940064, g: 1, b: 0.6745283, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -430,11 +430,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b0fd03846597743986058e1800f2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealth: 10
   go_deadTree: {fileID: 5102966522616450368, guid: b25ae37ae19a1ad4d8abf93c1ca46d1e, type: 3}
   go_splitTree: {fileID: 0}
   go_defaultItem: {fileID: 0}
+  m_MaxHealth: 10
   m_lootTable: []
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_DeadPoint: {fileID: 1542482153}
   m_healthBar: {fileID: 311107114596335478}
   m_outlineMat: {fileID: 2100000, guid: 37c7117fbd4ea2e4ca66740ffed39f86, type: 2}

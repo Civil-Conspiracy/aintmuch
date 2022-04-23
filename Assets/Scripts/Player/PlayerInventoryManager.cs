@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInventoryManager : MonoBehaviour
 {
     public static PlayerInventoryManager instance;
+    [SerializeField] GameObject floorItem;
     [SerializeField] Item offhandItem;
     [SerializeField] Transform offhandParent;
     [SerializeField] ItemSlot offhandSlot;
@@ -104,31 +105,55 @@ public class PlayerInventoryManager : MonoBehaviour
         Item bagItemToStack = Contains(bagItems, item);
         bool canStackOffhand = AddToOffhandItemCheck(item);
 
-        //if item can stack in offhand
-        if (canStackOffhand && offhandItem.CurrentStackSize + item.CurrentStackSize <= offhandItem.MaxStackSize)
+        //if item can stack in offhand (item matches offhand item && offhand isn't full)
+        if (canStackOffhand)
         {
+            int newOffhandStackSize = offhandItem.CurrentStackSize + item.CurrentStackSize;
             //if entire stack can be picked up
-            offhandItem.CurrentStackSize += item.CurrentStackSize;
-            Destroy(floorItem.gameObject);
+            if (newOffhandStackSize <= offhandItem.MaxStackSize)
+            {
+                offhandItem.CurrentStackSize = newOffhandStackSize;
+                Destroy(floorItem.gameObject);
+            }
+            //if only some of it can be picked up
+            else
+            {
+                int amountAvailable = offhandItem.MaxStackSize - offhandItem.CurrentStackSize;
+                int amountToAdd = Mathf.Min(item.CurrentStackSize, amountAvailable);
+                offhandItem.CurrentStackSize += amountToAdd;
+                item.CurrentStackSize -= amountToAdd;
+                floorItem.UpdateText();
+            }
         }
-        //if item can stack in bag
-        else if (bagItemToStack != null && bagItemToStack.CurrentStackSize + item.CurrentStackSize <= bagItemToStack.MaxStackSize)
+        //if item can stack in bag (item matches bag item && bag item isn't fully stacked)
+        else if (bagItemToStack != null)
         {
+            int newBagStackSize = bagItemToStack.CurrentStackSize + item.CurrentStackSize;
             //if entire stack can be picked up
-            bagItemToStack.CurrentStackSize += item.CurrentStackSize;
-            Destroy(floorItem.gameObject);
+            if(newBagStackSize <= bagItemToStack.MaxStackSize)
+            {
+                bagItemToStack.CurrentStackSize += item.CurrentStackSize;
+                Destroy(floorItem.gameObject);
+            }
+            //if only some of it can be picked up
+            else
+            {
+                int amountAvailable = bagItemToStack.MaxStackSize - bagItemToStack.CurrentStackSize;
+                int amountToAdd = Mathf.Min(item.CurrentStackSize, amountAvailable);
+                bagItemToStack.CurrentStackSize += amountToAdd;
+                item.CurrentStackSize -= amountToAdd;
+                floorItem.UpdateText();
+            }
         }
         //if offhand isn't full, and item can't stack in bag
         else if (offhandItem == null)
         {
-            //if entire stack can be picked up
             offhandItem = Instantiate(item);
             Destroy(floorItem.gameObject);
         }
         //if bag isn't full, and item can't stack in offhand
         else if (bagItems.Count < bagSlots.Count)
         {
-            //if entire stack can be picked up
             bagItems.Add(Instantiate(item));
             Destroy(floorItem.gameObject);
         }
@@ -142,7 +167,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         if(offhandItem != null)
         {
-            if (offhandItem.ItemName == item.ItemName)
+            if (offhandItem.ItemName == item.ItemName && offhandItem.CurrentStackSize < offhandItem.MaxStackSize)
                 return true;
         }
 
@@ -170,6 +195,20 @@ public class PlayerInventoryManager : MonoBehaviour
 
         RefreshHUD();
         return true;
+    }
+
+    public bool DropItemFromOffhand(bool isFacingRight, Vector2 spawnPos)
+    {
+        Item temp = offhandItem;
+        bool removed = RemoveItemFromOffhand(1);
+        if (removed)
+        {
+            GameObject lootDrop = Instantiate(floorItem, spawnPos, Quaternion.identity);
+            lootDrop.GetComponent<FloorItem>().SetInfo(Instantiate(temp), 1);
+            lootDrop.GetComponent<FloorItem>().WasDropped();
+            return true;
+        }
+        return false;
     }
 
     //this works, just no reason to use it from what I can see (so far).  but I made it so I'm leaving it here.
@@ -242,6 +281,7 @@ public class PlayerInventoryManager : MonoBehaviour
         RefreshHUD();
     }
 
+    #endregion
     public Item Contains(List<Item> list, Item item)
     {
         foreach(Item slot in list)
@@ -257,16 +297,17 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         foreach (Item slot in list)
         {
-            if (slot.ItemName == item.ItemName && slot == bagItems[bagItems.LastIndexOf(item)])
+            if (slot.ItemName == item.ItemName && slot.CurrentStackSize < slot.MaxStackSize)
                 return slot;
         }
 
         return null;
     }
-    #endregion
 
     public bool IsFull()
     {
+        if (offhandItem == null || offhandItem.CurrentStackSize < offhandItem.MaxStackSize)
+            return false;
         foreach (Item slot in bagItems)
         {
             if (slot.CurrentStackSize < slot.MaxStackSize)

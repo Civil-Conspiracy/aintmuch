@@ -26,6 +26,7 @@ public class ItemSlot : MonoBehaviour
             else
             {
                 ItemIcon.sprite = _item.ItemIcon;
+                ItemIcon.color = _item.ItemColor;
                 ItemIcon.enabled = true;
                 CurrentStackCount = _item.CurrentStackSize;
             }

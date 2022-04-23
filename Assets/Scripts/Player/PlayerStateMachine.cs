@@ -170,19 +170,10 @@ public class PlayerStateMachine : MonoBehaviour
     public void OnDebugC(InputManager.InputArgs args)
     {
         bool isPressed = args.context.ReadValueAsButton();
-        Vector2 spawnPos = transform.position;
-        if (IsFacingRight)
-            spawnPos.x += 3f;
-        else
-            spawnPos.x -= 3f;
+
         if (isPressed)
         {
-            bool removed = PlayerInventoryManager.instance.RemoveItemFromOffhand(1);
-            if (removed)
-            {
-                GameObject lootDrop = Instantiate(go_defaultItem, spawnPos, Quaternion.identity);
-                lootDrop.GetComponent<FloorItem>().SetInfo(Instantiate(DEBUGITEM), 1);
-            }
+            PlayerInventoryManager.instance.DropItemFromOffhand(IsFacingRight, transform.position);
         }
     }
     #endregion

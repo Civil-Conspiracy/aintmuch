@@ -5,6 +5,7 @@ public class Item : ScriptableObject
 {
     public string ItemName;
     public Sprite ItemIcon;
+    public Color ItemColor;
     public int MaxStackSize;
 
     [Header("LEAVE AT 0")]
