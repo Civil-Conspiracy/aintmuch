@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 49f60d06962a3f142b2340f383c08e06
+guid: ddcd480e4afb921469961d44fce1a293
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -25,7 +25,7 @@ ScriptedImporter:
   edgesPerEllipse: 32
   numberOfObjectsImported: 2
   tilesAsObjects: 0
-  sortingMode: 1
+  sortingMode: 0
   isIsometric: 0
   customImporterClassName: 
   internalTilesets: []
