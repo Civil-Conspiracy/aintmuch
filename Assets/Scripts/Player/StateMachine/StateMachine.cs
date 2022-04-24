@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StateMachine
 {
-    private PlayerStateMachine player;
+    protected PlayerData data;
+    protected PlayerController player;
     public PlayerState CurrentState { get; private set; }
 
-    public void Initialize(PlayerStateMachine player, PlayerState startingState)
+    public void Initialize(PlayerState startingState, PlayerData _data, PlayerController player)
     {
         CurrentState = startingState;
         this.player = player;

@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerState
 {
-    public PlayerGroundedState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data)
-    {
-
-    }
+    public PlayerGroundedState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
 
     public override void Enter()
     {
         base.Enter();
 
-        player.DashState.ResetDashes();
-        player.WallJumpState.ResetWallJumpCount();
+        data.States.DashState.ResetDashes();
+        data.States.WallJumpState.ResetWallJumpCount();
     }
 
     public override void Exit()
@@ -26,17 +23,17 @@ public class PlayerGroundedState : PlayerState
     {
         base.LogicUpdate();
 
-        if (player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
         {
-            player.StateMachine.ChangeState(player.DashState);
+            stateMachine.ChangeState(data.States.DashState);
         }
-        else if (player.LastPressedJumpTime > 0)
+        else if (data.LastPressedJumpTime > 0)
         {
-            player.StateMachine.ChangeState(player.JumpState);
+            stateMachine.ChangeState(data.States.JumpState);
         }
-        else if (player.LastOnGroundTime <= 0)
+        else if (data.LastOnGroundTime <= 0)
         {
-            player.StateMachine.ChangeState(player.InAirState);
+            stateMachine.ChangeState(data.States.InAirState);
         }
     }
 
@@ -44,7 +41,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.PhysicsUpdate();
 
-        player.Drag(data.frictionAmount);
+        data.Motor.Drag(data.frictionAmount);
     }
 
 }

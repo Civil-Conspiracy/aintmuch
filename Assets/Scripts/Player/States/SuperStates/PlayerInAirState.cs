@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
-    public PlayerInAirState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data) { }
+    public PlayerInAirState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
 
     public override void Enter()
     {
@@ -14,51 +14,51 @@ public class PlayerInAirState : PlayerState
     {
         base.Exit();
 
-        player.SetGravityScale(data.gravityScale);
+        data.Motor.SetGravityScale(data.gravityScale);
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
         {
-            player.StateMachine.ChangeState(player.DashState);
+            stateMachine.ChangeState(data.States.DashState);
         }
-        else if (player.LastOnGroundTime > 0)
+        else if (data.LastOnGroundTime > 0)
         {
-            player.StateMachine.ChangeState(player.IdleState);
+            stateMachine.ChangeState(data.States.IdleState);
         }
-        else if (player.LastPressedJumpTime > 0 && player.LastOnWallTime > 0 && player.WallJumpState.CanWallJump())
+        else if (data.LastPressedJumpTime > 0 && data.LastOnWallTime > 0 && data.States.WallJumpState.CanWallJump())
         {
-            player.StateMachine.ChangeState(player.WallJumpState);
+            stateMachine.ChangeState(data.States.WallJumpState);
         }
-        else if ((player.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x < 0) || (player.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x > 0))
+        else if ((data.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x < 0) || (data.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x > 0))
         {
-            player.StateMachine.ChangeState(player.WallSlideState);
+            stateMachine.ChangeState(data.States.WallSlideState);
         }
-        else if (player.IsAxeSwingPressed && player.AxeSwingState.SwingWasCanceled && player.AxeSwingState.CanSwingFromCancel())
+        else if (data.IsAxeSwingPressed && data.States.AxeSwingState.SwingWasCanceled && data.States.AxeSwingState.CanSwingFromCancel())
         {
-            player.StateMachine.ChangeState(player.AxeSwingState);
+            stateMachine.ChangeState(data.States.AxeSwingState);
         }
-        else if (player.IsAxeSwingPressed && player.AxeSwingState.CanSwing())
+        else if (data.IsAxeSwingPressed && data.States.AxeSwingState.CanSwing())
         {
-            player.StateMachine.ChangeState(player.AxeSwingState);
+            stateMachine.ChangeState(data.States.AxeSwingState);
         }
 
-        else if (player.RB.velocity.y < 0)
+        else if (data.Player.RB.velocity.y < 0)
         {
             if(InputManager.instance.MoveInput.y < 0)
-                player.SetGravityScale(data.gravityScale * data.quickFallGravityMult);
+                data.Motor.SetGravityScale(data.gravityScale * data.quickFallGravityMult);
 
             else
-                player.SetGravityScale(data.gravityScale * data.fallGravityMult);
+                data.Motor.SetGravityScale(data.gravityScale * data.fallGravityMult);
         }
     }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        player.Drag(data.dragAmount);
-        player.Run(1);
+        data.Motor.Drag(data.dragAmount);
+        data.Motor.Run(1);
     }
 }

@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5448854961787109855}
   - component: {fileID: 7459623936291086558}
   - component: {fileID: 1447440978430915904}
-  - component: {fileID: 5448854961787109826}
+  - component: {fileID: 6525067417545400450}
   - component: {fileID: 5448854961787109848}
   - component: {fileID: 5448854961787109849}
   - component: {fileID: 5448854961787109825}
@@ -169,12 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5be9bda4b3355142abef7e85d134a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e9141250cd31f4f4eb35f59dbee744ff, type: 2}
-  DEBUGITEM: {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
-  go_defaultItem: {fileID: 1315045539506839373, guid: ff482a31c8d9d5b4abc085190ba6f290, type: 3}
+  defaultData: {fileID: 11400000, guid: e9141250cd31f4f4eb35f59dbee744ff, type: 2}
   audioSource: {fileID: 189409642}
   chopAudio: {fileID: 8300000, guid: b5316d887b03bb14eb2ee057bef53749, type: 3}
   CurrentState: 
+  inventory: {fileID: 2403455871040344552, guid: 3f5d90e117d349942b2e0deacca0690b, type: 3}
   _groundCheckPoint: {fileID: 1722629920}
   _groundCheckSize: {x: 0.01, y: 0.01}
   _rightWallCheckPoint: {fileID: 3366927469138315073}
@@ -186,7 +185,10 @@ MonoBehaviour:
   _wallLayer:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &5448854961787109826
+  _treeLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &6525067417545400450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +197,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5448854961787109851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86030d10784f30c468d22deb88afeeea, type: 3}
+  m_Script: {fileID: 11500000, guid: f1314ad2b6614864580a8144932d268b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &5448854961787109848

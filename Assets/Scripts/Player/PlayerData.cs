@@ -1,10 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Collections;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player/Player Data")]
 public class PlayerData : ScriptableObject
 {
+    [SerializeField] private DebugData defaultDebugData;
+    public PlayerController Player { get; private set; }
+    public PlayerStateManager States { get; private set; }
+    public PlayerMotor Motor { get; private set; }
+    public PlayerEvents Events { get; private set; }
+    public PlayerInventoryManager Inventory { get; private set; }
+    public DebugData Debug { get { return defaultDebugData; } }
+
+    public void Initialize(PlayerController _player, PlayerInventoryManager _inventory, PlayerEvents _events)
+    {
+        Player = _player;
+        Inventory = _inventory;
+        Events = _events;
+        Motor = new PlayerMotor(this);
+        States = new PlayerStateManager();
+        States.Initialize(this, Player);
+    }
     //PHYSICS
     [Header("Gravity")]
     public float gravityScale; // overrides rb.gravityScale
@@ -73,9 +91,19 @@ public class PlayerData : ScriptableObject
     [Space(5)]
     [Range(0, 0.5f)]  public float swingBufferTime;
 
-
     //OTHER
     [Header("Other Settings")]
     public bool doKeepRunMomentum; //player movement will not decrease speed if above maxSpeed, letting only drag do so. Allows for conservation of momentum
     public bool doTurnOnWallJump; //player will rotate to face wall jumping direction
+    public bool doDebug;
+    [ReadOnly] public float LastOnGroundTime;
+    [ReadOnly] public float LastOnWallTime;
+    [ReadOnly] public float LastOnWallLeftTime;
+    [ReadOnly] public float LastOnWallRightTime;
+    [ReadOnly] public bool IsFacingRight;
+
+    [ReadOnly] public bool IsAxeSwingPressed;
+    [ReadOnly] public float LastPressedJumpTime;
+    [ReadOnly] public float LastPressedJumpUpTime;
+    [ReadOnly] public float LastPressedDashTime;
 }

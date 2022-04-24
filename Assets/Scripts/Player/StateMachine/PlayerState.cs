@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PlayerState
 {
-    protected PlayerStateMachine player;
     protected StateMachine stateMachine;
     protected PlayerData data;
 
     protected float startTime;
     public bool ExitingState { get; protected set; }
 
-    public PlayerState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data)
+    public PlayerState(StateMachine stateMachine, PlayerData data)
     {
-        this.player = player;
         this.stateMachine = stateMachine;
         this.data = data;
     }
@@ -22,7 +20,7 @@ public class PlayerState
     {
         startTime = Time.time;
         ExitingState = false;
-        player.PlayAnimation();
+        data.Player.PlayAnimation();
     }
     public virtual void Exit()
     {

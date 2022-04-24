@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInActionState : PlayerState
 {
-    public PlayerInActionState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data) { }
+    public PlayerInActionState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
 
     public override void Enter()
     {

@@ -6,15 +6,15 @@ public class PlayerWallJumpState : PlayerInActionState
 {
     private int jumpDir;
     int jumpsLeft;
-    public PlayerWallJumpState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data) { }
+    public PlayerWallJumpState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
 
     public override void Enter()
     {
         base.Enter();
 
         jumpsLeft--;
-        jumpDir = player.LastOnWallRightTime > 0 ? -1 : 1;
-        player.WallJump(jumpDir);
+        jumpDir = data.LastOnWallRightTime > 0 ? -1 : 1;
+        data.Motor.WallJump(jumpDir);
     }
 
     public override void Exit()
@@ -26,22 +26,22 @@ public class PlayerWallJumpState : PlayerInActionState
     {
         base.LogicUpdate();
 
-        if (player.LastPressedDashTime > 0 && player.DashState.CanDash())
-            player.StateMachine.ChangeState(player.DashState);
-        else if (player.LastOnGroundTime > 0)
-            player.StateMachine.ChangeState(player.IdleState);
-        else if (player.LastPressedJumpTime > 0 && CanWallJump() && ((player.LastOnWallRightTime > 0 && jumpDir == 1)  || (player.LastOnWallLeftTime > 0 && jumpDir == -1)))
-            player.StateMachine.ChangeState(player.WallJumpState);
+        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
+            stateMachine.ChangeState(data.States.DashState);
+        else if (data.LastOnGroundTime > 0)
+            stateMachine.ChangeState(data.States.IdleState);
+        else if (data.LastPressedJumpTime > 0 && CanWallJump() && ((data.LastOnWallRightTime > 0 && jumpDir == 1)  || (data.LastOnWallLeftTime > 0 && jumpDir == -1)))
+            stateMachine.ChangeState(data.States.WallJumpState);
         else 
-            player.StateMachine.ChangeState(player.InAirState);
+            stateMachine.ChangeState(data.States.InAirState);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        player.Drag(data.dragAmount);
-        player.Run(data.wallJumpRunLerp);
+        data.Motor.Drag(data.dragAmount);
+        data.Motor.Run(data.wallJumpRunLerp);
     }
 
     public bool CanWallJump()
@@ -59,7 +59,7 @@ public class PlayerWallJumpState : PlayerInActionState
 
     public bool CanJumpCut()
     {
-        if (player.StateMachine.CurrentState == this && player.RB.velocity.y > 0)
+        if (stateMachine.CurrentState == this && data.Player.RB.velocity.y > 0)
             return true;
         else
             return false;

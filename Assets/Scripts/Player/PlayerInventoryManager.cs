@@ -41,25 +41,6 @@ public class PlayerInventoryManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        InputManager.instance.OnScrollForward += args => OnScrollForward(args);
-        InputManager.instance.OnScrollBackward += args => OnScrollBackward(args);
-    }
-
-    public void OnScrollForward(InputManager.InputArgs args)
-    {
-        bool pressed = args.context.ReadValueAsButton();
-        if (pressed)
-            ScrollForward();
-    }    
-    public void OnScrollBackward(InputManager.InputArgs args)
-    {
-        bool pressed = args.context.ReadValueAsButton();
-        if (pressed)
-            ScrollBackward();
-    }
-
     private void OnValidate()
     {
         GetHUD();
@@ -237,7 +218,7 @@ public class PlayerInventoryManager : MonoBehaviour
     #endregion
 
     #region SCROLL ITEMS
-    public void ScrollForward()
+    public bool ScrollForward()
     {
         Item toSwapFromBag = bagItems[0];
         Item toSwapFromOffhand = offhandItem;
@@ -255,11 +236,14 @@ public class PlayerInventoryManager : MonoBehaviour
             offhandItem = toSwapFromBag;
             bagItems.RemoveAt(0);
         }
+        else
+            return false;
 
         RefreshHUD();
+        return true;
     }
 
-    public void ScrollBackward()
+    public bool ScrollBackward()
     {
         Item toSwapFromBag = bagItems[bagItems.Count - 1];
         Item toSwapFromOffhand = offhandItem;
@@ -269,7 +253,6 @@ public class PlayerInventoryManager : MonoBehaviour
             offhandItem = toSwapFromBag;
             bagItems.RemoveAt(bagItems.Count - 1);
             bagItems.Insert(0, toSwapFromOffhand);
-
         }
         // if there is an item to swap from the bag, but the offhand is empty
         else if (toSwapFromBag != null && toSwapFromOffhand == null)
@@ -277,8 +260,10 @@ public class PlayerInventoryManager : MonoBehaviour
             offhandItem = toSwapFromBag;
             bagItems.RemoveAt(bagItems.Count - 1);
         }
-
+        else
+            return false;
         RefreshHUD();
+        return true;
     }
 
     #endregion

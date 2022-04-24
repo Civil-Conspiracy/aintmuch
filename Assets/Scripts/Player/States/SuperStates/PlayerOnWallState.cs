@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerOnWallState : PlayerState
 {
-    public PlayerOnWallState(PlayerStateMachine player, StateMachine stateMachine, PlayerData data) : base(player, stateMachine, data) { }
+    public PlayerOnWallState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+
     public override void Enter()
     {
         base.Enter();
@@ -17,17 +18,17 @@ public class PlayerOnWallState : PlayerState
     {
         base.LogicUpdate();
 
-        if (player.LastPressedDashTime > 0 && player.DashState.CanDash())
+        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
         {
-            player.StateMachine.ChangeState(player.DashState);
+            stateMachine.ChangeState(data.States.DashState);
         }
-        else if (player.LastOnGroundTime > 0)
+        else if (data.LastOnGroundTime > 0)
         {
-            player.StateMachine.ChangeState(player.IdleState);
+            stateMachine.ChangeState(data.States.IdleState);
         }
-        else if (player.LastOnWallTime <= 0)
+        else if (data.LastOnWallTime <= 0)
         {
-            player.StateMachine.ChangeState(player.InAirState);
+            stateMachine.ChangeState(data.States.InAirState);
         }
     }
     public override void PhysicsUpdate()
