@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae09c838971f0746a431669fd0f9db5, type: 3}
   m_Name: DefaultPlayerData
   m_EditorClassIdentifier: 
-  defaultDebugData: {fileID: 0}
+  defaultDebugData: {fileID: 11400000, guid: ccb2227561c1901459ff5de61204773a, type: 2}
   gravityScale: 1.1
   fallGravityMult: 1.35
   quickFallGravityMult: 2.2
@@ -32,10 +32,11 @@ MonoBehaviour:
   jumpForce: 12
   jumpCutMultiplier: 0.5
   jumpBufferTime: 0.08
-  wallJumpAmount: 3
+  wallJumpAmount: 2
   wallJumpForce: {x: 9, y: 12}
   wallJumpRunLerp: 0.3
-  wallJumpTime: 0.35
+  wallJumpTime: 0.55
+  lastWallTouched: 0
   slideAccel: 0.8
   slidePower: 0.95
   dashAmount: 1
@@ -58,7 +59,7 @@ MonoBehaviour:
   LastOnWallLeftTime: 0
   LastOnWallRightTime: 0
   IsFacingRight: 0
-  IsAxeSwingPressed: 0
   LastPressedJumpTime: 0
   LastPressedJumpUpTime: 0
   LastPressedDashTime: 0
+  IsAxeSwingPressed: 0

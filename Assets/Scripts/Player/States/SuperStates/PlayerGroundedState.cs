@@ -11,6 +11,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
 
+        states.WallJumpState.lastJumpPoint = PlayerData.WallSides.NONE;
         states.DashState.ResetDashes();
         states.WallJumpState.ResetWallJumpCount();
     }

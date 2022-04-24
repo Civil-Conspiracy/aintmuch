@@ -8,6 +8,12 @@ public class PlayerData : ScriptableObject
 {
     [SerializeField] private DebugData defaultDebugData;
     public DebugData Debug { get { return defaultDebugData; } }
+    public enum WallSides
+    {
+        NONE,
+        LEFT,
+        RIGHT
+    }
 
     //PHYSICS
     [Header("Gravity")]
@@ -49,6 +55,7 @@ public class PlayerData : ScriptableObject
     [Space(5)]
     [Range(0f, 1f)] public float wallJumpRunLerp; //slows the affect of player movement while wall jumping
     [Range(0f, 1.5f)] public float wallJumpTime;
+    [ReadOnly] public WallSides lastWallTouched;
 
     //WALL
     [Header("Slide")]
@@ -82,14 +89,16 @@ public class PlayerData : ScriptableObject
     public bool doKeepRunMomentum; //player movement will not decrease speed if above maxSpeed, letting only drag do so. Allows for conservation of momentum
     public bool doTurnOnWallJump; //player will rotate to face wall jumping direction
     public bool doDebug;
+    [Space(5)]
+    [Header("State Data")]
     [ReadOnly] public float LastOnGroundTime;
     [ReadOnly] public float LastOnWallTime;
     [ReadOnly] public float LastOnWallLeftTime;
     [ReadOnly] public float LastOnWallRightTime;
     [ReadOnly] public bool IsFacingRight;
-
-    [ReadOnly] public bool IsAxeSwingPressed;
+    [Space(10)]
     [ReadOnly] public float LastPressedJumpTime;
     [ReadOnly] public float LastPressedJumpUpTime;
     [ReadOnly] public float LastPressedDashTime;
+    [ReadOnly] public bool IsAxeSwingPressed;
 }

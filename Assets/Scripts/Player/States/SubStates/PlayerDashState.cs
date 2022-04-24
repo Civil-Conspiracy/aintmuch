@@ -16,6 +16,7 @@ public class PlayerDashState : PlayerInActionState
         base.Enter();
 
         states.WallJumpState.ResetWallJumpCount();
+        states.WallJumpState.lastJumpPoint = PlayerData.WallSides.NONE;
 
         dashesLeft--;
 

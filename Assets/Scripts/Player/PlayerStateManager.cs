@@ -53,19 +53,28 @@ public class PlayerStateManager
         //Ground Check
         if (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.GroundLayer)
             || (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.WallLayer)))
+        {
+            data.lastWallTouched = PlayerData.WallSides.NONE;
             data.LastOnGroundTime = data.jumpGraceTime;
+        }
         //Right Wall Check
         if ((Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && data.IsFacingRight)
             || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && !data.IsFacingRight)
             || (Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && data.IsFacingRight)
             || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && !data.IsFacingRight))
+        {
+            data.lastWallTouched = PlayerData.WallSides.RIGHT;
             data.LastOnWallRightTime = data.jumpGraceTime;
+        }
         //Left Wall Check
         if ((Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && !data.IsFacingRight)
             || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && data.IsFacingRight)
             || (Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && !data.IsFacingRight)
             || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && data.IsFacingRight))
+        {
+            data.lastWallTouched = PlayerData.WallSides.LEFT;
             data.LastOnWallLeftTime = data.jumpGraceTime;
+        }
 
         data.LastOnWallTime = Mathf.Max(data.LastOnWallLeftTime, data.LastOnWallRightTime);
     }

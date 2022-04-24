@@ -6,6 +6,7 @@ public class PlayerWallJumpState : PlayerInActionState
 {
     private int jumpDir;
     int jumpsLeft;
+    public PlayerData.WallSides lastJumpPoint;
     public PlayerWallJumpState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor) 
         : base(stateMachine, data, stateList, player, motor) { }
 
@@ -16,6 +17,7 @@ public class PlayerWallJumpState : PlayerInActionState
         jumpsLeft--;
         jumpDir = data.LastOnWallRightTime > 0 ? -1 : 1;
         motor.WallJump(jumpDir);
+        lastJumpPoint = data.lastWallTouched;
     }
 
     public override void Exit()
@@ -47,7 +49,7 @@ public class PlayerWallJumpState : PlayerInActionState
 
     public bool CanWallJump()
     {
-        if (jumpsLeft > 0)
+        if (jumpsLeft > 0 && data.lastWallTouched != lastJumpPoint)
             return true;
         else
             return false;

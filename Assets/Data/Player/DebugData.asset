@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ca25a22c98d4443bcfe4187abc43bf, type: 3}
   m_Name: DebugData
   m_EditorClassIdentifier: 
-  DEBUGITEM: {fileID: 0}
-  go_defaultItem: {fileID: 0}
+  DEBUGITEM: {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
+  go_defaultItem: {fileID: 1315045539506839373, guid: ff482a31c8d9d5b4abc085190ba6f290, type: 3}

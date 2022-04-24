@@ -55,7 +55,7 @@ public class InputManager : MonoBehaviour
         controls.Player.AxeSwing.canceled += ctx => OnAxeSwing(new InputArgs { context = ctx });
 
         controls.HUD.ScrollForward.performed += ctx => OnScrollForward(new InputArgs { context = ctx });
-        controls.HUD.ScrollBackward.performed += ctx => OnScrollForward(new InputArgs { context = ctx });
+        controls.HUD.ScrollBackward.performed += ctx => OnScrollBackward(new InputArgs { context = ctx });
 
         controls.Debug.DebugB.performed += ctx => OnDebugB(new InputArgs { context = ctx });
         controls.Debug.DebugC.performed += ctx => OnDebugC(new InputArgs { context = ctx });
