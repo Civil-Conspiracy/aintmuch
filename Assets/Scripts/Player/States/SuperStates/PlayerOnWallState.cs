@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerOnWallState : PlayerState
 {
-    public PlayerOnWallState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerOnWallState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor)
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
@@ -18,17 +15,17 @@ public class PlayerOnWallState : PlayerState
     {
         base.LogicUpdate();
 
-        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
+        if (data.LastPressedDashTime > 0 && states.DashState.CanDash())
         {
-            stateMachine.ChangeState(data.States.DashState);
+            stateMachine.ChangeState(states.DashState);
         }
         else if (data.LastOnGroundTime > 0)
         {
-            stateMachine.ChangeState(data.States.IdleState);
+            stateMachine.ChangeState(states.IdleState);
         }
         else if (data.LastOnWallTime <= 0)
         {
-            stateMachine.ChangeState(data.States.InAirState);
+            stateMachine.ChangeState(states.InAirState);
         }
     }
     public override void PhysicsUpdate()

@@ -5,9 +5,15 @@ using UnityEngine;
 public class PlayerEvents : MonoBehaviour
 {
     protected PlayerData data;
-    public void Initialize(PlayerData _data)
+    protected PlayerStateManager states;
+    protected PlayerMotor motor;
+    protected PlayerController player;
+    public void Initialize(PlayerData _data, PlayerStateManager _states, PlayerMotor _motor, PlayerController _player)
     {
         data = _data;
+        states = _states;
+        motor = _motor;
+        player = _player;
     }
 
     private void Start()
@@ -35,8 +41,8 @@ public class PlayerEvents : MonoBehaviour
 
     public void OnJumpReleased(InputManager.InputArgs args)
     {
-        if (data.States.JumpState.CanJumpCut() || data.States.WallJumpState.CanJumpCut())
-            data.Motor.JumpCut();
+        if (states.JumpState.CanJumpCut() || states.WallJumpState.CanJumpCut())
+            motor.JumpCut();
     }
 
     public void OnDash(InputManager.InputArgs args)
@@ -52,7 +58,7 @@ public class PlayerEvents : MonoBehaviour
     private void OnInteract(InputManager.InputArgs args)
     {
         Debug.Log("wow");
-        data.Player.Interact();
+        player.Interact();
     }
     #endregion
 
@@ -78,11 +84,11 @@ public class PlayerEvents : MonoBehaviour
     #region DEBUG
     public void OnDebugB(InputManager.InputArgs args)
     {
-        data.Player.SpawnFloorItem(data.Debug.DEBUGITEM, data.Debug.go_defaultItem, 1);
+        player.SpawnFloorItem(data.Debug.DEBUGITEM, data.Debug.go_defaultItem, 1);
     }
     public void OnDebugC(InputManager.InputArgs args)
     {
-        bool dropItem = PlayerInventoryManager.instance.DropItemFromOffhand(data.IsFacingRight, data.Player.transform.position);
+        bool dropItem = PlayerInventoryManager.instance.DropItemFromOffhand(data.IsFacingRight, player.transform.position);
         if (dropItem)
             Debug.Log("Dropped Item from Offhand");
         else

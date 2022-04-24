@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundedState
 {
-    public PlayerIdleState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerIdleState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor) 
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
@@ -21,15 +22,15 @@ public class PlayerIdleState : PlayerGroundedState
 
         if (InputManager.instance.MoveInput.x != 0)
         {
-            stateMachine.ChangeState(data.States.RunState);
+            stateMachine.ChangeState(states.RunState);
         }
-        else if (data.IsAxeSwingPressed && data.States.AxeSwingState.SwingWasCanceled && data.States.AxeSwingState.CanSwingFromCancel())
+        else if (data.IsAxeSwingPressed && states.AxeSwingState.SwingWasCanceled && states.AxeSwingState.CanSwingFromCancel())
         {
-            stateMachine.ChangeState(data.States.AxeSwingState);
+            stateMachine.ChangeState(states.AxeSwingState);
         }
-        else if (data.IsAxeSwingPressed && data.States.AxeSwingState.CanSwing())
+        else if (data.IsAxeSwingPressed && states.AxeSwingState.CanSwing())
         {
-            stateMachine.ChangeState(data.States.AxeSwingState);
+            stateMachine.ChangeState(states.AxeSwingState);
         }
     }
 
@@ -37,6 +38,6 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.PhysicsUpdate();
 
-        data.Motor.Run(1);
+        motor.Run(1);
     }
 }

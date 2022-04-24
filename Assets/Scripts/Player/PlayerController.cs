@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerData defaultData;
     private PlayerData data;
+    private PlayerMotor motor;
+    private PlayerStateManager states;
 
     [Header("Audio Testing")]
     public AudioSource audioSource;
@@ -21,8 +23,9 @@ public class PlayerController : MonoBehaviour
     public Animator PlayerAnimator { get; private set; }
     public Animator AxeAnimator { get; private set; }
     public TrailRenderer TrailRenderer { get; private set; }
-    [SerializeField] private PlayerInventoryManager inventory;
+
     private PlayerEvents events;
+    [SerializeField] private PlayerInventoryManager inventory;
     #endregion
 
     #region CHECK PARAMETERS
@@ -62,25 +65,27 @@ public class PlayerController : MonoBehaviour
         if (data == null)
         {
             data = Instantiate(defaultData);
-            data.Initialize(this, inventory, events);
-            events.Initialize(data);
+            motor = new PlayerMotor(data, this);
+            states = new PlayerStateManager(data, this, motor);
+            states.Initialize();
+            events.Initialize(data, states, motor, this);
         }
     }
 
     private void Start()
     {
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
     }
 
     private void Update()
     {
-        data.States.LogicUpdate();
-        data.States.StateMachine.CurrentState.LogicUpdate();
+        states.LogicUpdate();
+        states.StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
-        data.States.StateMachine.CurrentState.PhysicsUpdate();
+        states.StateMachine.CurrentState.PhysicsUpdate();
     }
 
 

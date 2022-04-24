@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerInActionState
 {
-    public PlayerJumpState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerJumpState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor) : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
         base.Enter();
 
-        data.Motor.Jump();
+        motor.Jump();
     }
 
     public override void Exit()
@@ -22,27 +22,27 @@ public class PlayerJumpState : PlayerInActionState
     {
         base.LogicUpdate();
 
-        if (data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
-            stateMachine.ChangeState(data.States.DashState);
+        if (data.LastPressedDashTime > 0 && states.DashState.CanDash())
+            stateMachine.ChangeState(states.DashState);
 
         else if (data.LastPressedJumpTime > 0 && data.LastOnWallTime > 0)
-            stateMachine.ChangeState(data.States.WallJumpState);
+            stateMachine.ChangeState(states.WallJumpState);
 
-        else if (data.Player.RB.velocity.y <= 0)
-            stateMachine.ChangeState(data.States.InAirState);
+        else if (player.RB.velocity.y <= 0)
+            stateMachine.ChangeState(states.InAirState);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        data.Motor.Drag(data.dragAmount);
-        data.Motor.Run(1);
+        motor.Drag(data.dragAmount);
+        motor.Run(1);
     }
 
     public bool CanJumpCut()
     {
-        if (data.States.StateMachine.CurrentState == this && data.Player.RB.velocity.y > 0)
+        if (states.StateMachine.CurrentState == this && player.RB.velocity.y > 0)
             return true;
         else
             return false;

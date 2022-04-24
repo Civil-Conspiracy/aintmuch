@@ -1437,6 +1437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Border To Village
       objectReference: {fileID: 0}
+    - target: {fileID: 3395818379804528114, guid: d3285dd9ba7d97741ad4a04a796be1e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3395818379804528119, guid: d3285dd9ba7d97741ad4a04a796be1e8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1490,6 +1494,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1447440978430915904, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
+      propertyPath: defaultData
+      value: 
+      objectReference: {fileID: 11400000, guid: e9141250cd31f4f4eb35f59dbee744ff, type: 2}
     - target: {fileID: 5448854961787109851, guid: 6a3e58a982728d54cab55494475e5b00, type: 3}
       propertyPath: m_Name
       value: Player

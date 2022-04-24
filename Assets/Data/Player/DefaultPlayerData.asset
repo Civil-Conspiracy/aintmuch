@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae09c838971f0746a431669fd0f9db5, type: 3}
   m_Name: DefaultPlayerData
   m_EditorClassIdentifier: 
+  defaultDebugData: {fileID: 0}
   gravityScale: 1.1
   fallGravityMult: 1.35
   quickFallGravityMult: 2.2
@@ -51,3 +52,13 @@ MonoBehaviour:
   swingBufferTime: 0.01
   doKeepRunMomentum: 0
   doTurnOnWallJump: 1
+  doDebug: 0
+  LastOnGroundTime: 0
+  LastOnWallTime: 0
+  LastOnWallLeftTime: 0
+  LastOnWallRightTime: 0
+  IsFacingRight: 0
+  IsAxeSwingPressed: 0
+  LastPressedJumpTime: 0
+  LastPressedJumpUpTime: 0
+  LastPressedDashTime: 0

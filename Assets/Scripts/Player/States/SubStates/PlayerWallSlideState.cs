@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class PlayerWallSlideState : PlayerOnWallState
 {
-    public PlayerWallSlideState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerWallSlideState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor)
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
         base.Enter();
-        data.Motor.SetGravityScale(data.wallSlideGravity);
+        motor.SetGravityScale(data.wallSlideGravity);
     }
 
     public override void Exit()
     {
         base.Exit();
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (data.LastPressedJumpTime > 0 && data.States.WallJumpState.CanWallJump())
+        if (data.LastPressedJumpTime > 0 && states.WallJumpState.CanWallJump())
         {
-            stateMachine.ChangeState(data.States.WallJumpState);
+            stateMachine.ChangeState(states.WallJumpState);
         }
         else if ((data.LastOnWallLeftTime > 0 && InputManager.instance.MoveInput.x >= 0) || (data.LastOnWallRightTime > 0 && InputManager.instance.MoveInput.x <= 0))
         {
-            stateMachine.ChangeState(data.States.InAirState);
+            stateMachine.ChangeState(states.InAirState);
         }
     }
 
@@ -36,7 +37,7 @@ public class PlayerWallSlideState : PlayerOnWallState
     {
         base.PhysicsUpdate();
 
-        data.Motor.Drag(data.dragAmount);
-        data.Motor.Slide();
+        motor.Drag(data.dragAmount);
+        motor.Slide();
     }
 }

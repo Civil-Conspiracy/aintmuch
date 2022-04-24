@@ -8,13 +8,14 @@ public class PlayerDashState : PlayerInActionState
     int dashesLeft;
     bool dashAttacking;
 
-    public PlayerDashState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerDashState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor) 
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
         base.Enter();
 
-        data.States.WallJumpState.ResetWallJumpCount();
+        states.WallJumpState.ResetWallJumpCount();
 
         dashesLeft--;
 
@@ -25,14 +26,14 @@ public class PlayerDashState : PlayerInActionState
             dir = InputManager.instance.MoveInput;
 
         dashAttacking = true;
-        data.Motor.Dash(dir);
+        motor.Dash(dir);
 
     }
 
     public override void Exit()
     {
         base.Exit();
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
     }
 
     public override void LogicUpdate()
@@ -42,12 +43,12 @@ public class PlayerDashState : PlayerInActionState
         if(Time.time - startTime > data.dashAttackTime + data.dashEndTime)// dashTime over transition to another state
         {
             if (data.LastOnGroundTime > 0)
-                stateMachine.ChangeState(data.States.IdleState);
+                stateMachine.ChangeState(states.IdleState);
             else
-                stateMachine.ChangeState(data.States.InAirState);
+                stateMachine.ChangeState(states.InAirState);
         } 
-        else if (Time.time - startTime > data.dashAttackTime && data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
-            stateMachine.ChangeState(data.States.DashState);
+        else if (Time.time - startTime > data.dashAttackTime && data.LastPressedDashTime > 0 && states.DashState.CanDash())
+            stateMachine.ChangeState(states.DashState);
     }
 
     public override void PhysicsUpdate()
@@ -57,27 +58,27 @@ public class PlayerDashState : PlayerInActionState
         if (Time.time - startTime > data.dashAttackTime)
         {
             //initial dash phase over, slow down and resume player control
-            data.Motor.Drag(data.dragAmount);
-            data.Motor.Run(data.dashEndRunLerp);
+            motor.Drag(data.dragAmount);
+            motor.Run(data.dashEndRunLerp);
 
             if (dashAttacking)
                 StopDash();
         } 
         else
-            data.Motor.Drag(data.dashAttackDragAmount);
+            motor.Drag(data.dashAttackDragAmount);
     }
 
     private void StopDash()
     {
         dashAttacking = false;
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
 
         if (dir.y > 0)
         {
             if (dir.x == 0)
-                data.Player.RB.AddForce((1 - data.dashUpEndMult) * data.Player.RB.velocity.y * Vector2.down, ForceMode2D.Impulse);
+                player.RB.AddForce((1 - data.dashUpEndMult) * player.RB.velocity.y * Vector2.down, ForceMode2D.Impulse);
             else
-                data.Player.RB.AddForce((1 - data.dashUpEndMult) * .7f * data.Player.RB.velocity.y * Vector2.down, ForceMode2D.Impulse);
+                player.RB.AddForce((1 - data.dashUpEndMult) * .7f * player.RB.velocity.y * Vector2.down, ForceMode2D.Impulse);
         }
     }
 

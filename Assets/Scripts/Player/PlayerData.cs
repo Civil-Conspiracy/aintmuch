@@ -7,22 +7,8 @@ using Unity.Collections;
 public class PlayerData : ScriptableObject
 {
     [SerializeField] private DebugData defaultDebugData;
-    public PlayerController Player { get; private set; }
-    public PlayerStateManager States { get; private set; }
-    public PlayerMotor Motor { get; private set; }
-    public PlayerEvents Events { get; private set; }
-    public PlayerInventoryManager Inventory { get; private set; }
     public DebugData Debug { get { return defaultDebugData; } }
 
-    public void Initialize(PlayerController _player, PlayerInventoryManager _inventory, PlayerEvents _events)
-    {
-        Player = _player;
-        Inventory = _inventory;
-        Events = _events;
-        Motor = new PlayerMotor(this);
-        States = new PlayerStateManager();
-        States.Initialize(this, Player);
-    }
     //PHYSICS
     [Header("Gravity")]
     public float gravityScale; // overrides rb.gravityScale

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAxeSwingState : PlayerInActionState
 {
-    public PlayerAxeSwingState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerAxeSwingState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor)
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public bool SwingWasCanceled { get; private set; }
     bool attacking;
@@ -15,7 +16,7 @@ public class PlayerAxeSwingState : PlayerInActionState
 
         attacking = true;
         SwingWasCanceled = false;
-        data.Motor.SetGravityScale(data.axeSwingGravity);
+        motor.SetGravityScale(data.axeSwingGravity);
     }
 
     public override void Exit()
@@ -23,7 +24,7 @@ public class PlayerAxeSwingState : PlayerInActionState
         base.Exit();
 
         attacking = false;
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
     }
 
     public override void LogicUpdate()
@@ -32,29 +33,29 @@ public class PlayerAxeSwingState : PlayerInActionState
 
         if (!attacking && data.LastPressedJumpTime > 0)
         {
-            stateMachine.ChangeState(data.States.JumpState);
+            stateMachine.ChangeState(states.JumpState);
         }
-        else if (attacking && data.LastPressedDashTime > 0 && data.States.DashState.CanDash())
+        else if (attacking && data.LastPressedDashTime > 0 && states.DashState.CanDash())
         {
                 CancelAttack();
-            stateMachine.ChangeState(data.States.DashState);
+            stateMachine.ChangeState(states.DashState);
         }
         else if (!attacking && InputManager.instance.MoveInput.x != 0)
         {
             CancelAttack();
-            stateMachine.ChangeState(data.States.RunState);
+            stateMachine.ChangeState(states.RunState);
         }
         else if (!attacking && data.IsAxeSwingPressed && data.LastOnGroundTime > 0)
         {
             CancelAttack();
-            stateMachine.ChangeState(data.States.IdleState);
+            stateMachine.ChangeState(states.IdleState);
         }
         else if (Time.time - startTime > data.swingAttackTime + data.swingEndTime)// swingTime over transition to another state
         {
             if (data.LastOnGroundTime > 0)
-                stateMachine.ChangeState(data.States.IdleState);
+                stateMachine.ChangeState(states.IdleState);
             else
-                stateMachine.ChangeState(data.States.InAirState);
+                stateMachine.ChangeState(states.InAirState);
         }
             
     }
@@ -67,18 +68,18 @@ public class PlayerAxeSwingState : PlayerInActionState
         {
             if (Time.time - startTime > data.swingAttackTime) //initial startup over, detect hit;
             {
-                data.Player.DetectHit(data.damage);
+                player.DetectHit(data.damage);
                 attacking = false;
             }
             else if (InputManager.instance.MoveInput.x != 0)
             {
                 if (InputManager.instance.MoveInput.x < 0)
-                    data.Motor.CheckDirectionToFace(false);
+                    motor.CheckDirectionToFace(false);
                 if (InputManager.instance.MoveInput.x > 0)
-                    data.Motor.CheckDirectionToFace(true);
+                    motor.CheckDirectionToFace(true);
             }
-            data.Motor.Drag(data.dragAmount);
-            data.Motor.Slide();
+            motor.Drag(data.dragAmount);
+            motor.Slide();
         }
 
     }
@@ -96,6 +97,6 @@ public class PlayerAxeSwingState : PlayerInActionState
     {
         attacking = false;
         SwingWasCanceled = true;
-        data.Motor.SetGravityScale(data.gravityScale);
+        motor.SetGravityScale(data.gravityScale);
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerRunState : PlayerGroundedState
 {
-    public PlayerRunState(StateMachine stateMachine, PlayerData data) : base(stateMachine, data) { }
+    public PlayerRunState(StateMachine stateMachine, PlayerData data, PlayerStateManager stateList, PlayerController player, PlayerMotor motor) 
+        : base(stateMachine, data, stateList, player, motor) { }
 
     public override void Enter()
     {
@@ -20,14 +21,14 @@ public class PlayerRunState : PlayerGroundedState
 
         if(InputManager.instance.MoveInput.x == 0)
         {
-            stateMachine.ChangeState(data.States.IdleState);
+            stateMachine.ChangeState(states.IdleState);
         }
     }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        data.Motor.Run(1);
+        motor.Run(1);
 
     }
 }

@@ -2,9 +2,16 @@ using UnityEngine;
 public class PlayerStateManager
 {
     private PlayerData data;
-    public PlayerStateManager()
+    private PlayerController player;
+    private PlayerMotor motor;
+
+    public PlayerStateManager(PlayerData data, PlayerController player, PlayerMotor motor)
     {
+        this.player = player;
+        this.data = data;
+        this.motor = motor;
     }
+
     public StateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerRunState RunState { get; private set; }
@@ -15,18 +22,17 @@ public class PlayerStateManager
     public PlayerDashState DashState { get; private set; }
     public PlayerAxeSwingState AxeSwingState { get; private set; }
 
-    public void Initialize(PlayerData data, PlayerController player)
+    public void Initialize()
     {
-        this.data = data;
         StateMachine = new StateMachine();
-        IdleState = new PlayerIdleState(StateMachine, data);
-        RunState = new PlayerRunState(StateMachine, data);
-        JumpState = new PlayerJumpState(StateMachine, data);
-        InAirState = new PlayerInAirState(StateMachine, data);
-        WallSlideState = new PlayerWallSlideState(StateMachine, data);
-        WallJumpState = new PlayerWallJumpState(StateMachine, data);
-        DashState = new PlayerDashState(StateMachine, data);
-        AxeSwingState = new PlayerAxeSwingState(StateMachine, data);
+        IdleState = new PlayerIdleState(StateMachine, data, this, player, motor);
+        RunState = new PlayerRunState(StateMachine, data, this, player, motor);
+        JumpState = new PlayerJumpState(StateMachine, data, this, player, motor);
+        InAirState = new PlayerInAirState(StateMachine, data, this, player, motor);
+        WallSlideState = new PlayerWallSlideState(StateMachine, data, this, player, motor);
+        WallJumpState = new PlayerWallJumpState(StateMachine, data, this, player, motor);
+        DashState = new PlayerDashState(StateMachine, data, this, player, motor);
+        AxeSwingState = new PlayerAxeSwingState(StateMachine, data, this, player, motor);
 
         StateMachine.Initialize(IdleState, data, player);
 
@@ -45,20 +51,20 @@ public class PlayerStateManager
         data.LastPressedDashTime -= Time.deltaTime;
 
         //Ground Check
-        if (Physics2D.OverlapBox(data.Player.GroundCheckPoint.position, data.Player.GroundCheckSize, 0, data.Player.GroundLayer)
-            || (Physics2D.OverlapBox(data.Player.GroundCheckPoint.position, data.Player.GroundCheckSize, 0, data.Player.WallLayer)))
+        if (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.GroundLayer)
+            || (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.WallLayer)))
             data.LastOnGroundTime = data.jumpGraceTime;
         //Right Wall Check
-        if ((Physics2D.OverlapBox(data.Player.RightWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.WallLayer) && data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.LeftWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.WallLayer) && !data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.RightWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.TreeLayer) && data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.LeftWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.TreeLayer) && !data.IsFacingRight))
+        if ((Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && !data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && !data.IsFacingRight))
             data.LastOnWallRightTime = data.jumpGraceTime;
         //Left Wall Check
-        if ((Physics2D.OverlapBox(data.Player.RightWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.WallLayer) && !data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.LeftWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.WallLayer) && data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.RightWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.TreeLayer) && !data.IsFacingRight)
-            || (Physics2D.OverlapBox(data.Player.LeftWallCheckPoint.position, data.Player.WallCheckSize, 0, data.Player.TreeLayer) && data.IsFacingRight))
+        if ((Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && !data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && !data.IsFacingRight)
+            || (Physics2D.OverlapBox(player.LeftWallCheckPoint.position, player.WallCheckSize, 0, player.TreeLayer) && data.IsFacingRight))
             data.LastOnWallLeftTime = data.jumpGraceTime;
 
         data.LastOnWallTime = Mathf.Max(data.LastOnWallLeftTime, data.LastOnWallRightTime);
