@@ -80,12 +80,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         states.LogicUpdate();
-        states.StateMachine.CurrentState.LogicUpdate();
+        states.Machine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
-        states.StateMachine.CurrentState.PhysicsUpdate();
+        states.Machine.CurrentState.PhysicsUpdate();
     }
 
 

@@ -1,9 +1,9 @@
 using UnityEngine;
 public class PlayerStateManager
 {
-    private PlayerData data;
-    private PlayerController player;
-    private PlayerMotor motor;
+    protected PlayerData data;
+    protected PlayerController player;
+    protected PlayerMotor motor;
 
     public PlayerStateManager(PlayerData data, PlayerController player, PlayerMotor motor)
     {
@@ -12,7 +12,7 @@ public class PlayerStateManager
         this.motor = motor;
     }
 
-    public StateMachine StateMachine { get; private set; }
+    public StateMachine Machine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerRunState RunState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
@@ -24,17 +24,17 @@ public class PlayerStateManager
 
     public void Initialize()
     {
-        StateMachine = new StateMachine();
-        IdleState = new PlayerIdleState(StateMachine, data, this, player, motor);
-        RunState = new PlayerRunState(StateMachine, data, this, player, motor);
-        JumpState = new PlayerJumpState(StateMachine, data, this, player, motor);
-        InAirState = new PlayerInAirState(StateMachine, data, this, player, motor);
-        WallSlideState = new PlayerWallSlideState(StateMachine, data, this, player, motor);
-        WallJumpState = new PlayerWallJumpState(StateMachine, data, this, player, motor);
-        DashState = new PlayerDashState(StateMachine, data, this, player, motor);
-        AxeSwingState = new PlayerAxeSwingState(StateMachine, data, this, player, motor);
+        Machine = new StateMachine();
+        IdleState = new PlayerIdleState(Machine, data, this, player, motor);
+        RunState = new PlayerRunState(Machine, data, this, player, motor);
+        JumpState = new PlayerJumpState(Machine, data, this, player, motor);
+        InAirState = new PlayerInAirState(Machine, data, this, player, motor);
+        WallSlideState = new PlayerWallSlideState(Machine, data, this, player, motor);
+        WallJumpState = new PlayerWallJumpState(Machine, data, this, player, motor);
+        DashState = new PlayerDashState(Machine, data, this, player, motor);
+        AxeSwingState = new PlayerAxeSwingState(Machine, data, this, player, motor);
 
-        StateMachine.Initialize(IdleState, data, player);
+        Machine.Initialize(IdleState, data, player);
 
         data.IsFacingRight = true;
     }

@@ -42,7 +42,7 @@ public class PlayerJumpState : PlayerInActionState
 
     public bool CanJumpCut()
     {
-        if (states.StateMachine.CurrentState == this && player.RB.velocity.y > 0)
+        if (states.Machine.CurrentState == this && player.RB.velocity.y > 0)
             return true;
         else
             return false;
