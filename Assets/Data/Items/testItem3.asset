@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffe5472bb75f504896465d7164895eb, type: 3}
   m_Name: testItem3
   m_EditorClassIdentifier: 
-  ItemName: 
-  ItemIcon: {fileID: 0}
-  ItemColor: {r: 0, g: 0, b: 0, a: 0}
-  MaxStackSize: 0
+  ItemName: Dark Test Log
+  ItemIcon: {fileID: 21300000, guid: 9e6db1d64ad17b24083f818c745a9e4a, type: 3}
+  ItemColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+  MaxStackSize: 8
   CurrentStackSize: 0

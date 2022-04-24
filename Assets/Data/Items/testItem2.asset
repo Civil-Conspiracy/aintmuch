@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffe5472bb75f504896465d7164895eb, type: 3}
   m_Name: testItem2
   m_EditorClassIdentifier: 
-  ItemName: Test Log 2
+  ItemName: Dim Test Log
   ItemIcon: {fileID: 21300000, guid: 9e6db1d64ad17b24083f818c745a9e4a, type: 3}
-  MaxStackSize: 3
+  ItemColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+  MaxStackSize: 6
   CurrentStackSize: 0
