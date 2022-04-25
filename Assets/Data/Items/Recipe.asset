@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18279f2e298c77a48b7dbc85e35d8c26, type: 3}
   m_Name: Recipe
   m_EditorClassIdentifier: 
-  Result: {fileID: 0}
+  Result: {fileID: 11400000, guid: d198b1003bb6ace4d8b875f419174d31, type: 2}
   Materials:
+  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
+  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
+  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  MaterialCount: 00000000000000000000000000000000000000000000000000000000
+  MaterialCount: 0300000002000000010000000000000000000000
   match1: {fileID: 0}
   match2: {fileID: 0}
   match3: {fileID: 0}
