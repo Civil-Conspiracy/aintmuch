@@ -32,7 +32,7 @@ MonoBehaviour:
   jumpForce: 12
   jumpCutMultiplier: 0.5
   jumpBufferTime: 0.08
-  wallJumpAmount: 2
+  wallJumpAmount: 5
   wallJumpForce: {x: 9, y: 12}
   wallJumpRunLerp: 0.3
   wallJumpTime: 0.55
