@@ -13,9 +13,9 @@ ScriptedImporter:
   - "Custom importer 'PlatformCustomImporter' threw an exception. Message = 'Transform
     child out of bounds', Stack:\n  at (wrapper managed-to-native) UnityEngine.Transform.GetChild(UnityEngine.Transform,int)\r\n 
     at PlatformCustomImporter.TmxAssetImported (SuperTiled2Unity.Editor.TmxAssetImportedArgs
-    args) [0x00021] in D:\\dev\\aintmuch\\Assets\\Scripts\\TiledImporters\\PlatformCustomImporter.cs:16
+    args) [0x00021] in D:\\unityprojects\\aintmuch\\Assets\\Scripts\\TiledImporters\\PlatformCustomImporter.cs:16
     \r\n  at SuperTiled2Unity.Editor.TmxAssetImporter.RunCustomImporterType (System.Type
-    type) [0x00048] in D:\\dev\\aintmuch\\Assets\\SuperTiled2Unity\\Scripts\\Editor\\Importers\\TmxAssetImporter.cs:477 "
+    type) [0x00048] in D:\\unityprojects\\aintmuch\\Assets\\SuperTiled2Unity\\Scripts\\Editor\\Importers\\TmxAssetImporter.cs:477 "
   warnings: []
   missingSortingLayers: []
   missingLayers: []
