@@ -29,6 +29,9 @@ public class PlayerEvents : MonoBehaviour
         InputManager.instance.OnScrollForward += args => OnScrollForward(args);
         InputManager.instance.OnScrollBackward += args => OnScrollBackward(args);
 
+        //Test
+        InputManager.instance.OnReset += args => OnReset(args);
+
         //Debug
         InputManager.instance.OnDebugB += args => OnDebugB(args);
         InputManager.instance.OnDebugC += args => OnDebugC(args);
@@ -78,6 +81,17 @@ public class PlayerEvents : MonoBehaviour
             Debug.Log("Successfully Scrolled Backward!");
         else
             Debug.Log("No Items to Scroll!");
+    }
+    #endregion
+
+    #region TEST
+    public void OnReset(InputManager.InputArgs args)
+    {
+        player.RB.velocity = Vector2.zero;
+        player.ResetPosition();
+
+        if(TimerController.instance.TimerGoing)
+            TimerController.instance.EndTimer();
     }
     #endregion
 

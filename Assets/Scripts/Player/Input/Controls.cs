@@ -431,6 +431,34 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Test"",
+            ""id"": ""d8798f2e-4653-4a74-b1ee-285b4160a431"",
+            ""actions"": [
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""d65942d3-ee7e-4647-93f8-56f07719d92b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""33792271-54ec-446b-86fb-9cd1b3aadc72"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -480,6 +508,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_DebugB = m_Debug.FindAction("DebugB", throwIfNotFound: true);
         m_Debug_DebugC = m_Debug.FindAction("DebugC", throwIfNotFound: true);
+        // Test
+        m_Test = asset.FindActionMap("Test", throwIfNotFound: true);
+        m_Test_Reset = m_Test.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -698,6 +729,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public DebugActions @Debug => new DebugActions(this);
+
+    // Test
+    private readonly InputActionMap m_Test;
+    private ITestActions m_TestActionsCallbackInterface;
+    private readonly InputAction m_Test_Reset;
+    public struct TestActions
+    {
+        private @Controls m_Wrapper;
+        public TestActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Reset => m_Wrapper.m_Test_Reset;
+        public InputActionMap Get() { return m_Wrapper.m_Test; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
+        public void SetCallbacks(ITestActions instance)
+        {
+            if (m_Wrapper.m_TestActionsCallbackInterface != null)
+            {
+                @Reset.started -= m_Wrapper.m_TestActionsCallbackInterface.OnReset;
+                @Reset.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnReset;
+                @Reset.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnReset;
+            }
+            m_Wrapper.m_TestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Reset.started += instance.OnReset;
+                @Reset.performed += instance.OnReset;
+                @Reset.canceled += instance.OnReset;
+            }
+        }
+    }
+    public TestActions @Test => new TestActions(this);
     private int m_KBMSchemeIndex = -1;
     public InputControlScheme KBMScheme
     {
@@ -735,5 +799,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     {
         void OnDebugB(InputAction.CallbackContext context);
         void OnDebugC(InputAction.CallbackContext context);
+    }
+    public interface ITestActions
+    {
+        void OnReset(InputAction.CallbackContext context);
     }
 }

@@ -14,7 +14,6 @@ public class PlayerData : ScriptableObject
         LEFT,
         RIGHT
     }
-
     //PHYSICS
     [Header("Gravity")]
     public float gravityScale; // overrides rb.gravityScale

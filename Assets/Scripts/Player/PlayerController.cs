@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerData defaultData;
+    [Space(5)]
+    [SerializeField] private Transform spawnPoint;
     private PlayerData data;
     private PlayerMotor motor;
     private PlayerStateManager states;
@@ -129,6 +131,11 @@ public class PlayerController : MonoBehaviour
         {
             hit.collider.gameObject.GetComponent<IInteractable>().Interact(gameObject);
         }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = spawnPoint.position;
     }
     #endregion
 

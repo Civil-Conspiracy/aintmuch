@@ -20,6 +20,8 @@ public class InputManager : MonoBehaviour
     public Action<InputArgs> OnScrollForward;
     public Action<InputArgs> OnScrollBackward;
 
+    public Action<InputArgs> OnReset;
+
     public Action<InputArgs> OnDebugB;
     public Action<InputArgs> OnDebugC;
 
@@ -53,6 +55,8 @@ public class InputManager : MonoBehaviour
 
         controls.Player.AxeSwing.performed += ctx => OnAxeSwing(new InputArgs { context = ctx });
         controls.Player.AxeSwing.canceled += ctx => OnAxeSwing(new InputArgs { context = ctx });
+
+        controls.Test.Reset.performed += ctx => OnReset(new InputArgs { context = ctx });
 
         controls.HUD.ScrollForward.performed += ctx => OnScrollForward(new InputArgs { context = ctx });
         controls.HUD.ScrollBackward.performed += ctx => OnScrollBackward(new InputArgs { context = ctx });
