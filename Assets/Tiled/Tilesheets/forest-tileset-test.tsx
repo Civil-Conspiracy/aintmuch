@@ -3,7 +3,9 @@
  <image source="../../Sprites/World/forest-tileset-test.png" width="128" height="128"/>
  <tile id="0">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="16" height="16"/>
+   <object id="3" x="15.9922" y="-0.016576">
+    <polygon points="0.0124939,3.0006 -16,3.00338 -15.9922,16.0181 0,16.0181"/>
+   </object>
   </objectgroup>
  </tile>
  <tile id="8">
@@ -37,7 +39,7 @@
  </tile>
  <tile id="35">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="7" height="16"/>
+   <object id="1" x="0" y="3.01789" width="7" height="12.9821"/>
   </objectgroup>
  </tile>
  <tile id="36">
