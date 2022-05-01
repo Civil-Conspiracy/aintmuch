@@ -5,12 +5,8 @@ using UnityEngine;
 
 public class TutorialTextManager : MonoBehaviour
 {
-    private TextMeshPro _textMeshPro;
+   [SerializeField] private TextMeshPro _textMeshPro;
 
-    private void OnValidate()
-    {
-        _textMeshPro = GetComponent<TextMeshPro>();
-    }
     private void Awake()
     {
         _textMeshPro.enabled = false;

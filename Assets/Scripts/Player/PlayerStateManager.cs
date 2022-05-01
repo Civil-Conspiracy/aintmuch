@@ -51,8 +51,7 @@ public class PlayerStateManager
         data.LastPressedDashTime -= Time.deltaTime;
 
         //Ground Check
-        if (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.GroundLayer)
-            || (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.WallLayer)))
+        if (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.GroundLayer))
         {
             data.lastWallTouched = PlayerData.WallSides.NONE;
             data.LastOnGroundTime = data.jumpGraceTime;
