@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="19">
  <tileset firstgid="1" source="../Tilesheets/tilesheet-Forest01.tsx"/>
  <tileset firstgid="177" source="../Tilesheets/FORESTSHEET.tsx"/>
  <tileset firstgid="241" source="../Tilesheets/forest-tileset-test.tsx"/>
+ <tileset firstgid="305" source="../Tilesheets/yes.tsx"/>
  <layer id="1" name="Background" width="36" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Background"/>
@@ -31,6 +32,28 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="9" name="ys">
+  <properties>
+   <property name="unity:SortingLayer" value="Background"/>
+   <property name="unity:SortingOrder" type="int" value="-14"/>
+  </properties>
+  <object id="1" gid="306" x="304" y="288" width="80" height="128"/>
+  <object id="2" gid="306" x="480" y="288" width="80" height="128"/>
+  <object id="3" gid="306" x="144" y="288" width="80" height="128"/>
+  <object id="4" gid="306" x="-16" y="288" width="80" height="128"/>
+  <object id="5" gid="305" x="272" y="160" width="80" height="128"/>
+  <object id="7" gid="305" x="192" y="32" width="80" height="128"/>
+  <object id="8" gid="308" x="512" y="288" width="80" height="128"/>
+  <object id="9" gid="308" x="176" y="144" width="80" height="128"/>
+  <object id="10" gid="308" x="208" y="288" width="80" height="128"/>
+  <object id="11" gid="308" x="32" y="288" width="80" height="128"/>
+  <object id="12" gid="307" x="0" y="288" width="80" height="128"/>
+  <object id="13" gid="307" x="192" y="288" width="80" height="128"/>
+  <object id="14" gid="307" x="352" y="288" width="80" height="128"/>
+  <object id="15" gid="305" x="336" y="288" width="80" height="128"/>
+  <object id="17" gid="307" x="496" y="288" width="80" height="128"/>
+  <object id="18" gid="307" x="320" y="288" width="80" height="128"/>
+ </objectgroup>
  <layer id="2" name="Floorground trim" width="36" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Environment"/>
@@ -63,7 +86,7 @@
   <properties>
    <property name="unity:Layer" value="Ground"/>
    <property name="unity:SortingLayer" value="Environment"/>
-   <property name="unity:SortingOrder" type="int" value="-10"/>
+   <property name="unity:SortingOrder" type="int" value="-11"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -150,7 +173,7 @@
  <layer id="5" name="Decor" width="36" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Environment"/>
-   <property name="unity:SortingOrder" type="int" value="-8"/>
+   <property name="unity:SortingOrder" type="int" value="10"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

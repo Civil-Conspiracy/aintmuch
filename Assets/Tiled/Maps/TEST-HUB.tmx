@@ -98,7 +98,7 @@
   <properties>
    <property name="unity:Layer" value="Ground"/>
    <property name="unity:SortingLayer" value="Environment"/>
-   <property name="unity:SortingOrder" type="int" value="-10"/>
+   <property name="unity:SortingOrder" type="int" value="-11"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -156,7 +156,7 @@
  <layer id="3" name="Decor" width="36" height="20">
   <properties>
    <property name="unity:SortingLayer" value="Environment"/>
-   <property name="unity:SortingOrder" type="int" value="-8"/>
+   <property name="unity:SortingOrder" type="int" value="10"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

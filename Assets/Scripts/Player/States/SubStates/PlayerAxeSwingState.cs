@@ -70,6 +70,7 @@ public class PlayerAxeSwingState : PlayerInActionState
             {
                 player.DetectHit(data.damage);
                 attacking = false;
+                motor.SetGravityScale(data.gravityScale);
             }
             else if (InputManager.instance.MoveInput.x != 0)
             {

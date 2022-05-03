@@ -7,6 +7,10 @@ public class TutorialTextManager : MonoBehaviour
 {
    [SerializeField] private TextMeshPro _textMeshPro;
 
+    private void OnValidate()
+    {
+        _textMeshPro = GetComponent<TextMeshPro>();
+    }
     private void Awake()
     {
         _textMeshPro.enabled = false;

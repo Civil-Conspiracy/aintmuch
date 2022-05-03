@@ -409,8 +409,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
   - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
   - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
-  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
-  - {fileID: 11400000, guid: 03b5df1ed7d937c4ab10163744b7cabb, type: 2}
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 255}
   m_DeadPoint: {fileID: 5615609132639053306}
   m_healthBar: {fileID: 5314212948146647653}
