@@ -94,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722629919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: -0.089, y: -1.399, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5448854961787109855}
@@ -170,15 +170,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultData: {fileID: 11400000, guid: e9141250cd31f4f4eb35f59dbee744ff, type: 2}
+  spawnPoint: {fileID: 0}
   audioSource: {fileID: 189409642}
   chopAudio: {fileID: 8300000, guid: b5316d887b03bb14eb2ee057bef53749, type: 3}
   CurrentState: 
   inventory: {fileID: 2403455871040344552, guid: 3f5d90e117d349942b2e0deacca0690b, type: 3}
   _groundCheckPoint: {fileID: 1722629920}
-  _groundCheckSize: {x: 0.01, y: 0.01}
+  _groundCheckSize: {x: 0.05, y: 0.015}
   _rightWallCheckPoint: {fileID: 3366927469138315073}
   _leftWallCheckPoint: {fileID: 5448360449698862896}
-  _wallCheckSize: {x: 0.1, y: 0.1}
+  _wallCheckSize: {x: 0.02, y: 0.9}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -188,6 +189,9 @@ MonoBehaviour:
   _treeLayer:
     serializedVersion: 2
     m_Bits: 2048
+  _slopeLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &6525067417545400450
 MonoBehaviour:
   m_ObjectHideFlags: 0

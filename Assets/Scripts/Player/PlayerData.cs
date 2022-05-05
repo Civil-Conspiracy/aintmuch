@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Collections;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Player/Player Data")]
 public class PlayerData : ScriptableObject
@@ -54,7 +53,7 @@ public class PlayerData : ScriptableObject
     [Space(5)]
     [Range(0f, 1f)] public float wallJumpRunLerp; //slows the affect of player movement while wall jumping
     [Range(0f, 1.5f)] public float wallJumpTime;
-    [ReadOnly] public WallSides lastWallTouched;
+    public WallSides lastWallTouched;
 
     //WALL
     [Header("Slide")]
@@ -90,14 +89,26 @@ public class PlayerData : ScriptableObject
     public bool doDebug;
     [Space(5)]
     [Header("State Data")]
-    [ReadOnly] public float LastOnGroundTime;
-    [ReadOnly] public float LastOnWallTime;
-    [ReadOnly] public float LastOnWallLeftTime;
-    [ReadOnly] public float LastOnWallRightTime;
-    [ReadOnly] public bool IsFacingRight;
+    private float _lastOnGroundTime;
+    private float _lastOnWallTime;
+    private float _lastOnWallLeftTime;
+    private float _lastOnWallRightTime;
+    private float _lastOnSlopeTime;
+    public bool _isFacingRight;
     [Space(10)]
-    [ReadOnly] public float LastPressedJumpTime;
-    [ReadOnly] public float LastPressedJumpUpTime;
-    [ReadOnly] public float LastPressedDashTime;
-    [ReadOnly] public bool IsAxeSwingPressed;
+    public float _lastPressedJumpTime;
+    public float _lastPressedJumpUpTime;
+    public float _lastPressedDashTime;
+    public bool _isAxeSwingPressed;
+    public float LastOnGroundTime { get { return _lastOnGroundTime; } set { _lastOnGroundTime = value; } }
+    public float LastOnWallTime { get { return _lastOnWallTime; } set { _lastOnWallTime = value; } }
+    public float LastOnWallLeftTime { get { return _lastOnWallLeftTime; } set { _lastOnWallLeftTime = value; } }
+    public float LastOnWallRightTime { get { return _lastOnWallRightTime; } set { _lastOnWallRightTime = value; } }
+    public float LastOnSlopeTime { get { return _lastOnSlopeTime; } set { _lastOnSlopeTime = value; } }
+    public bool IsFacingRight { get { return _isFacingRight; } set { _isFacingRight = value; } }
+    public float LastPressedJumpTime { get { return _lastPressedJumpTime; } set { _lastPressedJumpTime = value; } }
+    public float LastPressedJumpUpTime { get { return _lastPressedJumpUpTime; } set { _lastPressedJumpUpTime = value; } }
+    public float LastPressedDashTime { get { return _lastPressedDashTime; } set { _lastPressedDashTime = value; } }
+    public bool IsAxeSwingPressed { get { return _isAxeSwingPressed; } set { _isAxeSwingPressed = value; } }
+
 }

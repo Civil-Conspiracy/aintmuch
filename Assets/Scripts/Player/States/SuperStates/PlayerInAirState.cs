@@ -29,6 +29,10 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(states.IdleState);
         }
+        else if (data.LastOnSlopeTime > 0)
+        {
+            stateMachine.ChangeState(states.SlideState);
+        }
         else if (data.LastPressedJumpTime > 0 && data.LastOnWallTime > 0 && states.WallJumpState.CanWallJump())
         {
             stateMachine.ChangeState(states.WallJumpState);

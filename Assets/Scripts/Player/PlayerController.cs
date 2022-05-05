@@ -50,10 +50,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayer { get { return _groundLayer; } }
     public LayerMask WallLayer { get { return _wallLayer; } }
     public LayerMask TreeLayer { get { return _treeLayer; } }
+    public LayerMask SlopeLayer { get { return _slopeLayer; } }
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _wallLayer;
     [SerializeField] private LayerMask _treeLayer;
+    [SerializeField] private LayerMask _slopeLayer;
     #endregion
 
     private void Awake()
@@ -72,6 +74,10 @@ public class PlayerController : MonoBehaviour
             states.Initialize();
             events.Initialize(data, states, motor, this);
         }
+    }
+    private void OnWillRenderObject()
+    {
+        PlayAnimation();
     }
 
     private void Start()
@@ -193,4 +199,13 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(_groundCheckPoint.position, _groundCheckSize);
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(_leftWallCheckPoint.position, _wallCheckSize);
+        Gizmos.DrawCube(_rightWallCheckPoint.position, _wallCheckSize);
+    }
 }

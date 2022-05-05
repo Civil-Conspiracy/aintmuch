@@ -14,6 +14,7 @@ public class PlayerStateManager
 
     public StateMachine Machine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
+    public PlayerSlidingState SlideState { get; private set; }
     public PlayerRunState RunState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerInAirState InAirState { get; private set; }
@@ -26,6 +27,7 @@ public class PlayerStateManager
     {
         Machine = new StateMachine();
         IdleState = new PlayerIdleState(Machine, data, this, player, motor);
+        SlideState = new PlayerSlidingState(Machine, data, this, player, motor);
         RunState = new PlayerRunState(Machine, data, this, player, motor);
         JumpState = new PlayerJumpState(Machine, data, this, player, motor);
         InAirState = new PlayerInAirState(Machine, data, this, player, motor);
@@ -43,6 +45,7 @@ public class PlayerStateManager
     {
 
         data.LastOnGroundTime -= Time.deltaTime;
+        data.LastOnSlopeTime -= Time.deltaTime;
         data.LastOnWallTime -= Time.deltaTime;
         data.LastOnWallRightTime -= Time.deltaTime;
         data.LastOnWallLeftTime -= Time.deltaTime;
@@ -55,6 +58,12 @@ public class PlayerStateManager
         {
             data.lastWallTouched = PlayerData.WallSides.NONE;
             data.LastOnGroundTime = data.jumpGraceTime;
+        }
+        //Slope Check
+        if (Physics2D.OverlapBox(player.GroundCheckPoint.position, player.GroundCheckSize, 0, player.SlopeLayer))
+        {
+            data.lastWallTouched = PlayerData.WallSides.NONE;
+            data.LastOnSlopeTime = data.jumpGraceTime;
         }
         //Right Wall Check
         if ((Physics2D.OverlapBox(player.RightWallCheckPoint.position, player.WallCheckSize, 0, player.WallLayer) && data.IsFacingRight)

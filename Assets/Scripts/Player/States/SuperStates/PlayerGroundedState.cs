@@ -37,6 +37,10 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(states.InAirState);
         }
+        else if (data.LastOnSlopeTime > 0)
+        {
+            stateMachine.ChangeState(states.SlideState);
+        }
     }
 
     public override void PhysicsUpdate()
